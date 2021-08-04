@@ -1,18 +1,15 @@
 header {
     margin: 0;
-    position: fixed;
     width: 100%;
-
-
     position: fixed; 
     top: 0;
     border-bottom: none;
-    z-index: 999;
+    z-index: 998;
 }
 
 h1 {
     background-color: #010079;
-    padding: 20px 10px 20px 10px;
+    padding: 20px 10px;
     margin: 0;
     color: white;
 }
@@ -21,6 +18,27 @@ nav {
     position: fixed;
     top: 0;
     right: 0;
+    padding: .75rem;
+    z-index: 999;
+}
+
+nav ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    padding-top: .5rem;
+}
+
+nav li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav a {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 2em;
+    color: white;
+    border-bottom: none;
 }
 
 h1, h2 {
@@ -36,6 +54,7 @@ body {
 main {
     position: relative;
     top: 82.67px;
+    margin-bottom: 150px;
 }
 
 .results {
@@ -44,13 +63,13 @@ main {
     position: fixed;
     top: 82.67px;
     height: 100%;
-    width: 30%;
+    width: 60%;
     right: 0;
     padding: 20px;
 }
 
 .name {
-    font-size: xx-large;
+    font-size: 32px;
 }
 
 ul.no-bullets {
@@ -68,6 +87,57 @@ ul.no-bullets {
     color: white;
 }
 
-footer .address p {
-    display: inline;
+footer {
+    background-color: lightgrey;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+}
+
+footer address, footer p {
+    padding: 0;
+    margin: 0;
+}
+
+td {
+    padding: 10px 300px 0 0;
+    margin: 0;
+}
+
+.pfp-row {
+    padding-right: 0;
+}
+
+.page-switch {
+    font-size: 200%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.logo {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    background-image: url('/img/profile-picture.jpg');
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.results h2 {
+    font-size: 42px;
+    padding: 0;
+    margin: 0;
+}
+
+hr {
+    margin: 5px 0;
+    color:whitesmoke
+}
+
+button {
+    font-size: 1.5rem;
+    border-radius: 10px;
 }
