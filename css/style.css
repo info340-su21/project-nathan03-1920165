@@ -29,7 +29,6 @@ h2, legend {
 label {
     font-family: 'Lilita One', cursive;
     font-size: 1.3em;
-    background-color: lightgrey;
     padding: 0;
     margin: 0;
 }
@@ -57,6 +56,31 @@ hr {
     color:whitesmoke
 }
 
+/* about styling */
+.main-about {
+    
+}
+
+/* account styling */
+.main-account {
+
+}
+
+/* login styling */
+.main-login {
+
+}
+
+/* onboard styling */
+.main-onboard {
+
+}
+
+/* createUser styline */
+.main-createUser {
+
+}
+
 /* results styling */
 
 .results-page-container {
@@ -73,6 +97,8 @@ hr {
     flex : 1;
     text-align: center;
 }
+
+/* form styling */
 
 /* index styling */
 
