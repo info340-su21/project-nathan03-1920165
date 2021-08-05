@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Group 9: Juliane De Los Santos & Nathaniel Sy Su">
-    <meta name="description" content="An account page for roommate finder application">
+    <meta name="description" content="A profile page for roommate finder application">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Account</title>
+    <title>Profile</title>
 
     <!-- styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -30,31 +30,17 @@
     <main id="maincontent">
         <section class="profile">
             <form>
-                <h2>Account Information</h2>
+                <h2>Profile</h2>
+                <div>
+                    <label for="picture_upload">Choose a profile picture:</label>
+                    <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg">
+                </div>
                 <div>
                     <label for="fname_field">First Name:</label>
                     <input type="text" id="fname_field" name="fname" required>
 
                     <label for="lname_field">Last Name:</label>
                     <input type="text" id="lname_field" name="lname" required>
-                </div>
-                <div>
-                    <label for="uname_field">Username:</label>
-                    <input type="text" id="uname_field" name="uname" pattern=".{8,}" placeholder="8 character requirement" required>
-        
-                    <label for="pwd_field">Password:</label>
-                    <input type="password" id="pwd_field" name="pwd" pattern=".{8,}" placeholder="8 character requirement" required>
-                </div>
-            </form>
-        </section>
-
-        <section class="aboutMe">
-            <form>
-                <h2>About Me</h2>
-                <p>Tell us all about you.</p>
-                <div>
-                    <label for="picture_upload">Choose a profile picture:</label>
-                    <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg">
                 </div>
                 <div>
                     <label for="pronouns_dropdown">Personal Pronoun:</label>
@@ -65,6 +51,12 @@
                         <option value="they">they/them/their</option>
                     </select>
                 </div>
+            </form>
+        </section>
+
+        <section class="aboutMe">
+            <form>
+                <h2>About Me</h2>
                 <div>
                     <label for="city_field">Hometown City:</label>
                     <input type="text" id="city_field" name="city" placeholder="Seattle" required>
@@ -85,51 +77,15 @@
             </form>
         </section>
 
-        <section class="contacts">
-            <form>
-                <h2>Contact Information</h2>
-                <p>Provide your contact information to be reached by other students.</p>
-                <div>
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phone" placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-                </div>
-                <div>
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" placeholder="example@domain.com">
-                </div>
-                <div>
-                    <label for="facebook">Facebook:</label>
-                    <input type="text" id="facebook" name="facebook">
-                </div>
-                <div>
-                    <label for="instagram">Instagram:</label>
-                    <input type="text" id="instagram" name="instagram" placeholder="@handle">
-                </div>
-                <div>
-                    <label for="snapchat">Snapchat:</label>
-                    <input type="text" id="snapchat" name="snapchat" placeholder="@handle">
-                </div>
-                <div>
-                    <label for="wechat">WeChat:</label>
-                    <input type="text" id="wechat" name="wechat">
-                </div>
-                <div>
-                    <label for="discord">Discord:</label>
-                    <input type="text" id="discord" name="discord" placeholder="@discord#0000">
-                </div>
-            </form>
-        </section>
-
         <section class="academics">
             <h2>Academic Life</h2>
-            <p>Provide your academic history or future ambitions</p>
             <form>
                 <div>
                     <label for="major">(Intended) Major:</label>
                     <input type="text" id="major" name="major" placeholder="Informatics">
                 </div>
                 <div>
-                    <label for="class-standing">Class Standing</label>
+                    <label for="class-standing">Class Standing:</label>
                     <select id="class-standing" name="class-standing">
                         <option hidden="">Select one</option>
                         <option value="freshman">Freshman</option>
@@ -148,15 +104,9 @@
 
         <section class="housing">
             <h2>Housing Preferences</h2>
-            <p>Describe your housing preferences. (Select all that apply)</p>
-
-            <p>For window users – hold down + CTRL key to select multiple options</p>
-            <p>For mac users – hold down command key to select multiple option</p>
-
             <form>
                 <div>
                     <label for="housing_type">Resident Housing</label>
-                    <p>What type of housing are you looking for?</p>
                     <select id="housing_type" name="housing_type" size="6" multiple>
                         <option value="9_month">9-month</option>
                         <option value="12_month">12-month</option>
@@ -168,7 +118,6 @@
                 </div>
                 <div>
                     <label for="room_type">Room Type</label>
-                    <p>What type of room are you looking for?</p>
                     <select id="room_type" name="room_type" size="4" multiple>
                         <option value="double">Double</option>
                         <option value="triple">Triple</option>
@@ -178,7 +127,6 @@
                 </div>
                 <div>
                     <label for="bathroom_type">Bathroom Type</label>
-                    <p>What type of bathroom are you looking for?</p>
                     <select id="bathroom_type" name="bathroom_type" size="4" multiple>
                         <option value="private">Private</option>
                         <option value="semi_private">Semi-private</option>
@@ -187,7 +135,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="bldg_1">1st Building Preference</label>
+                    <label for="bldg_1">1st Building Preference:</label>
                     <select id="bldg_1" name="building_preference_one">
                         <option hidden="">Select one</option>
                         <option value="alder">Alder Hall</option>
@@ -210,7 +158,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="bldg_2">2nd Building Preference</label>
+                    <label for="bldg_2">2nd Building Preference:</label>
                     <select id="bldg_2" name="building_preference_two">
                         <option hidden="">Select one</option>
                         <option value="alder">Alder Hall</option>
@@ -233,7 +181,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="bldg_3">3rd Building Preference</label>
+                    <label for="bldg_3">3rd Building Preference:</label>
                     <select id="bldg_3" name="building_preference_three">
                         <option hidden="">Select one</option>
                         <option value="alder">Alder Hall</option>
@@ -260,11 +208,10 @@
 
         <section class="habits">
             <h2>Habits</h2>
-            <p>Specify your personal and study habits.</p>
             <form>
                 <h3>Sleep/Wake Up</h3>
                 <div>
-                    <label for="morning_dropdown">What time do you usually wake up in the morning?</label>
+                    <label for="morning_dropdown">Morning Wake Up:</label>
                     <select id="morning_dropdown" name="morning">
                         <option hidden="">Select one</option>
                         <option value="5am-or-earlier">5 AM or earlier</option>
@@ -274,7 +221,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="weeknights_dropdown">What time do you go to bed on weeknights?</label>
+                    <label for="weeknights_dropdown">Sleep Schedule on Weeknights:</label>
                     <select id="weeknights_dropdown" name="weeknights">
                         <option hidden="">Select one</option>
                         <option value="5pm-or-earlier">10 PM or earlier</option>
@@ -284,7 +231,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="weekends_dropdown">What time do you go to bed on weekends?</label>
+                    <label for="weekends_dropdown">Sleep Schedule on Weekends:</label>
                     <select id="weekends_dropdown" name="weekends">
                         <option hidden="">Select one</option>
                         <option value="5pm-or-earlier">10 PM or earlier</option>
@@ -296,7 +243,7 @@
 
                 <h3>Alcohol/Smoking</h3>
                 <div>
-                    <label for="drinking_dropdown">Do you drink alcohol?</label>
+                    <label for="drinking_dropdown">Alcohol?</label>
                     <select id="drinking_dropdown" name="drinking">
                         <option hidden="">Select one</option>
                         <option value="yes">Yes</option>
@@ -305,7 +252,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="smoking_dropdown">Do you smoke/vape?</label>
+                    <label for="smoking_dropdown">Smoke/vape?</label>
                     <select id="smoking_dropdown" name="smoking">
                         <option hidden="">Select one</option>
                         <option value="yes">Yes</option>
@@ -316,7 +263,7 @@
                 
                 <h3>Room Environment</h3>
                 <div>
-                    <label for="organizing_dropdown">How would you describe your own bedroom?</label>
+                    <label for="organizing_dropdown">Bedroom Organization:</label>
                     <select id="organizing_dropdown" name="organizing">
                         <option hidden="">Select one</option>
                         <option value="very-organized">Very organized</option>
@@ -327,7 +274,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="cleaning_dropdown">How often do you clean your room/bathroom?</label>
+                    <label for="cleaning_dropdown">Bedroom/Bathroom Cleaning: </label>
                     <select id="cleaning_dropdown" name="organizing">
                         <option hidden="">Select one</option>
                         <option value="never">Never</option>
@@ -340,7 +287,7 @@
 
                 <h3>Study Time</h3>
                 <div>
-                    <label for="study_dropdown">Where do you usually study?</label>
+                    <label for="study_dropdown">I usually study at:</label>
                     <select id="study_dropdown" name="study">
                         <option hidden="">Select one</option>
                         <option value="desk">At my desk</option>
@@ -350,7 +297,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="music_dropdown">When studying in your bedroom, do you like listening to music?</label>
+                    <label for="music_dropdown">When studying in my bedroom:</label>
                     <select id="music" name="music">
                         <option hidden="">Select one</option>
                         <option value="yes-speakers">Yes, I play music on my speakers.</option>
@@ -365,17 +312,16 @@
         <section class="interest">
             <form>
                 <h2>Personality & Interests</h2>
-                <p>Describe yourself and what your interests are.</p>
                 <div>
                     <label for="hobbies">Hobbies:</label>
-                    <textarea class="form-control" id="hobbies" name="hobbies" placeholder="List down some of your hobbies."></textarea>
+                    <textarea class="form-control" id="hobbies" name="hobbies"></textarea>
                 </div>
                 <div>
-                    <label for="adjective_field">What are three adjectives that describe you?</label>
-                    <input type="text" id="adjective_field" name="adjective" placeholder="adj1, adj2, adj3">
+                    <label for="adjective_field">Three Adjectives to Describe Me:</label>
+                    <input type="text" id="adjective_field" name="adjective">
                 </div>
                 <div>
-                    <label for="social_rank_dropdown">How social are you?</label>
+                    <label for="social_rank_dropdown">Sociable?</label>
                     <select id="social_rank_dropdown" name="social_rank">
                         <option hidden="">Select one</option>
                         <option value="vsocial">Very social</option>
@@ -388,28 +334,28 @@
 
                 <h3>Music</h3>
                 <div>
-                    <label for="music_field">What music genres do you listen to?</label>
+                    <label for="music_field">The music genres I listen to:</label>
                     <input type="text" id="music_field" name="music">
 
-                    <label for="artist_field">Who is your favorite artist?</label>
+                    <label for="artist_field">My favorite artist is:</label>
                     <input type="text" id="artist_field" name="artist">
                 </div>
 
                 <h3>Movies</h3>
                 <div>
-                    <label for="movie_field">What movie genres do you like to watch?</label>
+                    <label for="movie_field">The movie genres I watch are:</label>
                     <input type="text" id="movie_field" name="movie">
 
-                    <label for="fav_movie_field">What is your favorite movie of all time?</label>
+                    <label for="fav_movie_field">My favorite movie of all time is:</label>
                     <input type="text" id="fav_movie_field" name="favorite_movie">
                 </div>
 
                 <h3>TV Show/Series</h3>
                 <div>
-                    <label for="series_field">What TV show/series is your favorite?</label>
+                    <label for="series_field">My favorite TV show/series is:</label>
                     <input type="text" id="series_field" name="movie">
 
-                    <label for="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label>
+                    <label for="streaming">If I had to pick one streaming service to binge watch, I would choose:</label>
                         <input type="radio" id="netflix_radio" name="streaming" value="Netflix">
                         <label for="netflix_radio">Netflix</label>
                         <input type="radio" id="hulu_radio" name="streaming" value="Hulu">
@@ -429,22 +375,12 @@
         </section>
 
         <section class="moreInfo">
-            <h2>Anything else?</h2>
-            <p>Is there anything else you would like someone to know about you?</p>
+            <h2>More Information</h2>
             <form>
                 <div>
                     <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
+                    <textarea class="form-control" id="description" name="description"></textarea>
                 </div>
-            </form>
-        </section>
-
-        <section class="submit">
-            <h2>Complete Questionnaire</h2>
-            <form>
-                <button>Save Form</button>
-                <input type="submit" value="Submit Form" name="submit">
-                <input type="reset" value="Reset Form" name="reset">
             </form>
         </section>
 
