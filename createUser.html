@@ -27,7 +27,7 @@
         </ul>
     </nav>
 
-    <main id="mainContent">
+    <main id="maincontent">
         <section class="profile">
             <form>
                 <h2>Create an Account</h2>
@@ -89,68 +89,6 @@
                     
                     <label for="second_lang_field">Secondary Language:</label>
                     <input type="text" id="second_lang_field" name="second_lang" placeholder="Chinese" required>
-                </div>
-            </form>
-        </section>
-
-        <section class="interest">
-            <form>
-                <h2>Personality & Interests</h2>
-                <p>Describe yourself and what your interests are.</p>
-                <div>
-                    <label for="adjective_field">What are three adjectives that describe you?</label>
-                    <input type="text" id="adjective_field" name="adjective" placeholder="adj1, adj2, adj3">
-                </div>
-                <div>
-                    <label for="social_rank_dropdown">How social are you?</label>
-                    <select id="social_rank_dropdown" name="social_rank">
-                        <option hidden="">Select one</option>
-                        <option value="vsocial">Very social</option>
-                        <option value="social">Social</option>
-                        <option value="neither">Neither social or shy</option>
-                        <option value="shy">Shy</option>
-                        <option value="vshy">Very shy</option>
-                    </select>
-                </div>
-
-                <h3>Music</h3>
-                <div>
-                    <label for="music_field">What music genres do you listen to?</label>
-                    <input type="text" id="music_field" name="music">
-
-                    <label for="artist_field">Who is your favorite artist?</label>
-                    <input type="text" id="artist_field" name="artist">
-                </div>
-
-                <h3>Movies</h3>
-                <div>
-                    <label for="movie_field">What movies genres do you like to watch?</label>
-                    <input type="text" id="movie_field" name="movie">
-
-                    <label for="fav_movie_field">What is your favorite movie of all time?</label>
-                    <input type="text" id="fav_movie_field" name="favorite_movie">
-                </div>
-
-                <h3>TV Show/Series</h3>
-                <div>
-                    <label for="series_field">What TV show/series is your favorite?</label>
-                    <input type="text" id="series_field" name="movie">
-
-                    <label for="radio">If you had to pick one streaming service to binge watch, which would you choose?</label>
-                        <input type="radio" id="netflix_radio" name="netflix" value="Netflix">
-                        <label for="netflix_radio">Netflix</label>
-                        <input type="radio" id="hulu_radio" name="hulu" value="Hulu">
-                        <label for="hulu_radio">Hulu</label>
-                        <input type="radio" id="disneyplus_radio" name="disneyplus" value="Disney+">
-                        <label for="disneyplus_radio">Disney+</label>
-                        <input type="radio" id="hbomax_radio" name="hbomax" value="HBO Max">
-                        <label for="hbomax_radio">HBO Max</label>
-                        <input type="radio" id="primevideo_radio" name="primevideo" value="Amazon Prime Video">
-                        <label for="primevideo_radio">Amazon Prime Video</label>
-                        <input type="radio" id="peacock_radio" name="peacock" value="Peacock">
-                        <label for="peacock_radio">Peacock</label>
-                        <input type="radio" id="none_radio" name="none" value="None of the above">
-                        <label for="none_radio">I am not subscribed to any streaming service</label>
                 </div>
             </form>
         </section>
@@ -432,13 +370,79 @@
             </form>
         </section>
 
+        <section class="interest">
+            <form>
+                <h2>Personality & Interests</h2>
+                <p>Describe yourself and what your interests are.</p>
+                <div>
+                    <label for="hobbies">Hobbies:</label>
+                    <textarea class="form-control" id="hobbies" name="hobbies" placeholder="List down some of your hobbies."></textarea>
+                </div>
+                <div>
+                    <label for="adjective_field">What are three adjectives that describe you?</label>
+                    <input type="text" id="adjective_field" name="adjective" placeholder="adj1, adj2, adj3">
+                </div>
+                <div>
+                    <label for="social_rank_dropdown">How social are you?</label>
+                    <select id="social_rank_dropdown" name="social_rank">
+                        <option hidden="">Select one</option>
+                        <option value="vsocial">Very social</option>
+                        <option value="social">Social</option>
+                        <option value="neither">Neither social or shy</option>
+                        <option value="shy">Shy</option>
+                        <option value="vshy">Very shy</option>
+                    </select>
+                </div>
+
+                <h3>Music</h3>
+                <div>
+                    <label for="music_field">What music genres do you listen to?</label>
+                    <input type="text" id="music_field" name="music">
+
+                    <label for="artist_field">Who is your favorite artist?</label>
+                    <input type="text" id="artist_field" name="artist">
+                </div>
+
+                <h3>Movies</h3>
+                <div>
+                    <label for="movie_field">What movies genres do you like to watch?</label>
+                    <input type="text" id="movie_field" name="movie">
+
+                    <label for="fav_movie_field">What is your favorite movie of all time?</label>
+                    <input type="text" id="fav_movie_field" name="favorite_movie">
+                </div>
+
+                <h3>TV Show/Series</h3>
+                <div>
+                    <label for="series_field">What TV show/series is your favorite?</label>
+                    <input type="text" id="series_field" name="movie">
+
+                    <label for="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label>
+                        <input type="radio" id="netflix_radio" name="streaming" value="Netflix">
+                        <label for="netflix_radio">Netflix</label>
+                        <input type="radio" id="hulu_radio" name="streaming" value="Hulu">
+                        <label for="hulu_radio">Hulu</label>
+                        <input type="radio" id="disneyplus_radio" name="streaming" value="Disney+">
+                        <label for="disneyplus_radio">Disney+</label>
+                        <input type="radio" id="hbomax_radio" name="streaming" value="HBO Max">
+                        <label for="hbomax_radio">HBO Max</label>
+                        <input type="radio" id="primevideo_radio" name="streaming" value="Amazon Prime Video">
+                        <label for="primevideo_radio">Amazon Prime Video</label>
+                        <input type="radio" id="peacock_radio" name="streaming" value="Peacock">
+                        <label for="peacock_radio">Peacock</label>
+                        <input type="radio" id="none_radio" name="streaming" value="None of the above">
+                        <label for="none_radio">I am not subscribed to any streaming service</label>
+                </div>
+            </form>
+        </section>
+
         <section class="moreInfo">
             <h2>Anything else?</h2>
             <p>Is there anything else you would like someone to know about you?</p>
             <form>
                 <div>
                     <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" name="description"></textarea>
+                    <textarea class="form-control" id="description" name="description" placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
                 </div>
             </form>
         </section>
