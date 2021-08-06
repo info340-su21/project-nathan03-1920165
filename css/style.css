@@ -89,6 +89,11 @@ button:hover {
     background-color: #cd9703;
 }
 
+.back {
+    margin: 10px;
+    padding: 10px;
+}
+
 em {
     font-weight: bold;
 }
@@ -237,6 +242,10 @@ iframe {
     flex: 1;
 }
 
+.results-heading, .form-heading {
+    display: none;
+}
+
 /* filter.html styling */
 form {
     color: white;
@@ -265,7 +274,7 @@ form select {
 }
 
 .results-page-container {
-    padding: 1em 1em 1em 0.5em;
+    padding: 1em 1em 1em 0em;
     display: flex;
     flex-direction: row;
 }
@@ -326,6 +335,8 @@ footer > address, p {
     margin: 0;
 }
 
+
+
 @media (min-width: 598px) {
     /* general styling */
     h1, h2, nav, legend {
@@ -370,6 +381,7 @@ footer > address, p {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
 }
 
 @media (min-width: 992px) {
@@ -413,5 +425,9 @@ footer > address, p {
 
     .about-images {
         flex-direction: row;
+    }
+    
+    .index-heading {
+        display: none;
     }
 }
