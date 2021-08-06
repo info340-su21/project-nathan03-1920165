@@ -42,15 +42,6 @@ h3, label {
     margin: 0;
 }
 
-.createUser-text {
-    background-color: white;
-    color: black;
-}
-
-.createUser-text > h2 {
-    text-decoration: underline;
-}
-
 h3 {
     text-decoration: underline;
     padding-top: 10px;
@@ -215,6 +206,15 @@ hr {
     background-color: white;
 }
 
+.createUser-text {
+    background-color: white;
+    color: black;
+}
+
+.createUser-text > h2 {
+    text-decoration: underline;
+}
+
 .main-createUser {
     padding: 10px;
 }
@@ -337,6 +337,7 @@ footer > address, p {
 }
 
 
+/* media queries */
 
 @media (min-width: 598px) {
     /* general styling */
