@@ -179,6 +179,11 @@ hr {
     padding: 20px;
 }
 
+.about-images {
+    display: flex;
+    flex-direction: row;
+}
+
 .main-about img {
     max-width: 500px;
     padding: 10px;
