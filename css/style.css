@@ -1,19 +1,28 @@
 /* general styling */
 
+* {
+  box-sizing: border-box;
+}
+
 html {
     height: 100%;
     margin: 0;
 }
 
 body {
+    background-color: #165CA9;
     font-family:'Roboto', sans-serif;
     font-weight: 500;
     height: inherit;
     margin: 0;
 }
 
+main {
+    color: white;
+}
+
 h1, nav {
-    font-size: 35px;
+    font-size: 30px;
     font-family: 'Luckiest Guy', cursive;
 }
 
@@ -42,24 +51,105 @@ button {
     border-radius: 10px;
 }
 
-.logo {
-    padding-left: 0.8em;
-    padding-right: 0.8em;
-    background-image: url('/img/profile-picture.jpg');
-    background-position: right;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
 hr {
     margin: 5px 0;
     color:whitesmoke
 }
 
-/* about styling */
-.main-about {
-    
+/* banner styling */
+.banner {
+    display: flex;
+    background-color: #010079;
+    width: 100%;
+    padding: 1em;
+    margin: 0;
 }
+
+.banner a {
+    color: white;
+    text-decoration: none;
+}
+
+.banner a:hover {
+    color: #cd9703;
+}
+
+.banner header {
+    flex: 1;
+}
+
+.banner h1 {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.banner nav {
+    display: none;
+}
+
+/* navigation icons */
+/*
+.home {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    background-image: url('../img/home.png');
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.about {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    background-image: url('../img/about.png');
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+*/
+
+.avatar {
+    display: none;
+}
+
+/* onboard.html styling */
+.main-onboard > .welcome {
+    padding: 8%;
+}
+
+.join-login > div {
+    font-family: 'Luckiest Guy', cursive;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+}
+
+/* about.html styling */
+.main-about > div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.main-about img {
+    max-width: 500px;
+    padding: 10px;
+}
+
+.main-about a {
+    color: white;
+}
+
+/* index.html styling */
+.main-container {
+    display: flex;
+    flex: 1;
+    flex-basis: auto;
+    flex-direction: column;
+}
+
 
 /* account styling */
 .main-account {
@@ -71,18 +161,12 @@ hr {
 
 }
 
-/* onboard styling */
-.main-onboard {
-
-}
-
 /* createUser styline */
 .main-createUser {
 
 }
 
 /* results styling */
-
 .results-page-container {
     padding: 1em 1em 1em 0.5em;
     display: flex;
@@ -99,6 +183,22 @@ hr {
 }
 
 /* form styling */
+form p {
+    padding-bottom: 5px;
+    text-indent: 15px;
+}
+
+form label, select {
+    margin-left: 15px;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form select {
+    margin-bottom: 10px;
+}
 
 /* index styling */
 
@@ -106,56 +206,6 @@ hr {
     display: flex;
     flex-direction: column;
     height: 100%;
-}
-
-.banner-container {
-    display: flex;
-    background-color: #010079;
-    width: 100%;
-    padding: 1em;
-    margin: 0;
-}
-
-.banner-container a {
-    color: white;
-    text-decoration: none;
-}
-
-.banner-container a:hover {
-    color: grey;
-    padding: .8rem;
-}
-
-
-.header-container {
-    flex: 1;
-}
-
-.header-container h1 {
-    text-align: left;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-container {
-    flex: 1;
-}
-
-.nav-container ul {
- text-align: right;
- padding: 0;
- margin: 0;
-}
-
-.nav-container li {
-    display: inline;
-}
-
-.main-container {
-    flex: 1;
-    flex-basis: auto;
-    display: flex;
-    flex-direction: row;
 }
 
 .form-container {
@@ -172,15 +222,93 @@ iframe {
     flex: 1;
 }
 
+/* footer styling */
 footer {
     background-color: lightgrey;
     width: 100%;
     text-align: center;
     padding: 0;
     margin: 0;
+    position: fixed;
+    bottom: 0;
 }
 
-footer address, p {
+footer > address, p {
     padding: 0;
     margin: 0;
+}
+
+@media (min-width: 598px) {
+    /* general styling */
+    h1, h2, nav, legend {
+        font-size: 35px;
+    }
+
+    .onboard {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/9304762194/in/album-72157634667491603/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/cedar-apartments-portrait.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .about {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/9301842899/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/alder-courtyard.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    
+    /* banner styling */
+    .banner nav {
+        display: block;
+        flex: 1;
+    }
+    
+    .banner ul {
+        text-align: right;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .banner li {
+        display: inline;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* onboard styling */
+
+}
+
+@media (min-width: 992px) {
+    /* general styling */
+    .onboard {
+        /* cite: "https://hfs.uw.edu/getmedia/072fc76c-bfb1-459d-9729-afdb223ae0ba/Maple-exterior.jpg.aspx?width=1280&height=854&ext=.jpg" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/maple-hall.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .about {
+        /* cite: "https://www.washington.edu/news/2011/09/28/two-new-student-residence-halls-and-an-increased-commitment-to-sustainability/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/cedar-apartments.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    
+    /* banner styling */
+    .avatar {
+        display: inline;
+        padding-left: 0.8em;
+        padding-right: 0.8em;
+        background-image: url('../img/avatar.jpg');
+        background-position: right;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    /* index.html styling */
+    .main-container {
+        flex-direction: row;
+    }
 }

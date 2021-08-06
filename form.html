@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Group 9: Juliane De Los Santos & Nathaniel Sy Su">
-    <meta name="description" content="Main page for roommate finder application">
+    <meta name="description" content="Filters for main page of roommate finder application">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>INFO 340: Group 9 Project Draft</title>
@@ -18,169 +18,142 @@
 </head>
 
 <body>
-        <form>
-            <fieldset>
-                <legend>Housing Preferences</legend>
+    <form>
+        <fieldset>
+            <legend>Housing Preferences</legend>
 
-                <label for="housing-type">Resident Housing</label>
-                <p>Select all that apply</p>
-                <select id="housing" name="housing" size="6" multiple>
-                    <option value="9-month">9-month</option>
-                    <option value="12-month">12-month</option>
-                    <option value="residence">Residence Hall</option>
-                    <option value="apartment">Apartment Communities</option>
-                    <option value="north">North Campus</option>
-                    <option value="west">West Campus</option>
-                </select>
+            <label for="housing-type">Resident Housing</label>
+            <p>Select all that apply</p>
+            <select id="housing" name="housing" size="6" multiple>
+                <option value="9-month">9-month</option>
+                <option value="12-month">12-month</option>
+                <option value="residence">Residence Hall</option>
+                <option value="apartment">Apartment Communities</option>
+                <option value="north">North Campus</option>
+                <option value="west">West Campus</option>
+            </select><br>
 
-                <br><br>
+            <label for="room-type">Room Type</label>
+            <p>Select all that apply</p>
+            <select id="room-type" name="room-type" size="4" multiple>
+                <option value="double">Double</option>
+                <option value="triple">Triple</option>
+                <option value="3-4-person-suite">3 or 4 Person Room/Suite</option>
+                <option value="apartment-style">Single in a Shared Apartment</option>
+            </select><br>
 
-                <label for="room-type">Room Type</label>
-                <p>Select all that apply</p>
-                <select id="room-type" name="room-type" size="4" multiple>
-                    <option value="double">Double</option>
-                    <option value="triple">Triple</option>
-                    <option value="3-4-person-suite">3 or 4 Person Room/Suite</option>
-                    <option value="apartment-style">Single in a Shared Apartment</option>
-                </select>
+            <label for="bathroom-type">Bathroom Type</label>
+            <p>Select all that apply</p>
+            <select id="bathroom-type" name="Bathroom-type" size="4" multiple>
+                <option value="private">Private</option>
+                <option value="semi-private">Semi-private</option>
+                <option value="community-single">Community - single gender</option>
+                <option value="community-all">Community - all gender</option>
+            </select><br>
+        </fieldset>
 
-                <br><br>
+        <fieldset>
+            <legend>School Information</legend>
 
-                <label for="bathroom-type">Bathroom Type</label>
-                <p>Select all that apply</p>
-                <select id="bathroom-type" name="Bathroom-type" size="4" multiple>
-                    <option value="private">Private</option>
-                    <option value="semi-private">Semi-private</option>
-                    <option value="community-single">Community - single gender</option>
-                    <option value="community-all">Community - all gender</option>
-                </select>
+            <label for="class-standing">Class Standing</label>
+            <p>Select all that apply</p>
+            <select id="class-standing" name="class-standing" size="5" multiple>
+                <option value="freshman">Freshman</option>
+                <option value="sophomore">Sophomore</option>
+                <option value="junior">Junior</option>
+                <option value="senior">Senior</option>
+                <option value="graduate">Graduate</option>
+            </select><br>
+        </fieldset>
 
-                <br><br>
-            </fieldset>
+        <fieldset>
+            <legend>Personal Habits</legend>
 
-            <fieldset>
-                <legend>School Information</legend>
+            <label for="morning">What time do you usually wake up in the morning?</label>
+            <p>Select one</p>
+            <select id="morning" name="morning" size="4">
+                <option value="5am-or-earlier">5 AM or earlier</option>
+                <option value="5am-to-8am">Between 5 AM and 8 AM</option>
+                <option value="8am-to-noon">Between 8 AM and Noon</option>
+                <option value="noon-or-later">Noon or later</option>
+            </select><br>
 
-                <label for="class-standing">Class Standing</label>
-                <p>Select all that apply</p>
-                <select id="class-standing" name="class-standing" size="5" multiple>
-                    <option value="freshman">Freshman</option>
-                    <option value="sophomore">Sophomore</option>
-                    <option value="junior">Junior</option>
-                    <option value="senior">Senior</option>
-                    <option value="graduate">Graduate</option>
-                </select>
+            <label for="weeknights">What time do you go to bed on weeknights?</label>
+            <p>Select one</p>
+            <select id="weeknights" name="weeknights" size="4">
+                <option value="5pm-or-earlier">10 PM or earlier</option>
+                <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
+                <option value="around-midnight">Around Midnight</option>
+                <option value="2am-or-later">2 AM or later</option>
+            </select><br>
 
-                <br><br>
-            </fieldset>
+            <label for="weekends">What time do you go to bed on weekends?</label>
+            <p>Select one</p>
+            <select id="weekends" name="weekends" size="4">
+                <option value="5pm-or-earlier">10 PM or earlier</option>
+                <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
+                <option value="around-midnight">Around Midnight</option>
+                <option value="2am-or-later">2 AM or later</option>
+            </select><br>
 
-            <fieldset>
-                <legend>Personal Habits</legend>
+            <label for="smoking">Do you smoke/vape?</label>
+            <p>Select one</p>
+            <select id="smoking" name="smoking" size="3">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="sometimes">Sometimes</option>
+            </select><br>
 
-                <label for="morning">What time do you usually wake up in the morning?</label>
-                <p>Select one</p>
-                <select id="morning" name="morning" size="4">
-                    <option value="5am-or-earlier">5 AM or earlier</option>
-                    <option value="5am-to-8am">Between 5 AM and 8 AM</option>
-                    <option value="8am-to-noon">Between 8 AM and Noon</option>
-                    <option value="noon-or-later">Noon or later</option>
-                </select>
+            <label for="drinking">Do you drink?</label>
+            <p>Select one</p>
+            <select id="drinking" name="drinking" size="3">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="sometimes">Sometimes</option>
+            </select><br>
 
-                <br><br>
+            <label for="organizing">How would you describe your own bedroom?</label>
+            <p>Select one</p>
+            <select id="organizing" name="organizing" size="5">
+                <option value="very-organized">Very organized</option>
+                <option value="organized">Organized</option>
+                <option value="neither">Neither organized or disorganized</option>
+                <option value="disorganized">Disorganized</option>
+                <option value="very-disorganized">Very disorganized</option>
+            </select><br>
 
-                <label for="weeknights">What time do you go to bed on weeknights?</label>
-                <p>Select one</p>
-                <select id="weeknights" name="weeknights" size="4">
-                    <option value="5pm-or-earlier">10 PM or earlier</option>
-                    <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
-                    <option value="around-midnight">Around Midnight</option>
-                    <option value="2am-or-later">2 AM or later</option>
-                </select>
+            <label for="cleaning">How often do you clean your room/bathroom?</label>
+            <p>Select one</p>
+            <select id="cleaning" name="organizing" size="5">
+                <option value="never">Never</option>
+                <option value="rarely">Rarely</option>
+                <option value="sometimes">Sometimes</option>
+                <option value="often">Often</option>
+                <option value="always">Always</option>
+            </select><br>
+        </fieldset>
 
-                <br><br>
+        <fieldset>
+            <legend>Study Habits</legend>
 
-                <label for="weekends">What time do you go to bed on weekends?</label>
-                <p>Select one</p>
-                <select id="weekends" name="weekends" size="4">
-                    <option value="5pm-or-earlier">10 PM or earlier</option>
-                    <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
-                    <option value="around-midnight">Around Midnight</option>
-                    <option value="2am-or-later">2 AM or later</option>
-                </select>
+            <label for="study">Where do you usually study?</label>
+            <p>Select one</p>
+            <select id="study" name="study" size="4">
+                <option value="desk">At my desk</option>
+                <option value="library">At the library</option>
+                <option value="study-lounge">In a study lounge</option>
+                <option value="other">Other</option>
+            </select><br>
 
-                <br><br>
-
-                <label for="smoking">Do you smoke/vape?</label>
-                <p>Select one</p>
-                <select id="smoking" name="smoking" size="3">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                    <option value="sometimes">Sometimes</option>
-                </select>
-
-                <br><br>
-
-                <label for="drinking">Do you drink?</label>
-                <p>Select one</p>
-                <select id="drinking" name="drinking" size="3">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                    <option value="sometimes">Sometimes</option>
-                </select>
-
-                <br><br>
-
-                <label for="organizing">How would you describe your own bedroom?</label>
-                <p>Select one</p>
-                <select id="organizing" name="organizing" size="5">
-                    <option value="very-organized">Very organized</option>
-                    <option value="organized">Organized</option>
-                    <option value="neither">Neither organized or disorganized</option>
-                    <option value="disorganized">Disorganized</option>
-                    <option value="very-disorganized">Very disorganized</option>
-                </select>
-
-                <br><br>
-
-                <label for="cleaning">How often do you clean your room/bathroom?</label>
-                <p>Select one</p>
-                <select id="cleaning" name="organizing" size="5">
-                    <option value="never">Never</option>
-                    <option value="rarely">Rarely</option>
-                    <option value="sometimes">Sometimes</option>
-                    <option value="often">Often</option>
-                    <option value="always">Always</option>
-                </select>
-
-                <br><br>
-            </fieldset>
-
-            <fieldset>
-                <legend>Study Habits</legend>
-
-                <label for="study">Where do you usually study?</label>
-                <p>Select one</p>
-                <select id="study" name="study" size="4">
-                    <option value="desk">At my desk</option>
-                    <option value="library">At the library</option>
-                    <option value="study-lounge">In a study lounge</option>
-                    <option value="other">Other</option>
-                </select>
-
-                <br><br>
-
-                <label for="music">When studying in your bedroom, do you like listening to music?</label>
-                <p>Select one</p>
-                <select id="music" name="music" size="4">
-                    <option value="yes-speakers">Yes, I play music on my speakers.</option>
-                    <option value="yes-headphones">Yes, I listen using headphones.</option>
-                    <option value="sometimes">Sometimes, it depends.</option>
-                    <option value="no">No, I like it quiet.</option>
-                </select>
-
-                <br><br>
-            </fieldset>
-        </form>
-
+            <label for="music">When studying in your bedroom, do you like listening to music?</label>
+            <p>Select one</p>
+            <select id="music" name="music" size="4">
+                <option value="yes-speakers">Yes, I play music on my speakers.</option>
+                <option value="yes-headphones">Yes, I listen using headphones.</option>
+                <option value="sometimes">Sometimes, it depends.</option>
+                <option value="no">No, I like it quiet.</option>
+            </select><br>
+        </fieldset>
+    </form>
 </body>
 </html>

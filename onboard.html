@@ -3,50 +3,52 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Group 9: Juliane De Los Santos & Nathaniel Sy Su">
-    <meta name="description" content="Onboarding page for roommate finder application">
+    <meta name="description" content="Onboarding page of roommate finder application">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <title>UW Roommate Finder</title>
 
+    <!-- styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div class="banner-container">
-        <div class="header-container">
-            <header>
-                <h1><a href="onboard.html">UW Roommate Finder</a></h1>
-            </header>
-        </div>
-    
-        <div class="nav-container">
-            <nav>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="createUser.html">Sign Up</a></li>
-                    <li><a href="account.html">[Name]<span class="logo" aria-hidden="true">&nbsp;</span></a></li>
-                </ul>
-            </nav>
-        </div>
+<body class="onboard">
+    <div class="banner">
+        <header>
+            <h1><a href="onboard.html">UW Roommate Finder</a></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="onboard.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Sign In<span class="avatar" aria-hidden="true">&nbsp;</span></a></li>
+            </ul>
+        </nav>
     </div>
 
     <main class="main-onboard">
-        <section class="welcome">
+        <div class="welcome">
             <h2>Welcome!</h2>
             <p>Your place to find a roommate at the University of Washington.</p>
-        </section>
+        </div>
 
-        <section class="join-login">
-            <p>New to UW Roommate Finder?</p>
-            <button onclick="window.location.href='createUser.html';">Create an Account</button>
-            <button onclick="window.location.href='login.html';">Log In</button>
-        </section>
+        <div class="join-login">
+            <div>
+                <p>New to UW Roommate Finder?</p>
+                <button onclick="window.location.href='createUser.html';">Create an Account</button><br>
+            </div>
+            <div>
+                <button onclick="window.location.href='login.html';">Log In</button>
+            </div>
+        </div>
     </main>
 
     <footer>
         <address>
-            Contact us at <a href="mailto:me@here.com">me@here.com</a>, or at <a href="tel:555-123-4567">(555) 123-4567</a>
+            Contact us at <a href="findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
         </address>
         <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
     </footer>
