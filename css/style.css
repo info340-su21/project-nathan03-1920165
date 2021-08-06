@@ -22,24 +22,29 @@ main {
 }
 
 h1, nav {
-    font-size: 30px;
+    font-size: 1.5em;
     font-family: 'Luckiest Guy', cursive;
 }
 
 h2, legend {
     font-family: 'Luckiest Guy', cursive;
-    font-size: 2rem;
+    font-size: 1.5em;
     background-color: #cd9703;
     color: white;
     margin: 0;
     padding: 0.5rem;
 }
 
-label {
+h3, label {
     font-family: 'Lilita One', cursive;
     font-size: 1.3em;
     padding: 0;
     margin: 0;
+}
+
+h3 {
+    text-decoration: underline;
+    padding-top: 10px;
 }
 
 .page-container {
@@ -189,13 +194,16 @@ hr {
     padding: 5px;
 }
 
-/* index.html styling */
+.existing-user a {
+    color: white;
+}
 
+/* index.html styling */
 .main-container-index{
     display: flex;
     flex: 1;
     flex-basis: auto;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
 }
 
@@ -294,8 +302,6 @@ footer {
     text-align: center;
     padding: 0;
     margin: 0;
-    /* position: fixed; */
-    /* bottom: 0; */
 }
 
 footer > address, p {
@@ -306,7 +312,7 @@ footer > address, p {
 @media (min-width: 598px) {
     /* general styling */
     h1, h2, nav, legend {
-        font-size: 35px;
+        font-size: 2em;
     }
 
     .onboard {
@@ -369,4 +375,8 @@ footer > address, p {
         background-repeat: no-repeat;
     }
 
+    /* index.html styling */
+    .main-container-index{
+        flex-direction: row;
+    }
 }
