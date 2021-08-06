@@ -406,12 +406,13 @@ footer > address, p {
         background-repeat: no-repeat;
     }
 
-    /* index.html styling */
-    .main-container-index{
+    /* about.html styling */
+    .about-images {
         flex-direction: row;
     }
 
-    .about-images {
+    /* index.html styling */
+    .main-container-index {
         flex-direction: row;
     }
 }
