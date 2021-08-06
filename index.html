@@ -18,35 +18,39 @@
 </head>
 
 <body>
-    <div class="banner">
-        <header>
-            <h1><a href="onboard.html">UW Roommate Finder</a></h1>
-        </header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="account.html">My Profile<span class="avatar" aria-hidden="true">&nbsp;</span></a></li>
-            </ul>
-        </nav>
+    <div class="page-container">
+        <div class="banner">
+            <header>
+                <h1><a href="onboard.html">UW Roommate Finder</a></h1>
+            </header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="account.html">My Profile<span class="avatar" aria-hidden="true">&nbsp;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    
+        <!-- iFrame element learned from https://www.w3schools.com/tags/tag_iframe.asp -->
+        <div class="main-container-index">
+            <div class="form-container">
+                <iframe src="filter.html" title="Filter"></iframe>
+            </div>
+
+            <div class="results-container">
+                <iframe src="results.html" title="Results"></iframe>
+            </div>
+        </div> 
+
+        <div class="footer-container">
+            <footer>
+                <address>
+                    Contact us at <a href="findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
+                </address>
+                <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
+            </footer>
+        </div>
     </div>
-   
-    <!-- iFrame element learned from https://www.w3schools.com/tags/tag_iframe.asp -->
-    <div class="main-container">
-        <div class="form-container">
-            <iframe src="filter.html" title="Filter"></iframe>
-        </div>
-
-        <div class="results-container">
-            <iframe src="results.html" title="Results"></iframe>
-        </div>
-    </div> 
-
-    <footer>
-        <address>
-            Contact us at <a href="findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
-        </address>
-        <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
-    </footer>    
 </body>
 </html>

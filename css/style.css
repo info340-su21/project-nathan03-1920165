@@ -42,6 +42,21 @@ label {
     margin: 0;
 }
 
+.page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-container {
+    flex: 1;
+    height: 100%;
+}
+
+.footer-container {
+    flex: content;
+}
+
 .pfp {
     max-width: 150px;
     max-height: 150px;
@@ -119,7 +134,7 @@ hr {
 
 /* onboard.html styling */
 .main-onboard > .welcome {
-    padding: 8%;
+    padding: 5%;
 }
 
 .join-login > div {
@@ -175,11 +190,12 @@ hr {
 }
 
 /* index.html styling */
-.main-container {
+
+.main-container-index{
     display: flex;
     flex: 1;
     flex-basis: auto;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
 }
 
@@ -278,8 +294,8 @@ footer {
     text-align: center;
     padding: 0;
     margin: 0;
-    position: fixed;
-    bottom: 0;
+    /* position: fixed; */
+    /* bottom: 0; */
 }
 
 footer > address, p {
@@ -353,8 +369,4 @@ footer > address, p {
         background-repeat: no-repeat;
     }
 
-    /* index.html styling */
-    .main-container {
-        flex-direction: row;
-    }
 }

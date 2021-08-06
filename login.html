@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="page-container">
     <div class="banner">
         <header>
             <h1><a href="onboard.html">UW Roommate Finder</a></h1>
@@ -29,37 +30,42 @@
         </nav>
     </div>
 
-    <main class="main-login">
-        <h2>Sign In</h2><br>
+    <div class="main-container">
+        <main class="main-login">
+            <h2>Sign In</h2><br>
 
-        <div class="google">
-            <button>Sign in with Google</button>
-        </div>
+            <div class="google">
+                <button>Sign in with Google</button>
+            </div>
 
-        <p>or</p>
+            <p>or</p>
 
-        <div class="login">
-            <label for="uname">Username:</label>
-            <input type="text" id="uname" name="uname" required>
-            <br>
-            <label for="pwd">Password:</label>
-            <input type="password" id="pwd" name="pwd" required>
-            <p>(case sensitive)</p>
+            <div class="login">
+                <label for="uname">Username:</label>
+                <input type="text" id="uname" name="uname" required>
+                <br>
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" name="pwd" required>
+                <p>(case sensitive)</p>
 
-            <button type="submit">LOG IN</button>
-        </div><br>
+                <button type="submit">LOG IN</button>
+            </div><br>
 
-        <div class="new-user">
-            <p>New user?</p>
-            <a href="createUser.html">Create Account</a>
-        </div>
-    </main>
+            <div class="new-user">
+                <p>New user?</p>
+                <a href="createUser.html">Create Account</a>
+            </div>
+        </main>
+    </div>
 
-    <footer>
-        <address>
-            Contact us at <a href="findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
-        </address>
-        <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
-    </footer>
+    <div class="footer-container">
+        <footer>
+            <address>
+                Contact us at <a href="findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
+            </address>
+            <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
+        </footer>
+    </div>
+</div>
 </body>
 </html>
