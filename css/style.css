@@ -169,19 +169,20 @@ hr {
 
 /* about.html styling */
 .main-about {
+    height: fit-content;
     padding: 10px;
-}
-
-.main-about > div {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: 20px;
 }
 
 .about-images {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+.picWithCaption {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
 }
 
 .main-about img {
@@ -384,7 +385,7 @@ footer > address, p {
         /* cite: "https://www.washington.edu/news/2011/09/28/two-new-student-residence-halls-and-an-increased-commitment-to-sustainability/" */
         background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/cedar-apartments.jpg');
         background-position: center;
-        background-size: cover;
+        background-size:cover;
     }
 
     .login {
@@ -407,6 +408,10 @@ footer > address, p {
 
     /* index.html styling */
     .main-container-index{
+        flex-direction: row;
+    }
+
+    .about-images {
         flex-direction: row;
     }
 }
