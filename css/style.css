@@ -186,16 +186,17 @@ hr {
 }
 
 /* createUser.html styling */
+.createUser {
+    background-color: white;
+}
+
 .main-createUser {
     padding: 10px;
 }
 
 .main-createUser form {
     padding: 5px;
-}
-
-.existing-user a {
-    color: white;
+    color: black;
 }
 
 /* index.html styling */
@@ -328,6 +329,13 @@ footer > address, p {
         background-position: center;
         background-size: cover;
     }
+
+    .login {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/9308651365" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/elm-hall.jpg');
+        background-position: center;
+        background-size: cover;
+    }
     
     /* banner styling */
     .banner nav {
@@ -360,6 +368,13 @@ footer > address, p {
     .about {
         /* cite: "https://www.washington.edu/news/2011/09/28/two-new-student-residence-halls-and-an-increased-commitment-to-sustainability/" */
         background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/cedar-apartments.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .login {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/10176551956/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/mercer-court.jpg');
         background-position: center;
         background-size: cover;
     }
