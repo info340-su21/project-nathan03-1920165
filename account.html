@@ -53,7 +53,7 @@
         <section class="aboutMe">
             <form>
                 <h2>About Me</h2>
-                <p>Tell us all about you.</p>
+                <em>Tell us all about you.</em>
                 <div>
                     <label for="picture_upload">Choose a profile picture:</label>
                     <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg">
@@ -90,7 +90,7 @@
         <section class="contacts">
             <form>
                 <h2>Contact Information</h2>
-                <p>Provide your contact information to be reached by other students.</p>
+                <em>Provide your contact information to be reached by other students.</em>
                 <div>
                     <label for="phone">Phone Number:</label>
                     <input type="tel" id="phone" name="phone" placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
@@ -124,7 +124,7 @@
 
         <section class="academics">
             <h2>Academic Life</h2>
-            <p>Provide your academic history or future ambitions</p>
+            <em>Provide your academic history or future ambitions</em>
             <form>
                 <div>
                     <label for="major">(Intended) Major:</label>
@@ -150,10 +150,9 @@
 
         <section class="housing">
             <h2>Housing Preferences</h2>
-            <p>Describe your housing preferences. (Select all that apply)</p>
-
-            <p>For window users – hold down + CTRL key to select multiple options</p>
-            <p>For mac users – hold down command key to select multiple option</p>
+            <em>Describe your housing preferences. (Select all that apply)</em><br><br>
+            <em>For window users – hold down + CTRL key to select multiple options</em><br>
+            <em>For mac users – hold down command key to select multiple option</em>
 
             <form>
                 <div>
@@ -262,7 +261,7 @@
 
         <section class="habits">
             <h2>Habits</h2>
-            <p>Specify your personal and study habits.</p>
+            <em>Specify your personal and study habits.</em>
             <form>
                 <h3>Sleep/Wake Up</h3>
                 <div>
@@ -367,7 +366,7 @@
         <section class="interest">
             <form>
                 <h2>Personality & Interests</h2>
-                <p>Describe yourself and what your interests are.</p>
+                <em>Describe yourself and what your interests are.</em>
                 <div>
                     <label for="hobbies">Hobbies:</label>
                     <textarea class="form-control" id="hobbies" name="hobbies" placeholder="List down some of your hobbies."></textarea>
@@ -392,7 +391,8 @@
                 <div>
                     <label for="music_field">What music genres do you listen to?</label>
                     <input type="text" id="music_field" name="music">
-
+                </div>
+                <div>
                     <label for="artist_field">Who is your favorite artist?</label>
                     <input type="text" id="artist_field" name="artist">
                 </div>
@@ -401,7 +401,8 @@
                 <div>
                     <label for="movie_field">What movie genres do you like to watch?</label>
                     <input type="text" id="movie_field" name="movie">
-
+                </div>
+                <div>
                     <label for="fav_movie_field">What is your favorite movie of all time?</label>
                     <input type="text" id="fav_movie_field" name="favorite_movie">
                 </div>
@@ -410,8 +411,9 @@
                 <div>
                     <label for="series_field">What TV show/series is your favorite?</label>
                     <input type="text" id="series_field" name="movie">
-
-                    <label for="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label>
+                </div>
+                <div>
+                    <label for="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label><br>
                         <input type="radio" id="netflix_radio" name="streaming" value="Netflix">
                         <label for="netflix_radio">Netflix</label>
                         <input type="radio" id="hulu_radio" name="streaming" value="Hulu">
@@ -432,7 +434,7 @@
 
         <section class="moreInfo">
             <h2>Anything else?</h2>
-            <p>Is there anything else you would like someone to know about you?</p>
+            <em>Is there anything else you would like someone to know about you?</em>
             <form>
                 <div>
                     <label for="description">Description:</label>
@@ -444,7 +446,6 @@
         <section class="submit">
             <h2>Complete Questionnaire</h2>
             <form>
-                <button>Save Form</button>
                 <input type="submit" value="Submit Form" name="submit">
                 <input type="reset" value="Reset Form" name="reset">
             </form>
