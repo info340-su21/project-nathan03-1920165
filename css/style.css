@@ -1,5 +1,4 @@
 /* general styling */
-
 * {
   box-sizing: border-box;
 }
@@ -52,7 +51,6 @@ h3 {
     flex-direction: column;
     height: 100%;
 }
-
 
 .main-container {
     flex: 1;
@@ -123,31 +121,23 @@ hr {
 }
 
 .banner nav {
-    display: none;
+    display: block;
+    flex: 1;
 }
 
-/* navigation icons */
-/*
-.home {
-    padding-left: 0.8em;
-    padding-right: 0.8em;
-    background-image: url('../img/home.png');
-    background-position: right;
-    background-size: contain;
-    background-repeat: no-repeat;
+.banner ul {
+    text-align: right;
+    padding: 0;
+    margin: 0;
 }
 
-.about {
-    padding-left: 0.8em;
-    padding-right: 0.8em;
-    background-image: url('../img/about.png');
-    background-position: right;
-    background-size: contain;
-    background-repeat: no-repeat;
+.banner li {
+    display: inline;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
-*/
 
-.avatar {
+.desktop {
     display: none;
 }
 
@@ -336,9 +326,7 @@ footer > address, p {
     margin: 0;
 }
 
-
-/* media queries */
-
+/* media query for small screens */
 @media (min-width: 598px) {
     /* general styling */
     h1, h2, nav, legend {
@@ -365,27 +353,16 @@ footer > address, p {
         background-position: center;
         background-size: cover;
     }
-    
+
     /* banner styling */
-    .banner nav {
-        display: block;
-        flex: 1;
-    }
-    
-    .banner ul {
-        text-align: right;
-        padding: 0;
-        margin: 0;
-    }
-    
     .banner li {
         display: inline;
         padding-left: 1rem;
         padding-right: 1rem;
     }
-
 }
 
+/* media query for large screens */
 @media (min-width: 992px) {
     /* general styling */
     .onboard {
@@ -410,14 +387,12 @@ footer > address, p {
     }
     
     /* banner styling */
-    .avatar {
-        display: inline;
-        padding-left: 0.8em;
-        padding-right: 0.8em;
-        background-image: url('../img/avatar.jpg');
-        background-position: right;
-        background-size: contain;
-        background-repeat: no-repeat;
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: block;
     }
 
     /* about.html styling */

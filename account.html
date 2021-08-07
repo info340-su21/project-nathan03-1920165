@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Group 9: Juliane De Los Santos & Nathaniel Sy Su">
-    <meta name="description" content="An account page of roommate finder application">
+    <meta name="description" content="Account page of roommate finder application">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Account</title>
 
     <!-- styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,11 +21,20 @@
             <h1><a href="onboard.html">UW Roommate Finder</a></h1>
         </header>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="account.html">My Profile<span class="avatar" aria-hidden="true">&nbsp;</span></a></li>
-            </ul>
+            <div class="mobile">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home" aria-label="Home"></i></a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle" aria-label="About"></i></a></li>
+                    <li><a href="account.html"><i class="fas fa-user-circle" aria-label="User"></i></a></li>
+                </ul>
+            </div>
+            <div class="desktop">
+                <ul>
+                    <li><a href="index.html">Home <i class="fas fa-home" aria-label="Home"></i></a></li>
+                    <li><a href="about.html">About <i class="fas fa-info-circle" aria-label="About"></i></a></li>
+                    <li><a href="account.html">My Profile <i class="fas fa-user-circle" aria-label="User"></i></a></li>
+                </ul>
+            </div>
         </nav>
     </div>
 
@@ -36,14 +45,16 @@
                 <div>
                     <label for="fname_field">First Name:</label>
                     <input type="text" id="fname_field" name="fname" required>
-
+                </div>
+                <div>
                     <label for="lname_field">Last Name:</label>
                     <input type="text" id="lname_field" name="lname" required>
                 </div>
                 <div>
                     <label for="uname_field">Username:</label>
                     <input type="text" id="uname_field" name="uname" pattern=".{8,}" placeholder="8 character requirement" required>
-        
+                </div>
+                <div>
                     <label for="pwd_field">Password:</label>
                     <input type="password" id="pwd_field" name="pwd" pattern=".{8,}" placeholder="8 character requirement" required>
                 </div>
@@ -70,17 +81,20 @@
                 <div>
                     <label for="city_field">Hometown City:</label>
                     <input type="text" id="city_field" name="city" placeholder="Seattle" required>
-
+                </div>
+                <div>
                     <label for="state_field">Hometown State:</label>
                     <input type="text" id="state_field" name="state" placeholder="WA" required>
-
+                </div>
+                <div>
                     <label for="country_field">Hometown Country:</label>
                     <input type="text" id="country_field" name="country" placeholder="USA" required>
                 </div>
                 <div>
                     <label for="primary_lang_field">Primary Language:</label>
                     <input type="text" id="primary_lang_field" name="primary_lang" placeholder="English" required>
-                    
+                </div>
+                <div>
                     <label for="second_lang_field">Secondary Language:</label>
                     <input type="text" id="second_lang_field" name="second_lang" placeholder="Chinese" required>
                 </div>
@@ -100,23 +114,23 @@
                     <input type="email" id="email" name="email" placeholder="example@domain.com">
                 </div>
                 <div>
-                    <label for="facebook">Facebook:</label>
+                    <label for="facebook"><i class="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
                     <input type="text" id="facebook" name="facebook">
                 </div>
                 <div>
-                    <label for="instagram">Instagram:</label>
+                    <label for="instagram"><i class="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
                     <input type="text" id="instagram" name="instagram" placeholder="@handle">
                 </div>
                 <div>
-                    <label for="snapchat">Snapchat:</label>
+                    <label for="snapchat"><i class="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
                     <input type="text" id="snapchat" name="snapchat" placeholder="@handle">
                 </div>
                 <div>
-                    <label for="wechat">WeChat:</label>
+                    <label for="wechat"><i class="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
                     <input type="text" id="wechat" name="wechat">
                 </div>
                 <div>
-                    <label for="discord">Discord:</label>
+                    <label for="discord"><i class="fab fa-discord" aria-label="Discord"></i> Discord: </label>
                     <input type="text" id="discord" name="discord" placeholder="@discord#0000">
                 </div>
             </form>
@@ -412,22 +426,36 @@
                     <label for="series_field">What TV show/series is your favorite?</label>
                     <input type="text" id="series_field" name="movie">
                 </div>
-                <div>
+                <div class="streaming">
                     <label for="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label><br>
+                    <div>
                         <input type="radio" id="netflix_radio" name="streaming" value="Netflix">
                         <label for="netflix_radio">Netflix</label>
+                    </div>
+                    <div>
                         <input type="radio" id="hulu_radio" name="streaming" value="Hulu">
                         <label for="hulu_radio">Hulu</label>
+                    </div>
+                    <div>
                         <input type="radio" id="disneyplus_radio" name="streaming" value="Disney+">
                         <label for="disneyplus_radio">Disney+</label>
+                    </div>
+                    <div>
                         <input type="radio" id="hbomax_radio" name="streaming" value="HBO Max">
                         <label for="hbomax_radio">HBO Max</label>
+                    </div>
+                    <div>
                         <input type="radio" id="primevideo_radio" name="streaming" value="Amazon Prime Video">
                         <label for="primevideo_radio">Amazon Prime Video</label>
+                    </div>
+                    <div>
                         <input type="radio" id="peacock_radio" name="streaming" value="Peacock">
                         <label for="peacock_radio">Peacock</label>
+                    </div>
+                    <div>
                         <input type="radio" id="none_radio" name="streaming" value="None of the above">
-                        <label for="none_radio">I am not subscribed to any streaming service</label>
+                    <label for="none_radio">I am not subscribed to any streaming service</label>
+                    </div>
                 </div>
             </form>
         </section>
@@ -450,12 +478,11 @@
                 <input type="reset" value="Reset Form" name="reset">
             </form>
         </section>
-
     </main>
 
     <footer>
         <address>
-            Contact us at <a href="findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
+            Contact us at <a href="mailto:findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
         </address>
         <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
     </footer>
