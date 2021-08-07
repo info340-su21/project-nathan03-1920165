@@ -69,7 +69,8 @@ h3 {
 button {
     font-family: 'Lilita One', cursive;
     font-weight: 100;
-    font-size: 1em;
+    font-size: 30px;
+    text-decoration: none;
     border-radius: 10px;
 }
 
@@ -353,12 +354,6 @@ footer > address, p {
         display: inline;
         padding-left: 1rem;
         padding-right: 1rem;
-    }
-
-    /* results.html styling */
-    .results-connect button {
-        font-size: 30px;
-        text-decoration: none;
     }
 }
 
