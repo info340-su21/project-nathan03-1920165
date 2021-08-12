@@ -1,21 +1,48 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 function App() {
   return (
     <div>
+    <BrowserRouter>
         <Header />
-        <main>
-            <Accordionize />
-        </main>
-        <footer>
-            <address>
-                Contact us at <a href="mailto:findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
-            </address>
-            <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
-        </footer>
+        <Switch>
+            <Route exact path="/">
+                <OnboardPage />
+            </Route>
+            <Route path="/about">
+                <AboutPage />
+            </Route>
+            <Route path="/account">
+                <AccountPage />
+            </Route>
+            <Route path="/connect">
+                <ConnectPage />
+            </Route>
+            <Route path="/createuser">
+                <CreateUserPage />
+            </Route>   
+            <Route path="home">
+                <Accordionize />
+            </Route>
+            <Route path="/login">
+                <LoginPage />
+            </Route>  
+            <Route path="/profile">
+                <ProfilePage />
+            </Route>
+        </Switch>
+    
+
+            <footer>
+                <address>
+                    Contact us at <a href="mailto:findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
+                </address>
+                <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
+            </footer>
+     </BrowserRouter>
     </div>
-  );
+  )
 }
 
 function Header() {
@@ -27,40 +54,42 @@ function Header() {
         <nav>
             <div className="mobile">
                 <ul>
-                    <li><a href="index.html"><i className="fas fa-home" aria-label="Home"></i></a></li>
-                    <li><a href="about.html"><i className="fas fa-info-circle" aria-label="About"></i></a></li>
-                    <li><a href="account.html"><i className="fas fa-user-circle" aria-label="User"></i></a></li>
+                    <li><NavLink to='/home' activeClassName=""><i className="fas fa-home" aria-label="Home"></i></NavLink></li>
+                    <li><NavLink to='/about' activeClassName=""><i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
+                    <li><NavLink to='/account' activeClassName=""><i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
                 </ul>
             </div>
             <div className="desktop">
                 <ul>
-                    <li><a href="index.html">Home <i className="fas fa-home" aria-label="Home"></i></a></li>
-                    <li><a href="about.html">About <i className="fas fa-info-circle" aria-label="About"></i></a></li>
-                    <li><a href="account.html">My Profile <i className="fas fa-user-circle" aria-label="User"></i></a></li>
+                    <li><NavLink to='/home' activeClassName="">Home <i className="fas fa-home" aria-label="Home"></i></NavLink></li>
+                    <li><NavLink to='/about' activeClassName="">About <i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
+                    <li><NavLink to='/account' activeClassName="">My Profile <i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
                 </ul>
             </div>
         </nav>
     </div>
-  );
+  )
 }
 
 function Accordionize() {
   return (
     <div className="accordion" id="accordionExample">
-        <div className="accordion-item">
-            <h2 id="headingOne">
-                <button className="accordion-button accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button>
-            </h2>
-            <FilterForm />
-        </div>
-        <div className="accordion-item">
-            <h2 className="accordion-header" id="headingTwo">
-                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></button>
-            </h2>
-            <Results />
-        </div>
+        <main>
+            <div className="accordion-item">
+                <h2 id="headingOne">
+                    <button className="accordion-button accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button>
+                </h2>
+                <FilterForm />
+            </div>
+            <div className="accordion-item">
+                <h2 className="accordion-header" id="headingTwo">
+                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></button>
+                </h2>
+                <Results />
+            </div>
+        </main>
     </div>
-  );
+  )
 }
 
 function FilterForm() {
@@ -188,7 +217,7 @@ function FilterForm() {
                 <input type="reset" value="Reset Form" name="reset"></input>
             </form>
         </div>
- );
+ )
 }
 
 function Results() {
@@ -214,15 +243,15 @@ function Results() {
                 <button onclick="window.location.href='connect.html';">Connect</button>
             </div>
         </div>
-    );
+    )
 }
 
-function About() {
+function AboutPage() {
     return (
-        <div class="main-container main-about">
-            <main class="main-about">
+        <div className="main-container main-about">
+            <main className="main-about">
                 <h2>About Us</h2>
-                <div class="about-text">
+                <div className="about-text">
                     <div>
                         <p>Your place to find a roommate at the University of Washington.</p>
                         <p>Searching for a roommate is challenging, risky, and it is difficult to “match” with other students with the same preferences before room assignment. This problem is unaddressed and there is not a platform offered by the university to help university students out. Some problems related to finding a roommate on-campus include the lack of being informed of living habits, common interests, communication barriers, and the consolidation/organization of student information.</p>
@@ -230,7 +259,7 @@ function About() {
                     </div>
                 </div>
                 
-                <div class="about-images">
+                <div className="about-images">
                     <figure>
                         <img src="img/mcmahon-room.jpg" alt="McMahon room with two roommates"></img>
                         <figcaption>Caption: This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall">UW Housing & Food Services</a></cite></figcaption>
@@ -242,13 +271,13 @@ function About() {
                 </div>
             </main>
         </div>
-    );
+    )
 }
 
-function Account() {
+function AccountPage() {
     return (
-        <main class="main-account">
-            <section class="profile">
+        <main className="main-account">
+            <section className="profile">
                 <form>
                     <h2>Account Information</h2>
                     <div>
@@ -270,7 +299,7 @@ function Account() {
                 </form>
             </section>
 
-            <section class="aboutMe">
+            <section className="aboutMe">
                 <form>
                     <h2>About Me</h2>
                     <em>Tell us all about you.</em>
@@ -310,7 +339,7 @@ function Account() {
                 </form>
             </section>
 
-            <section class="contacts">
+            <section className="contacts">
                 <form>
                     <h2>Contact Information</h2>
                     <em>Provide your contact information to be reached by other students.</em>
@@ -323,29 +352,29 @@ function Account() {
                         <input type="email" id="email" name="email" placeholder="example@domain.com"></input>
                     </div>
                     <div>
-                        <label for="facebook"><i class="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
+                        <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
                         <input type="text" id="facebook" name="facebook"></input>
                     </div>
                     <div>
-                        <label for="instagram"><i class="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
+                        <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
                         <input type="text" id="instagram" name="instagram" placeholder="@handle"></input>
                     </div>
                     <div>
-                        <label for="snapchat"><i class="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
+                        <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
                         <input type="text" id="snapchat" name="snapchat" placeholder="@handle"></input>
                     </div>
                     <div>
-                        <label for="wechat"><i class="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
+                        <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
                         <input type="text" id="wechat" name="wechat"></input>
                     </div>
                     <div>
-                        <label for="discord"><i class="fab fa-discord" aria-label="Discord"></i> Discord: </label>
+                        <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
                         <input type="text" id="discord" name="discord" placeholder="@discord#0000"></input>
                     </div>
                 </form>
             </section>
 
-            <section class="academics">
+            <section className="academics">
                 <h2>Academic Life</h2>
                 <em>Provide your academic history or future ambitions</em>
                 <form>
@@ -371,7 +400,7 @@ function Account() {
                 </form>
             </section>
 
-            <section class="housing">
+            <section className="housing">
                 <h2>Housing Preferences</h2>
                 <em>Describe your housing preferences. (Select all that apply)</em>
                 <em>For window users – hold down + CTRL key to select multiple options</em>
@@ -482,7 +511,7 @@ function Account() {
                 </form>
             </section>
 
-            <section class="habits">
+            <section className="habits">
                 <h2>Habits</h2>
                 <em>Specify your personal and study habits.</em>
                 <form>
@@ -586,13 +615,13 @@ function Account() {
                 </form>
             </section>
 
-            <section class="interest">
+            <section className="interest">
                 <form>
                     <h2>Personality & Interests</h2>
                     <em>Describe yourself and what your interests are.</em>
                     <div>
                         <label for="hobbies">Hobbies:</label>
-                        <textarea class="form-control" id="hobbies" name="hobbies" placeholder="List down some of your hobbies."></textarea>
+                        <textarea className="form-control" id="hobbies" name="hobbies" placeholder="List down some of your hobbies."></textarea>
                     </div>
                     <div>
                         <label for="adjective_field">What are three adjectives that describe you?</label>
@@ -635,7 +664,7 @@ function Account() {
                         <label for="series_field">What TV show/series is your favorite?</label>
                         <input type="text" id="series_field" name="movie"></input>
                     </div>
-                    <div class="streaming">
+                    <div className="streaming">
                         <label for="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label>
                         <div>
                             <input type="radio" id="netflix_radio" name="streaming" value="Netflix"></input>
@@ -669,18 +698,18 @@ function Account() {
                 </form>
             </section>
 
-            <section class="moreInfo">
+            <section className="moreInfo">
                 <h2>Anything else?</h2>
                 <em>Is there anything else you would like someone to know about you?</em>
                 <form>
                     <div>
                         <label for="description">Description:</label>
-                        <textarea class="form-control" id="description" name="description" placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
+                        <textarea className="form-control" id="description" name="description" placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
                     </div>
                 </form>
             </section>
 
-            <section class="submit">
+            <section className="submit">
                 <h2>Complete Questionnaire</h2>
                 <form>
                     <input type="submit" value="Submit Form" name="submit"></input>
@@ -688,14 +717,14 @@ function Account() {
                 </form>
             </section>
         </main>
-    );
+    )
 }
 
-function Connect() {
+function ConnectPage() {
     return (
         <div>
-            <main class="main-connect">
-                <section class="contacts">
+            <main className="main-connect">
+                <section className="contacts">
                     <form>
                         <h2>Contact Information</h2>
                         <div>
@@ -707,23 +736,23 @@ function Connect() {
                             <output></output>
                         </div>
                         <div>
-                            <label for="facebook"><i class="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
+                            <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
                             <output></output>
                         </div>
                         <div>
-                            <label for="instagram"><i class="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
+                            <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
                             <output></output>
                         </div>
                         <div>
-                            <label for="snapchat"><i class="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
+                            <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
                             <output></output>
                         </div>
                         <div>
-                            <label for="wechat"><i class="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
+                            <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
                             <output></output>
                         </div>
                         <div>
-                            <label for="discord"><i class="fab fa-discord" aria-label="Discord"></i> Discord: </label>
+                            <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
                             <output></output>
                         </div>
                     </form>
@@ -734,15 +763,15 @@ function Connect() {
                 </div>
             </main>
         </div>
-    );
+    )
 }
 
-function CreateUser() {
+function CreateUserPage() {
     return (
-        <main class="main-createUser">
-            <section class="profile">
-                <form class="createUser-text">
-                    <h2 class="createUser-text">Create an Account</h2>
+        <main className="main-createUser">
+            <section className="profile">
+                <form className="createUser-text">
+                    <h2 className="createUser-text">Create an Account</h2>
                     <div>
                         <label for="fname_field">First Name:</label>
                         <input type="text" id="fname_field" name="fname" required></input>
@@ -762,9 +791,9 @@ function CreateUser() {
                 </form>
             </section>
 
-            <section class="aboutMe">
-                <form class="createUser-text">
-                    <h2 class="createUser-text">About Me</h2>
+            <section className="aboutMe">
+                <form className="createUser-text">
+                    <h2 className="createUser-text">About Me</h2>
                     <em>Tell us all about you.</em>
                     <div>
                         <label for="picture_upload">Choose a profile picture:</label>
@@ -802,9 +831,9 @@ function CreateUser() {
                 </form>
             </section>
 
-            <section class="contacts">
-                <form class="createUser-text">
-                    <h2 class="createUser-text">Contact Information</h2>
+            <section className="contacts">
+                <form className="createUser-text">
+                    <h2 className="createUser-text">Contact Information</h2>
                     <em>Provide your contact information to be reached by other students.</em>
                     <div>
                         <label for="phone">Phone Number:</label>
@@ -815,23 +844,23 @@ function CreateUser() {
                         <input type="email" id="email" name="email" placeholder="example@domain.com"></input>
                     </div>
                     <div>
-                        <label for="facebook"><i class="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
+                        <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
                         <input type="text" id="facebook" name="facebook"></input>
                     </div>
                     <div>
-                        <label for="instagram"><i class="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
+                        <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
                         <input type="text" id="instagram" name="instagram" placeholder="@handle"></input>
                     </div>
                     <div>
-                        <label for="snapchat"><i class="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
+                        <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
                         <input type="text" id="snapchat" name="snapchat" placeholder="@handle"></input>
                     </div>
                     <div>
-                        <label for="wechat"><i class="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
+                        <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
                         <input type="text" id="wechat" name="wechat"></input>
                     </div>
                     <div>
-                        <label for="discord"><i class="fab fa-discord" aria-label="Discord"></i> Discord: </label>
+                        <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
                         <input type="text" id="discord" name="discord" placeholder="@discord#0000"></input>
                     </div>
                 </form>
@@ -841,26 +870,27 @@ function CreateUser() {
                 <button type="submit">Create an Account</button>
             </div>
 
-            <div class="createUser-text">
+            <div className="createUser-text">
                 <p><em>Already have an account?</em></p>
                 <button onclick="window.location.href='login.html';">Sign in</button>
             </div>
         </main>
-    );
+    )
+}
 
 function LoginPage() {
     return (
-        <div class="main-container">
-        <main class="main-login">
+        <div className="main-container">
+        <main className="main-login">
             <h2>Sign In</h2>
 
-            <div class="google">
+            <div className="google">
                 <button>Sign in with Google</button>
             </div>
 
             <p>or</p>
 
-            <div class="login-info">
+            <div className="login-info">
                 <label for="uname">Username:</label>
                 <input type="text" id="uname" name="uname" required></input>
                 
@@ -871,25 +901,25 @@ function LoginPage() {
                 <button onclick="window.location.href='index.html';">LOG IN</button>
             </div>
 
-            <div class="new-user">
+            <div className="new-user">
                 <p>New user?</p>
                 <a href="createUser.html">Create Account</a>
             </div>
         </main>
     </div>
-    );
+    )
 }
 
 function OnboardPage() {
     return (
-        <div class="main-container">
-        <main class="main-onboard">
-            <div class="welcome">
+        <div className="main-container">
+        <main className="main-onboard">
+            <div className="welcome">
                 <h2>Welcome!</h2>
                 <p>Your place to find a roommate at the University of Washington.</p>
             </div>
 
-            <div class="join-login">
+            <div className="join-login">
                 <div>
                     <p>New to UW Roommate Finder?</p>
                     <button onclick="window.location.href='createUser.html';">Create an Account</button>
@@ -900,211 +930,214 @@ function OnboardPage() {
             </div>
         </main>
         </div>
-    );
+    )
 }
 
 function ProfilePage() {
     return (
-        <main class="main-profile">
-            <section class="profile">
-                <form>
-                    <h2>Profile</h2>
-                    <div>
-                        <label for="picture_upload">Picture:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="fname_field">First Name:</label>
-                        <output></output>
+      <div>
+          <main class="main-profile">
+        <section class="profile">
+            <form>
+                <h2>Profile</h2>
+                <div>
+                    <label for="picture_upload">Picture:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="fname_field">First Name:</label>
+                    <output></output>
 
-                        <label for="lname_field">Last Name:</label>
-                        <output></output>                
-                    </div>
-                    <div>
-                        <label for="pronouns_dropdown">Personal Pronoun:</label>
-                        <output></output>
-                    </div>
-                </form>
-            </section>
+                    <label for="lname_field">Last Name:</label>
+                    <output></output>                
+                </div>
+                <div>
+                    <label for="pronouns_dropdown">Personal Pronoun:</label>
+                    <output></output>
+                </div>
+            </form>
+        </section>
 
-            <section class="aboutMe">
-                <form>
-                    <h2>About Me</h2>
-                    <div>
-                        <label for="city_field">Hometown City:</label>
-                        <output></output>
+        <section class="aboutMe">
+            <form>
+                <h2>About Me</h2>
+                <div>
+                    <label for="city_field">Hometown City:</label>
+                    <output></output>
 
-                        <label for="state_field">Hometown State:</label>
-                        <output></output>
+                    <label for="state_field">Hometown State:</label>
+                    <output></output>
 
-                        <label for="country_field">Hometown Country:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="primary_lang_field">Primary Language:</label>
-                        <output></output>
+                    <label for="country_field">Hometown Country:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="primary_lang_field">Primary Language:</label>
+                    <output></output>
 
-                        <label for="second_lang_field">Secondary Language:</label>
-                        <output></output>
-                    </div>
-                </form>
-            </section>
+                    <label for="second_lang_field">Secondary Language:</label>
+                    <output></output>
+                </div>
+            </form>
+        </section>
 
-            <section class="academics">
-                <h2>Academic Life</h2>
-                <form>
-                    <div>
-                        <label for="major">(Intended) Major:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="class-standing">Class Standing:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="graduation">Expected Graduation Month and Year:</label>
-                        <output></output>
-                    </div>
-                </form>
-            </section>
+        <section class="academics">
+            <h2>Academic Life</h2>
+            <form>
+                <div>
+                    <label for="major">(Intended) Major:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="class-standing">Class Standing:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="graduation">Expected Graduation Month and Year:</label>
+                    <output></output>
+                </div>
+            </form>
+        </section>
 
-            <section class="housing">
-                <h2>Housing Preferences</h2>
-                <form>
-                    <div>
-                        <label for="housing_type">Resident Housing</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="room_type">Room Type</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="bathroom_type">Bathroom Type</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="bldg_1">1st Building Preference:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="bldg_2">2nd Building Preference:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="bldg_3">3rd Building Preference:</label>
-                        <output></output>
-                    </div>
-                </form>
-            </section>
+        <section class="housing">
+            <h2>Housing Preferences</h2>
+            <form>
+                <div>
+                    <label for="housing_type">Resident Housing</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="room_type">Room Type</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="bathroom_type">Bathroom Type</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="bldg_1">1st Building Preference:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="bldg_2">2nd Building Preference:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="bldg_3">3rd Building Preference:</label>
+                    <output></output>
+                </div>
+            </form>
+        </section>
 
-            <section class="habits">
-                <h2>Habits</h2>
-                <form>
-                    <h3>Sleep/Wake Up</h3>
-                    <div>
-                        <label for="morning_dropdown">Morning Wake Up:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="weeknights_dropdown">Sleep Schedule on Weeknights:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="weekends_dropdown">Sleep Schedule on Weekends:</label>
-                        <output></output>
-                    </div>
+        <section class="habits">
+            <h2>Habits</h2>
+            <form>
+                <h3>Sleep/Wake Up</h3>
+                <div>
+                    <label for="morning_dropdown">Morning Wake Up:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="weeknights_dropdown">Sleep Schedule on Weeknights:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="weekends_dropdown">Sleep Schedule on Weekends:</label>
+                    <output></output>
+                </div>
 
-                    <h3>Alcohol/Smoking</h3>
-                    <div>
-                        <label for="drinking_dropdown">Alcohol?</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="smoking_dropdown">Smoke/vape?</label>
-                        <output></output>
-                    </div>
-                    
-                    <h3>Room Environment</h3>
-                    <div>
-                        <label for="organizing_dropdown">Bedroom Organization:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="cleaning_dropdown">Bedroom/Bathroom Cleaning:</label>
-                        <output></output>
-                    </div>
+                <h3>Alcohol/Smoking</h3>
+                <div>
+                    <label for="drinking_dropdown">Alcohol?</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="smoking_dropdown">Smoke/vape?</label>
+                    <output></output>
+                </div>
+                
+                <h3>Room Environment</h3>
+                <div>
+                    <label for="organizing_dropdown">Bedroom Organization:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="cleaning_dropdown">Bedroom/Bathroom Cleaning:</label>
+                    <output></output>
+                </div>
 
-                    <h3>Study Time</h3>
-                    <div>
-                        <label for="study_dropdown">I usually study at:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="music_dropdown">When studying in my bedroom:</label>
-                        <output></output>
-                    </div>
-                </form>
-            </section>
+                <h3>Study Time</h3>
+                <div>
+                    <label for="study_dropdown">I usually study at:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="music_dropdown">When studying in my bedroom:</label>
+                    <output></output>
+                </div>
+            </form>
+        </section>
 
-            <section class="interest">
-                <form>
-                    <h2>Personality & Interests</h2>
-                    <div>
-                        <label for="hobbies">Hobbies:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="adjective_field">Three Adjectives to Describe Me:</label>
-                        <output></output>
-                    </div>
-                    <div>
-                        <label for="social_rank_dropdown">Sociable?</label>
-                        <output></output>
-                    </div>
+        <section class="interest">
+            <form>
+                <h2>Personality & Interests</h2>
+                <div>
+                    <label for="hobbies">Hobbies:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="adjective_field">Three Adjectives to Describe Me:</label>
+                    <output></output>
+                </div>
+                <div>
+                    <label for="social_rank_dropdown">Sociable?</label>
+                    <output></output>
+                </div>
 
-                    <h3>Music</h3>
-                    <div>
-                        <label for="music_field">The music genres I listen to:</label>
-                        <output></output>
+                <h3>Music</h3>
+                <div>
+                    <label for="music_field">The music genres I listen to:</label>
+                    <output></output>
 
-                        <label for="artist_field">My favorite artist is:</label>
-                        <output></output>
-                    </div>
+                    <label for="artist_field">My favorite artist is:</label>
+                    <output></output>
+                </div>
 
-                    <h3>Movies</h3>
-                    <div>
-                        <label for="movie_field">The movie genres I watch are:</label>
-                        <output></output>
+                <h3>Movies</h3>
+                <div>
+                    <label for="movie_field">The movie genres I watch are:</label>
+                    <output></output>
 
-                        <label for="fav_movie_field">My favorite movie of all time is:</label>
-                        <output></output>
-                    </div>
+                    <label for="fav_movie_field">My favorite movie of all time is:</label>
+                    <output></output>
+                </div>
 
-                    <h3>TV Show/Series</h3>
-                    <div>
-                        <label for="series_field">My favorite TV show/series is:</label>
-                        <output></output>
+                <h3>TV Show/Series</h3>
+                <div>
+                    <label for="series_field">My favorite TV show/series is:</label>
+                    <output></output>
 
-                        <label for="streaming">If I had to pick one streaming service to binge watch, I would choose:</label>
-                        <output></output>
-                    </div>
-                </form>
-            </section>
+                    <label for="streaming">If I had to pick one streaming service to binge watch, I would choose:</label>
+                    <output></output>
+                </div>
+            </form>
+        </section>
 
-            <section class="moreInfo">
-                <h2>More Information</h2>
-                <form>
-                    <div>
-                        <label for="description">Description:</label>
-                        <output></output>
-                    </div>
-                </form>
-            </section>
+        <section class="moreInfo">
+            <h2>More Information</h2>
+            <form>
+                <div>
+                    <label for="description">Description:</label>
+                    <output></output>
+                </div>
+            </form>
+        </section>
 
-            <button onclick="window.location.href='index.html';">Go Back</button>
-        </main> 
-    );
+        <button onclick="window.location.href='index.html';">Go Back</button>
+
+    </main>  
+      </div>
+    )
 }
 
 export default App;
