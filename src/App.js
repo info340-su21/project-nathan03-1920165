@@ -76,83 +76,89 @@ function Header() {
 
 function OnboardPage() {
     return (
-        <div className="main-container">
-            <main className="main-onboard">
-                <div className="welcome">
-                    <h2>Welcome!</h2>
-                    <p>Your place to find a roommate at the University of Washington.</p>
-                </div>
+        <div className="onboard">
+            <div className="main-container">
+                <main className="main-onboard">
+                    <div className="welcome">
+                        <h2>Welcome!</h2>
+                        <p>Your place to find a roommate at the University of Washington.</p>
+                    </div>
 
-                <div className="join-login">
-                    <div>
-                        <p>New to UniteDawgs?</p>
-                        <button><Link exact to='/register'>Create an Account</Link></button>
+                    <div className="join-login">
+                        <div>
+                            <p>New to UniteDawgs?</p>
+                            <button><Link exact to='/register'>Create an Account</Link></button>
+                        </div>
+                        <div>
+                            <button><Link exact to='/login'>Log In</Link></button>
+                        </div>
                     </div>
-                    <div>
-                        <button><Link exact to='/login'>Log In</Link></button>
-                    </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     )
 }
 
 function AboutPage() {
     return (
-        <div className="main-container main-about">
-            <main className="main-about">
-                <h2>About Us</h2>
-                <div className="about-text">
-                    <div>
-                        <p>Your place to find a roommate at the University of Washington.</p>
-                        <p>Searching for a roommate is challenging, risky, and it is difficult to “match” with other students with the same preferences before room assignment. This problem is unaddressed and there is not a platform offered by the university to help university students out. Some problems related to finding a roommate on-campus include the lack of being informed of living habits, common interests, communication barriers, and the consolidation/organization of student information.</p>
-                        <p>Students who use <em>UniteDawgs</em> will hopefully help students find and connect with compatible roommate(s) for on-campus housing. Each student will be able to input their information to the web application and be able to filter through other students who have similar interests.</p>
+        <div className="about">
+            <div className="main-container main-about">
+                <main className="main-about">
+                    <h2>About Us</h2>
+                    <div className="about-text">
+                        <div>
+                            <p>Your place to find a roommate at the University of Washington.</p>
+                            <p>Searching for a roommate is challenging, risky, and it is difficult to “match” with other students with the same preferences before room assignment. This problem is unaddressed and there is not a platform offered by the university to help university students out. Some problems related to finding a roommate on-campus include the lack of being informed of living habits, common interests, communication barriers, and the consolidation/organization of student information.</p>
+                            <p>Students who use <em>UniteDawgs</em> will hopefully help students find and connect with compatible roommate(s) for on-campus housing. Each student will be able to input their information to the web application and be able to filter through other students who have similar interests.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div className="about-images">
-                    <figure>
-                        <img src="img/mcmahon-room.jpg" alt="McMahon room with two roommates"></img>
-                        <figcaption>Caption: This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall">UW Housing & Food Services</a></cite></figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/students.jpg" alt="students walking in West Campus"></img>
-                        <figcaption>Caption: This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/">UW Housing & Food Services via Tumblr</a></cite></figcaption>
-                    </figure>
-                </div>
-            </main>
+                    <div className="about-images">
+                        <figure>
+                            <img src="img/mcmahon-room.jpg" alt="McMahon room with two roommates"></img>
+                            <figcaption>Caption: This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall">UW Housing & Food Services</a></cite></figcaption>
+                        </figure>
+                        <figure>
+                            <img src="img/students.jpg" alt="students walking in West Campus"></img>
+                            <figcaption>Caption: This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/">UW Housing & Food Services via Tumblr</a></cite></figcaption>
+                        </figure>
+                    </div>
+                </main>
+            </div>
         </div>
     )
 }
 
 function LoginPage() {
     return (
-        <div className="main-container">
-            <main className="main-login">
-                <h2>Sign In</h2>
+        <div className="login">
+            <div className="main-container">
+                <main className="main-login">
+                    <h2>Sign In</h2>
 
-                <div className="google">
-                    <button>Sign in with Google</button>
-                </div>
+                    <div className="google">
+                        <button>Sign in with Google</button>
+                    </div>
 
-                <p>or</p>
+                    <p>or</p>
 
-                <div className="login-info">
-                    <label for="uname">Username:</label>
-                    <input type="text" id="uname" name="uname" required></input>
+                    <div className="login-info">
+                        <label for="uname">Username:</label>
+                        <input type="text" id="uname" name="uname" required></input>
 
-                    <label for="pwd">Password:</label>
-                    <input type="password" id="pwd" name="pwd" required></input>
-                    <p>(case sensitive)</p>
+                        <label for="pwd">Password:</label>
+                        <input type="password" id="pwd" name="pwd" required></input>
+                        <p>(case sensitive)</p>
 
-                    <button><Link exact to='/home'>LOG IN</Link></button>
-                </div>
+                        <button><Link exact to='/home'>LOG IN</Link></button>
+                    </div>
 
-                <div className="new-user">
-                    <p>New user?</p>
-                    <Link exact to='/register'>Create an Account</Link>
-                </div>
-            </main>
+                    <div className="new-user">
+                        <p>New user?</p>
+                        <Link exact to='/register'>Create an Account</Link>
+                    </div>
+                </main>
+            </div>
         </div>
     )
 }
