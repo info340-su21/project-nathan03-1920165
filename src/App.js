@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink, Redirect, useParams } from 'react-router-dom';
 
+import mcmahon from './img/mcmahon-room.jpg';
+import students from './img/students.jpg';
+
 function App() {
     return (
         <BrowserRouter>
@@ -115,11 +118,11 @@ function AboutPage() {
 
                     <div className="about-images">
                         <figure>
-                            <img src="img/mcmahon-room.jpg" alt="McMahon room with two roommates"></img>
+                            <img src={mcmahon} alt="McMahon room with two roommates" />
                             <figcaption>Caption: This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall">UW Housing & Food Services</a></cite></figcaption>
                         </figure>
                         <figure>
-                            <img src="img/students.jpg" alt="students walking in West Campus"></img>
+                            <img src={students} alt="students walking in West Campus" />
                             <figcaption>Caption: This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/">UW Housing & Food Services via Tumblr</a></cite></figcaption>
                         </figure>
                     </div>
