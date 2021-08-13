@@ -1,38 +1,42 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, NavLink, Redirect, useParams } from 'react-router-dom';
 
 function App() {
-  return (
-    <div>
-    <BrowserRouter>
-        <Header />
-        <Switch>
-            <Route exact path="/">
-                <OnboardPage />
-            </Route>
-            <Route path="/about">
-                <AboutPage />
-            </Route>
-            <Route path="/account">
-                <AccountPage />
-            </Route>
-            <Route path="/connect">
-                <ConnectPage />
-            </Route>
-            <Route path="/createuser">
-                <CreateUserPage />
-            </Route>   
-            <Route path="home">
-                <Accordionize />
-            </Route>
-            <Route path="/login">
-                <LoginPage />
-            </Route>  
-            <Route path="/profile">
-                <ProfilePage />
-            </Route>
-        </Switch>
-    
+    return (
+        <BrowserRouter>
+            <Header />
+
+            <Switch>
+                <Route exact path="/">
+                    <OnboardPage />
+                </Route>
+                <Route path="/about">
+                    <AboutPage />
+                </Route>
+                <Route path="/login">
+                    <LoginPage />
+                </Route>
+                <Route path="/register">
+                    <CreateUserPage />
+                </Route>
+
+                <Route path="/home"> {/* "/home/:username" */}
+                    <Accordionize />
+                </Route>
+                <Route path="/profile"> {/* "/home/:username/:student/profile" */}
+                    <ProfilePage />
+                </Route>
+                <Route path="/connect"> {/* "/home/:username/:student/connect" */}
+                    <ConnectPage />
+                </Route>
+                <Route path="/account"> {/* "/home/:username/account" */}
+                    <AccountPage />
+                </Route>
+
+                <Route path="/">
+                    <Redirect to="/"/>
+                </Route>
+            </Switch>
 
             <footer>
                 <address>
@@ -40,56 +44,250 @@ function App() {
                 </address>
                 <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
             </footer>
-     </BrowserRouter>
-    </div>
-  )
+        </BrowserRouter>
+    )
 }
 
 function Header() {
-  return (
-    <div className="banner">
-        <header>
-            <h1><a href="onboard.html">UW Roommate Finder</a></h1>
-        </header>
-        <nav>
-            <div className="mobile">
-                <ul>
-                    <li><NavLink to='/home' activeClassName=""><i className="fas fa-home" aria-label="Home"></i></NavLink></li>
-                    <li><NavLink to='/about' activeClassName=""><i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
-                    <li><NavLink to='/account' activeClassName=""><i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
-                </ul>
+    return (
+        <div className="banner">
+            <header>
+                <h1><Link exact to='/'>UniteDawgs</Link></h1>
+            </header>
+            <nav>
+                <div className="mobile">
+                    <ul>
+                        <li><NavLink to='/home' activeClassName=""><i className="fas fa-home" aria-label="Home"></i></NavLink></li>
+                        <li><NavLink to='/about' activeClassName=""><i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
+                        <li><NavLink to='/account' activeClassName=""><i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
+                    </ul>
+                </div>
+                <div className="desktop">
+                    <ul>
+                        <li><NavLink to='/home' activeClassName="">Home <i className="fas fa-home" aria-label="Home"></i></NavLink></li>
+                        <li><NavLink to='/about' activeClassName="">About <i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
+                        <li><NavLink to='/account' activeClassName="">My Profile <i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    )
+}
+
+function OnboardPage() {
+    return (
+        <div className="main-container">
+            <main className="main-onboard">
+                <div className="welcome">
+                    <h2>Welcome!</h2>
+                    <p>Your place to find a roommate at the University of Washington.</p>
+                </div>
+
+                <div className="join-login">
+                    <div>
+                        <p>New to UniteDawgs?</p>
+                        <button><Link exact to='/register'>Create an Account</Link></button>
+                    </div>
+                    <div>
+                        <button><Link exact to='/login'>Log In</Link></button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    )
+}
+
+function AboutPage() {
+    return (
+        <div className="main-container main-about">
+            <main className="main-about">
+                <h2>About Us</h2>
+                <div className="about-text">
+                    <div>
+                        <p>Your place to find a roommate at the University of Washington.</p>
+                        <p>Searching for a roommate is challenging, risky, and it is difficult to “match” with other students with the same preferences before room assignment. This problem is unaddressed and there is not a platform offered by the university to help university students out. Some problems related to finding a roommate on-campus include the lack of being informed of living habits, common interests, communication barriers, and the consolidation/organization of student information.</p>
+                        <p>Students who use <em>UniteDawgs</em> will hopefully help students find and connect with compatible roommate(s) for on-campus housing. Each student will be able to input their information to the web application and be able to filter through other students who have similar interests.</p>
+                    </div>
+                </div>
+
+                <div className="about-images">
+                    <figure>
+                        <img src="img/mcmahon-room.jpg" alt="McMahon room with two roommates"></img>
+                        <figcaption>Caption: This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall">UW Housing & Food Services</a></cite></figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/students.jpg" alt="students walking in West Campus"></img>
+                        <figcaption>Caption: This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/">UW Housing & Food Services via Tumblr</a></cite></figcaption>
+                    </figure>
+                </div>
+            </main>
+        </div>
+    )
+}
+
+function LoginPage() {
+    return (
+        <div className="main-container">
+            <main className="main-login">
+                <h2>Sign In</h2>
+
+                <div className="google">
+                    <button>Sign in with Google</button>
+                </div>
+
+                <p>or</p>
+
+                <div className="login-info">
+                    <label for="uname">Username:</label>
+                    <input type="text" id="uname" name="uname" required></input>
+
+                    <label for="pwd">Password:</label>
+                    <input type="password" id="pwd" name="pwd" required></input>
+                    <p>(case sensitive)</p>
+
+                    <button><Link exact to='/home'>LOG IN</Link></button>
+                </div>
+
+                <div className="new-user">
+                    <p>New user?</p>
+                    <Link exact to='/register'>Create an Account</Link>
+                </div>
+            </main>
+        </div>
+    )
+}
+
+function CreateUserPage() {
+    return (
+        <main className="main-createUser">
+            <section className="profile">
+                <form className="createUser-text">
+                    <h2 className="createUser-text">Create an Account</h2>
+                    <div>
+                        <label for="fname_field">First Name:</label>
+                        <input type="text" id="fname_field" name="fname" required></input>
+                    </div>
+                    <div>
+                        <label for="lname_field">Last Name:</label>
+                        <input type="text" id="lname_field" name="lname" required></input>
+                    </div>
+                    <div>
+                        <label for="uname_field">Username:</label>
+                        <input type="text" id="uname_field" name="uname" pattern=".{8,}" placeholder="8 character requirement" required></input>
+                    </div>
+                    <div>
+                        <label for="pwd_field">Password:</label>
+                        <input type="password" id="pwd_field" name="pwd" pattern=".{8,}" placeholder="8 character requirement" required></input>
+                    </div>
+                </form>
+            </section>
+
+            <section className="aboutMe">
+                <form className="createUser-text">
+                    <h2 className="createUser-text">About Me</h2>
+                    <em>Tell us all about you.</em>
+                    <div>
+                        <label for="picture_upload">Choose a profile picture:</label>
+                        <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg"></input>
+                    </div>
+                    <div>
+                        <label for="pronouns_dropdown">Personal Pronoun:</label>
+                        <select id="pronouns_dropdown" name="pronouns">
+                            <option hidden="">Select one</option>
+                            <option value="she">she/her/hers</option>
+                            <option value="he">he/him/his</option>
+                            <option value="they">they/them/their</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="city_field">Hometown City:</label>
+                        <input type="text" id="city_field" name="city" placeholder="Seattle" required></input>
+                    </div>
+                    <div>
+                        <label for="state_field">Hometown State:</label>
+                        <input type="text" id="state_field" name="state" placeholder="WA" required></input>
+                    </div>
+                    <div>
+                        <label for="country_field">Hometown Country:</label>
+                        <input type="text" id="country_field" name="country" placeholder="USA" required></input>
+                    </div>
+                    <div>
+                        <label for="primary_lang_field">Primary Language:</label>
+                        <input type="text" id="primary_lang_field" name="primary_lang" placeholder="English" required></input>
+                    </div>
+                    <div>
+                        <label for="second_lang_field">Secondary Language:</label>
+                        <input type="text" id="second_lang_field" name="second_lang" placeholder="Chinese" required></input>
+                    </div>
+                </form>
+            </section>
+
+            <section className="contacts">
+                <form className="createUser-text">
+                    <h2 className="createUser-text">Contact Information</h2>
+                    <em>Provide your contact information to be reached by other students.</em>
+                    <div>
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></input>
+                    </div>
+                    <div>
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" placeholder="example@domain.com"></input>
+                    </div>
+                    <div>
+                        <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
+                        <input type="text" id="facebook" name="facebook"></input>
+                    </div>
+                    <div>
+                        <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
+                        <input type="text" id="instagram" name="instagram" placeholder="@handle"></input>
+                    </div>
+                    <div>
+                        <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
+                        <input type="text" id="snapchat" name="snapchat" placeholder="@handle"></input>
+                    </div>
+                    <div>
+                        <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
+                        <input type="text" id="wechat" name="wechat"></input>
+                    </div>
+                    <div>
+                        <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
+                        <input type="text" id="discord" name="discord" placeholder="@discord#0000"></input>
+                    </div>
+                </form>
+            </section>
+
+            <div>
+                <button type="submit">Create an Account</button>
             </div>
-            <div className="desktop">
-                <ul>
-                    <li><NavLink to='/home' activeClassName="">Home <i className="fas fa-home" aria-label="Home"></i></NavLink></li>
-                    <li><NavLink to='/about' activeClassName="">About <i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
-                    <li><NavLink to='/account' activeClassName="">My Profile <i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
-                </ul>
+
+            <div className="createUser-text">
+                <p><em>Already have an account?</em></p>
+                <button><Link exact to='/login'>Log In</Link></button>
             </div>
-        </nav>
-    </div>
-  )
+        </main>
+    )
 }
 
 function Accordionize() {
-  return (
-    <div className="accordion" id="accordionExample">
-        <main>
-            <div className="accordion-item">
-                <h2 id="headingOne">
-                    <button className="accordion-button accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button>
-                </h2>
-                <FilterForm />
-            </div>
-            <div className="accordion-item">
-                <h2 className="accordion-header" id="headingTwo">
-                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></button>
-                </h2>
-                <Results />
-            </div>
-        </main>
-    </div>
-  )
+    return (
+        <div className="accordion" id="accordionExample">
+            <main>
+                <div className="accordion-item">
+                    <h2 id="headingOne">
+                        <button className="accordion-button accordion-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button>
+                    </h2>
+                    <FilterForm />
+                </div>
+                <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingTwo">
+                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></button>
+                    </h2>
+                    <Results />
+                </div>
+            </main>
+        </div>
+    )
 }
 
 function FilterForm() {
@@ -217,7 +415,7 @@ function FilterForm() {
                 <input type="reset" value="Reset Form" name="reset"></input>
             </form>
         </div>
- )
+    )
 }
 
 function Results() {
@@ -225,11 +423,11 @@ function Results() {
         <div className="results-page-container">
             <h2>Results</h2>
             <div className="pfp-results">
-                <a href="profile.html"><img className="pfp" src="img/avatar.jpg" alt="the user's profile picture"></img></a>
+                <Link exact to='/profile'><img className="pfp" src="img/avatar.jpg" alt="the user's profile picture"></img></Link>
             </div>
 
             <div className="results-important">
-                <a href="profile.html"><p>Name</p></a>
+                <Link exact to='/profile'>Name</Link>
                 <p>Pronouns</p>
             </div>
 
@@ -240,34 +438,259 @@ function Results() {
             </div>
 
             <div className="results-connect">
-                <button onclick="window.location.href='connect.html';">Connect</button>
+                <button><Link exact to='/connect'>Connect</Link></button>
             </div>
         </div>
     )
 }
 
-function AboutPage() {
+function ProfilePage() {
     return (
-        <div className="main-container main-about">
-            <main className="main-about">
-                <h2>About Us</h2>
-                <div className="about-text">
-                    <div>
-                        <p>Your place to find a roommate at the University of Washington.</p>
-                        <p>Searching for a roommate is challenging, risky, and it is difficult to “match” with other students with the same preferences before room assignment. This problem is unaddressed and there is not a platform offered by the university to help university students out. Some problems related to finding a roommate on-campus include the lack of being informed of living habits, common interests, communication barriers, and the consolidation/organization of student information.</p>
-                        <p>Students who use <em>UW Roommate Finder</em> will hopefully help students find and connect with compatible roommate(s) for on-campus housing. Each student will be able to input their information to the web application and be able to filter through other students who have similar interests.</p>
-                    </div>
-                </div>
-                
-                <div className="about-images">
-                    <figure>
-                        <img src="img/mcmahon-room.jpg" alt="McMahon room with two roommates"></img>
-                        <figcaption>Caption: This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall">UW Housing & Food Services</a></cite></figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/students.jpg" alt="students walking in West Campus"></img>
-                        <figcaption>Caption: This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/">UW Housing & Food Services via Tumblr</a></cite></figcaption>
-                    </figure>
+        <div>
+            <main class="main-profile">
+                <section class="profile">
+                    <form>
+                        <h2>Profile</h2>
+                        <div>
+                            <label for="picture_upload">Picture:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="fname_field">First Name:</label>
+                            <output></output>
+
+                            <label for="lname_field">Last Name:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="pronouns_dropdown">Personal Pronoun:</label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="aboutMe">
+                    <form>
+                        <h2>About Me</h2>
+                        <div>
+                            <label for="city_field">Hometown City:</label>
+                            <output></output>
+
+                            <label for="state_field">Hometown State:</label>
+                            <output></output>
+
+                            <label for="country_field">Hometown Country:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="primary_lang_field">Primary Language:</label>
+                            <output></output>
+
+                            <label for="second_lang_field">Secondary Language:</label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="academics">
+                    <h2>Academic Life</h2>
+                    <form>
+                        <div>
+                            <label for="major">(Intended) Major:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="class-standing">Class Standing:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="graduation">Expected Graduation Month and Year:</label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="housing">
+                    <h2>Housing Preferences</h2>
+                    <form>
+                        <div>
+                            <label for="housing_type">Resident Housing</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="room_type">Room Type</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="bathroom_type">Bathroom Type</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="bldg_1">1st Building Preference:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="bldg_2">2nd Building Preference:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="bldg_3">3rd Building Preference:</label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="habits">
+                    <h2>Habits</h2>
+                    <form>
+                        <h3>Sleep/Wake Up</h3>
+                        <div>
+                            <label for="morning_dropdown">Morning Wake Up:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="weeknights_dropdown">Sleep Schedule on Weeknights:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="weekends_dropdown">Sleep Schedule on Weekends:</label>
+                            <output></output>
+                        </div>
+
+                        <h3>Alcohol/Smoking</h3>
+                        <div>
+                            <label for="drinking_dropdown">Alcohol?</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="smoking_dropdown">Smoke/vape?</label>
+                            <output></output>
+                        </div>
+
+                        <h3>Room Environment</h3>
+                        <div>
+                            <label for="organizing_dropdown">Bedroom Organization:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="cleaning_dropdown">Bedroom/Bathroom Cleaning:</label>
+                            <output></output>
+                        </div>
+
+                        <h3>Study Time</h3>
+                        <div>
+                            <label for="study_dropdown">I usually study at:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="music_dropdown">When studying in my bedroom:</label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="interest">
+                    <form>
+                        <h2>Personality & Interests</h2>
+                        <div>
+                            <label for="hobbies">Hobbies:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="adjective_field">Three Adjectives to Describe Me:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="social_rank_dropdown">Sociable?</label>
+                            <output></output>
+                        </div>
+
+                        <h3>Music</h3>
+                        <div>
+                            <label for="music_field">The music genres I listen to:</label>
+                            <output></output>
+
+                            <label for="artist_field">My favorite artist is:</label>
+                            <output></output>
+                        </div>
+
+                        <h3>Movies</h3>
+                        <div>
+                            <label for="movie_field">The movie genres I watch are:</label>
+                            <output></output>
+
+                            <label for="fav_movie_field">My favorite movie of all time is:</label>
+                            <output></output>
+                        </div>
+
+                        <h3>TV Show/Series</h3>
+                        <div>
+                            <label for="series_field">My favorite TV show/series is:</label>
+                            <output></output>
+
+                            <label for="streaming">If I had to pick one streaming service to binge watch, I would choose:</label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="moreInfo">
+                    <h2>More Information</h2>
+                    <form>
+                        <div>
+                            <label for="description">Description:</label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <button onclick="window.location.href='index.html';">Go Back</button>
+
+            </main>
+        </div>
+    )
+}
+
+function ConnectPage() {
+    return (
+        <div>
+            <main className="main-connect">
+                <section className="contacts">
+                    <form>
+                        <h2>Contact Information</h2>
+                        <div>
+                            <label for="phone">Phone Number:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="email">Email Address:</label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
+                            <output></output>
+                        </div>
+                        <div>
+                            <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
+                            <output></output>
+                        </div>
+                    </form>
+                </section>
+
+                <div>
+                    <button onclick="window.location.href='index.html';">Go Back</button>
                 </div>
             </main>
         </div>
@@ -452,7 +875,7 @@ function AccountPage() {
                             <option value="madrona">Madrona Hall</option>
                             <option value="maple">Maple Hall</option>
                             <option value="mccarty">McCarty Hall</option>
-                            <option value="mcmahon">McMahon Hall</option>                        
+                            <option value="mcmahon">McMahon Hall</option>
                             <option value="mercer">Mercer Court</option>
                             <option value="nordheim">Nordheim Court</option>
                             <option value="oak">Oak Hall</option>
@@ -475,7 +898,7 @@ function AccountPage() {
                             <option value="madrona">Madrona Hall</option>
                             <option value="maple">Maple Hall</option>
                             <option value="mccarty">McCarty Hall</option>
-                            <option value="mcmahon">McMahon Hall</option>                        
+                            <option value="mcmahon">McMahon Hall</option>
                             <option value="mercer">Mercer Court</option>
                             <option value="nordheim">Nordheim Court</option>
                             <option value="oak">Oak Hall</option>
@@ -498,7 +921,7 @@ function AccountPage() {
                             <option value="madrona">Madrona Hall</option>
                             <option value="maple">Maple Hall</option>
                             <option value="mccarty">McCarty Hall</option>
-                            <option value="mcmahon">McMahon Hall</option>                        
+                            <option value="mcmahon">McMahon Hall</option>
                             <option value="mercer">Mercer Court</option>
                             <option value="nordheim">Nordheim Court</option>
                             <option value="oak">Oak Hall</option>
@@ -566,7 +989,7 @@ function AccountPage() {
                             <option value="sometimes">Sometimes</option>
                         </select>
                     </div>
-                    
+
                     <h3>Room Environment</h3>
                     <div>
                         <label for="organizing_dropdown">How would you describe your own bedroom?</label>
@@ -692,7 +1115,7 @@ function AccountPage() {
                         </div>
                         <div>
                             <input type="radio" id="none_radio" name="streaming" value="None of the above"></input>
-                        <label for="none_radio">I am not subscribed to any streaming service</label>
+                            <label for="none_radio">I am not subscribed to any streaming service</label>
                         </div>
                     </div>
                 </form>
@@ -717,426 +1140,6 @@ function AccountPage() {
                 </form>
             </section>
         </main>
-    )
-}
-
-function ConnectPage() {
-    return (
-        <div>
-            <main className="main-connect">
-                <section className="contacts">
-                    <form>
-                        <h2>Contact Information</h2>
-                        <div>
-                            <label for="phone">Phone Number:</label>
-                            <output></output>
-                        </div>
-                        <div>
-                            <label for="email">Email Address:</label>
-                            <output></output>
-                        </div>
-                        <div>
-                            <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
-                            <output></output>
-                        </div>
-                        <div>
-                            <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
-                            <output></output>
-                        </div>
-                        <div>
-                            <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
-                            <output></output>
-                        </div>
-                        <div>
-                            <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
-                            <output></output>
-                        </div>
-                        <div>
-                            <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
-                            <output></output>
-                        </div>
-                    </form>
-                </section>
-                
-                <div>
-                    <button onclick="window.location.href='index.html';">Go Back</button>
-                </div>
-            </main>
-        </div>
-    )
-}
-
-function CreateUserPage() {
-    return (
-        <main className="main-createUser">
-            <section className="profile">
-                <form className="createUser-text">
-                    <h2 className="createUser-text">Create an Account</h2>
-                    <div>
-                        <label for="fname_field">First Name:</label>
-                        <input type="text" id="fname_field" name="fname" required></input>
-                    </div>
-                    <div>
-                        <label for="lname_field">Last Name:</label>
-                        <input type="text" id="lname_field" name="lname" required></input>
-                    </div>
-                    <div>
-                        <label for="uname_field">Username:</label>
-                        <input type="text" id="uname_field" name="uname" pattern=".{8,}" placeholder="8 character requirement" required></input>
-                    </div>
-                    <div>
-                        <label for="pwd_field">Password:</label>
-                        <input type="password" id="pwd_field" name="pwd" pattern=".{8,}" placeholder="8 character requirement" required></input>
-                    </div>
-                </form>
-            </section>
-
-            <section className="aboutMe">
-                <form className="createUser-text">
-                    <h2 className="createUser-text">About Me</h2>
-                    <em>Tell us all about you.</em>
-                    <div>
-                        <label for="picture_upload">Choose a profile picture:</label>
-                        <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg"></input>
-                    </div>
-                    <div>
-                        <label for="pronouns_dropdown">Personal Pronoun:</label>
-                        <select id="pronouns_dropdown" name="pronouns">
-                            <option hidden="">Select one</option>
-                            <option value="she">she/her/hers</option>
-                            <option value="he">he/him/his</option>
-                            <option value="they">they/them/their</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="city_field">Hometown City:</label>
-                        <input type="text" id="city_field" name="city" placeholder="Seattle" required></input>
-                    </div>
-                    <div>
-                        <label for="state_field">Hometown State:</label>
-                        <input type="text" id="state_field" name="state" placeholder="WA" required></input>
-                    </div>
-                    <div>
-                        <label for="country_field">Hometown Country:</label>
-                        <input type="text" id="country_field" name="country" placeholder="USA" required></input>
-                    </div>
-                    <div>
-                        <label for="primary_lang_field">Primary Language:</label>
-                        <input type="text" id="primary_lang_field" name="primary_lang" placeholder="English" required></input>
-                    </div>
-                    <div>
-                        <label for="second_lang_field">Secondary Language:</label>
-                        <input type="text" id="second_lang_field" name="second_lang" placeholder="Chinese" required></input>
-                    </div>
-                </form>
-            </section>
-
-            <section className="contacts">
-                <form className="createUser-text">
-                    <h2 className="createUser-text">Contact Information</h2>
-                    <em>Provide your contact information to be reached by other students.</em>
-                    <div>
-                        <label for="phone">Phone Number:</label>
-                        <input type="tel" id="phone" name="phone" placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></input>
-                    </div>
-                    <div>
-                        <label for="email">Email Address:</label>
-                        <input type="email" id="email" name="email" placeholder="example@domain.com"></input>
-                    </div>
-                    <div>
-                        <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
-                        <input type="text" id="facebook" name="facebook"></input>
-                    </div>
-                    <div>
-                        <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
-                        <input type="text" id="instagram" name="instagram" placeholder="@handle"></input>
-                    </div>
-                    <div>
-                        <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
-                        <input type="text" id="snapchat" name="snapchat" placeholder="@handle"></input>
-                    </div>
-                    <div>
-                        <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
-                        <input type="text" id="wechat" name="wechat"></input>
-                    </div>
-                    <div>
-                        <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
-                        <input type="text" id="discord" name="discord" placeholder="@discord#0000"></input>
-                    </div>
-                </form>
-            </section>
-
-            <div>
-                <button type="submit">Create an Account</button>
-            </div>
-
-            <div className="createUser-text">
-                <p><em>Already have an account?</em></p>
-                <button onclick="window.location.href='login.html';">Sign in</button>
-            </div>
-        </main>
-    )
-}
-
-function LoginPage() {
-    return (
-        <div className="main-container">
-        <main className="main-login">
-            <h2>Sign In</h2>
-
-            <div className="google">
-                <button>Sign in with Google</button>
-            </div>
-
-            <p>or</p>
-
-            <div className="login-info">
-                <label for="uname">Username:</label>
-                <input type="text" id="uname" name="uname" required></input>
-                
-                <label for="pwd">Password:</label>
-                <input type="password" id="pwd" name="pwd" required></input>
-                <p>(case sensitive)</p>
-
-                <button onclick="window.location.href='index.html';">LOG IN</button>
-            </div>
-
-            <div className="new-user">
-                <p>New user?</p>
-                <a href="createUser.html">Create Account</a>
-            </div>
-        </main>
-    </div>
-    )
-}
-
-function OnboardPage() {
-    return (
-        <div className="main-container">
-        <main className="main-onboard">
-            <div className="welcome">
-                <h2>Welcome!</h2>
-                <p>Your place to find a roommate at the University of Washington.</p>
-            </div>
-
-            <div className="join-login">
-                <div>
-                    <p>New to UW Roommate Finder?</p>
-                    <button onclick="window.location.href='createUser.html';">Create an Account</button>
-                </div>
-                <div>
-                    <button onclick="window.location.href='login.html';">Log In</button>
-                </div>
-            </div>
-        </main>
-        </div>
-    )
-}
-
-function ProfilePage() {
-    return (
-      <div>
-          <main class="main-profile">
-        <section class="profile">
-            <form>
-                <h2>Profile</h2>
-                <div>
-                    <label for="picture_upload">Picture:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="fname_field">First Name:</label>
-                    <output></output>
-
-                    <label for="lname_field">Last Name:</label>
-                    <output></output>                
-                </div>
-                <div>
-                    <label for="pronouns_dropdown">Personal Pronoun:</label>
-                    <output></output>
-                </div>
-            </form>
-        </section>
-
-        <section class="aboutMe">
-            <form>
-                <h2>About Me</h2>
-                <div>
-                    <label for="city_field">Hometown City:</label>
-                    <output></output>
-
-                    <label for="state_field">Hometown State:</label>
-                    <output></output>
-
-                    <label for="country_field">Hometown Country:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="primary_lang_field">Primary Language:</label>
-                    <output></output>
-
-                    <label for="second_lang_field">Secondary Language:</label>
-                    <output></output>
-                </div>
-            </form>
-        </section>
-
-        <section class="academics">
-            <h2>Academic Life</h2>
-            <form>
-                <div>
-                    <label for="major">(Intended) Major:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="class-standing">Class Standing:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="graduation">Expected Graduation Month and Year:</label>
-                    <output></output>
-                </div>
-            </form>
-        </section>
-
-        <section class="housing">
-            <h2>Housing Preferences</h2>
-            <form>
-                <div>
-                    <label for="housing_type">Resident Housing</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="room_type">Room Type</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="bathroom_type">Bathroom Type</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="bldg_1">1st Building Preference:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="bldg_2">2nd Building Preference:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="bldg_3">3rd Building Preference:</label>
-                    <output></output>
-                </div>
-            </form>
-        </section>
-
-        <section class="habits">
-            <h2>Habits</h2>
-            <form>
-                <h3>Sleep/Wake Up</h3>
-                <div>
-                    <label for="morning_dropdown">Morning Wake Up:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="weeknights_dropdown">Sleep Schedule on Weeknights:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="weekends_dropdown">Sleep Schedule on Weekends:</label>
-                    <output></output>
-                </div>
-
-                <h3>Alcohol/Smoking</h3>
-                <div>
-                    <label for="drinking_dropdown">Alcohol?</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="smoking_dropdown">Smoke/vape?</label>
-                    <output></output>
-                </div>
-                
-                <h3>Room Environment</h3>
-                <div>
-                    <label for="organizing_dropdown">Bedroom Organization:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="cleaning_dropdown">Bedroom/Bathroom Cleaning:</label>
-                    <output></output>
-                </div>
-
-                <h3>Study Time</h3>
-                <div>
-                    <label for="study_dropdown">I usually study at:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="music_dropdown">When studying in my bedroom:</label>
-                    <output></output>
-                </div>
-            </form>
-        </section>
-
-        <section class="interest">
-            <form>
-                <h2>Personality & Interests</h2>
-                <div>
-                    <label for="hobbies">Hobbies:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="adjective_field">Three Adjectives to Describe Me:</label>
-                    <output></output>
-                </div>
-                <div>
-                    <label for="social_rank_dropdown">Sociable?</label>
-                    <output></output>
-                </div>
-
-                <h3>Music</h3>
-                <div>
-                    <label for="music_field">The music genres I listen to:</label>
-                    <output></output>
-
-                    <label for="artist_field">My favorite artist is:</label>
-                    <output></output>
-                </div>
-
-                <h3>Movies</h3>
-                <div>
-                    <label for="movie_field">The movie genres I watch are:</label>
-                    <output></output>
-
-                    <label for="fav_movie_field">My favorite movie of all time is:</label>
-                    <output></output>
-                </div>
-
-                <h3>TV Show/Series</h3>
-                <div>
-                    <label for="series_field">My favorite TV show/series is:</label>
-                    <output></output>
-
-                    <label for="streaming">If I had to pick one streaming service to binge watch, I would choose:</label>
-                    <output></output>
-                </div>
-            </form>
-        </section>
-
-        <section class="moreInfo">
-            <h2>More Information</h2>
-            <form>
-                <div>
-                    <label for="description">Description:</label>
-                    <output></output>
-                </div>
-            </form>
-        </section>
-
-        <button onclick="window.location.href='index.html';">Go Back</button>
-
-    </main>  
-      </div>
     )
 }
 
