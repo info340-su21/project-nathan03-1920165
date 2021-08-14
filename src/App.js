@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink, Redirect, useParams } from 'react-router-dom';
 
 import mcmahon from './img/mcmahon-room.jpg';
@@ -23,6 +23,18 @@ const uiConfig = {
 };
 
 function App() {
+    const [user, setUser] = useState(undefined);
+    
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((firebaseUser) => {
+            if (firebaseUser) {
+                setUser(firebaseUser)
+            } else {
+                setUser(null)
+            }
+        })
+    })
+
     return (
         <BrowserRouter>
             <Header />
