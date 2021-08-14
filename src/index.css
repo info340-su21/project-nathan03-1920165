@@ -84,7 +84,7 @@
   button:hover {
       color: white;
       background-color: #cd9703;
-  } 
+  }
   
   .back {
       margin: 10px;
@@ -173,6 +173,16 @@
   .main-about {
       height: fit-content;
       padding: 10px;
+  }
+
+  .about-text {
+      background-color: black;
+      margin: 5px 0px;
+  }
+
+  .about-text p {
+      padding: 10px;
+      margin: 10px;
   }
   
   .about-images {
