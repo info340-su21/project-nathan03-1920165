@@ -4,6 +4,24 @@ import { BrowserRouter, Route, Switch, Link, NavLink, Redirect, useParams } from
 import mcmahon from './img/mcmahon-room.jpg';
 import students from './img/students.jpg';
 
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
+const uiConfig = {
+    signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        {
+            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            requireDisplayName: true
+        },
+    ],
+    credentialHelper: 'none',
+    signInFlow: 'popup',
+    callbacks: {
+        signInSuccessWithAuthResult: () => false,
+    },
+};
+
 function App() {
     return (
         <BrowserRouter>
@@ -140,8 +158,9 @@ function LoginPage() {
             <div className="main-container">
                 <main className="main-login">
                     <h2>Sign In</h2>
+                    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
 
-                    <div className="google">
+                    {/* <div className="google">
                         <button>Sign in with Google</button>
                     </div>
 
@@ -161,7 +180,7 @@ function LoginPage() {
                     <div className="new-user">
                         <p>New user?</p>
                         <Link exact to='/register'>Create an Account</Link>
-                    </div>
+                    </div> */}
                 </main>
             </div>
         </div>
@@ -527,7 +546,7 @@ function Results() {
         <div className="results-page-container">
             <h2>Results</h2>
             <div className="pfp-results">
-                <Link exact to='/profile'><img className="pfp" src="img/avatar.jpg" alt="the user's profile picture"></img></Link>
+                <Link exact to='/profile'><img className="pfp" src="img/avatar.jpg" alt="the user's avatar"></img></Link>
             </div>
 
             <div className="results-important">
