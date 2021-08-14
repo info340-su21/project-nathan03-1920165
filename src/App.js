@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink, Redirect, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, Redirect, useParams } from 'react-router-dom';
 
 import mcmahon from './img/mcmahon-room.jpg';
 import students from './img/students.jpg';
@@ -28,16 +28,22 @@ function App() {
     useEffect(() => {
         firebase.auth().onAuthStateChanged((firebaseUser) => {
             if (firebaseUser) {
+                console.log("logged in")
                 setUser(firebaseUser)
             } else {
+                console.log("logged out")
                 setUser(null)
             }
         })
     })
 
+    const handleSignOut = () => {
+        firebase.auth().signOut()
+    }
+
     return (
         <BrowserRouter>
-            <Header />
+            <Header user={user} signout={handleSignOut}/>
 
             <Switch>
                 <Route exact path="/">
@@ -83,30 +89,58 @@ function App() {
     )
 }
 
-function Header() {
-    return (
-        <div className="banner">
-            <header>
-                <h1><Link exact to='/'>UniteDawgs</Link></h1>
-            </header>
-            <nav>
-                <div className="mobile">
-                    <ul>
-                        <li><NavLink to='/home' activeClassName=""><i className="fas fa-home" aria-label="Home"></i></NavLink></li>
-                        <li><NavLink to='/about' activeClassName=""><i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
-                        <li><NavLink to='/account' activeClassName=""><i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
-                    </ul>
-                </div>
-                <div className="desktop">
-                    <ul>
-                        <li><NavLink to='/home' activeClassName="">Home <i className="fas fa-home" aria-label="Home"></i></NavLink></li>
-                        <li><NavLink to='/about' activeClassName="">About <i className="fas fa-info-circle" aria-label="About"></i></NavLink></li>
-                        <li><NavLink to='/account' activeClassName="">My Profile <i className="fas fa-user-circle" aria-label="User"></i></NavLink></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    )
+function Header(props) {
+    if (!props.user) { //if logged out
+        return (
+            <div className="banner">
+                <header>
+                    <h1><Link exact to='/'>UniteDawgs</Link></h1>
+                </header>
+                <nav>
+                    <div className="mobile">
+                        <ul>
+                            <li><Link to='/'><i className="fas fa-home" aria-label="Home"></i></Link></li>
+                            <li><Link to='/about'><i className="fas fa-info-circle" aria-label="About"></i></Link></li>
+                            <li><Link to='/login'><i className="fas fa-user-circle" aria-label="Login"></i></Link></li>
+                        </ul>
+                    </div>
+                    <div className="desktop">
+                        <ul>
+                            <li><Link to='/'>Home <i className="fas fa-home" aria-label="Home"></i></Link></li>
+                            <li><Link to='/about'>About <i className="fas fa-info-circle" aria-label="About"></i></Link></li>
+                            <li><Link to='/login'>Account <i className="fas fa-user-circle" aria-label="Login"></i></Link></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        )
+    } else {
+        return (
+            <div className="banner">
+                <header>
+                    <h1><Link exact to='/home'>UniteDawgs</Link></h1>
+                </header>
+                <nav>
+                    <div className="mobile">
+                        <ul>
+                            <li><Link to='/home'><i className="fas fa-home" aria-label="Home"></i></Link></li>
+                            <li><Link to='/about'><i className="fas fa-info-circle" aria-label="About"></i></Link></li>
+                            <li><Link to='/account'><i className="fas fa-user-circle" aria-label="Account"></i></Link></li>
+                            <li onClick={props.signout}><Link to='/'><i class="fas fa-sign-out-alt" aria-label="Log Out"></i></Link></li>
+                        </ul>
+                    </div>
+                    <div className="desktop">
+                        <ul>
+                            <li><Link to='/home'>Home <i className="fas fa-home" aria-label="Home"></i></Link></li>
+                            <li><Link to='/about'>About <i className="fas fa-info-circle" aria-label="About"></i></Link></li>
+                            <li><Link to='/account'>Account <i className="fas fa-user-circle" aria-label="Account"></i></Link></li>
+                            <li onClick={props.signout}><Link to='/'>Log Out <i class="fas fa-sign-out-alt" aria-label="Log Out"></i></Link></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        )
+    }
 }
 
 function OnboardPage() {
