@@ -99,6 +99,14 @@
       margin: 5px 0;
       color:whitesmoke
   }
+
+  div > label {
+      padding-right: 10px;
+  }
+
+  form > em {
+      margin-left: 8px;
+  }
   
   /* banner styling */
   .banner {
