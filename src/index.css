@@ -85,6 +85,11 @@
       color: white;
       background-color: #cd9703;
   }
+
+  .loading {
+      color: white;
+      padding: 50px;
+  }
   
   .back {
       margin: 10px;

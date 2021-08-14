@@ -24,21 +24,36 @@ const uiConfig = {
 
 function App() {
     const [user, setUser] = useState(undefined);
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        firebase.auth().onAuthStateChanged((firebaseUser) => {
+        const authUnregisterFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
             if (firebaseUser) {
                 console.log("logged in")
                 setUser(firebaseUser)
+                setIsLoading(false)
             } else {
                 console.log("logged out")
                 setUser(null)
+                setIsLoading(false)
             }
         })
-    })
+
+        return function cleanup() {
+            authUnregisterFunction()
+        }
+    }, [])
 
     const handleSignOut = () => {
         firebase.auth().signOut()
+    }
+
+    if (isLoading) {
+        return (
+            <div className="loading text-center">
+                <i className="fas fa-circle-notch fa-spin fa-3x" aria-label="Connecting..."></i>
+            </div>
+        )
     }
 
     return (
