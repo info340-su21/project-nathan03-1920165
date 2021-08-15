@@ -221,6 +221,10 @@
   .main-login a {
       color: white;
   }
+
+  .authenticate {
+      padding: 50px 0px;
+  }
   
   /* createUser.html styling */
   .createUser {
@@ -277,8 +281,9 @@
   }
   
   form p {
-      padding-bottom: 5px;
-      text-indent: 15px;
+      background-color: black;
+      margin: 5px 0px;
+      padding: 10px;
   }
   
   form label, select {
