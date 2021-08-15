@@ -62,7 +62,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Header user={user} signout={handleSignOut}/>
+            <Header user={user} signout={handleSignOut} />
 
             <Switch>
                 <Route exact path="/">

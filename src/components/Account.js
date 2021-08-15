@@ -1,8 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function AccountPage(props) {
     let fullname = props.user.displayName;
     let message = "Hello, " + fullname + "!";
+
+    //stores all form values in a single object
+    const [formValues, setFormValues] = useState({
+        'pronouns': undefined,
+        'city': undefined,
+        'state': undefined,
+        'country': undefined,
+        'primary_lang': undefined,
+        'second_lang': undefined,
+
+        'phone': undefined,
+        'email': undefined,
+        'facebook': undefined,
+        'instagram': undefined,
+        'snapchat': undefined,
+        'wechat': undefined,
+        'discord': undefined,
+
+        'major': undefined,
+        'class_standing': undefined,
+        'graduation': undefined,
+        'housing_type': undefined,
+        'room_type': undefined,
+        'bathroom_type': undefined,
+        'bldg_one': undefined,
+        'bldg_two': undefined,
+        'bldg_three': undefined,
+
+        'morning': undefined,
+        'weeknights': undefined,
+        'weekends': undefined,
+        'drinking': undefined,
+        'smoking': undefined,
+        'organizing': undefined,
+        'cleaning': undefined,
+        'study': undefined,
+        'music_listening': undefined,
+
+        'hobbies': undefined,
+        'adjectives': undefined,
+        'social_rank': undefined,
+        'music': undefined,
+        'artist': undefined,
+        'movie': undefined,
+        'favorite_movie': undefined,
+        'television': undefined,
+        'streaming': undefined,
+
+        'description': undefined
+    })
+
+    //update state for a specific field
+    const handleChange = (event) => {
+        let field = event.target.name;
+        let value = event.target.value;
+
+        let copy = {...formValues};
+        copy[field] = value;
+        setFormValues(copy);
+    }
+
+    //handle createAccount button
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
 
     return (
         <main className="main-account">
@@ -11,19 +76,19 @@ export default function AccountPage(props) {
                     <h2>{message}</h2>
                     <p>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</p>
                     {/* <div>
-                        <label for="fname_field">First Name:</label>
+                        <label htmlFor="fname_field">First Name:</label>
                         <input type="text" id="fname_field" name="fname" required />
                     </div>
                     <div>
-                        <label for="lname_field">Last Name:</label>
+                        <label htmlFor="lname_field">Last Name:</label>
                         <input type="text" id="lname_field" name="lname" required />
                     </div>
                     <div>
-                        <label for="uname_field">Username:</label>
+                        <label htmlFor="uname_field">Username:</label>
                         <input type="text" id="uname_field" name="uname" pattern=".{8,}" placeholder="8 character requirement" required />
                     </div>
                     <div>
-                        <label for="pwd_field">Password:</label>
+                        <label htmlFor="pwd_field">Password:</label>
                         <input type="password" id="pwd_field" name="pwd" pattern=".{8,}" placeholder="8 character requirement" required />
                     </div> */}
                 </form>
@@ -33,13 +98,13 @@ export default function AccountPage(props) {
                 <form>
                     <h2>About Me</h2>
                     <em>Tell us all about you.</em>
-                    <div>
-                        <label for="picture_upload">Choose a profile picture:</label>
+                    {/* <div>
+                        <label htmlFor="picture_upload">Choose a profile picture:</label>
                         <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg" />
-                    </div>
+                    </div> */}
                     <div>
-                        <label for="pronouns_dropdown">Personal Pronoun:</label>
-                        <select id="pronouns_dropdown" name="pronouns">
+                        <label htmlFor="pronouns_dropdown">Personal Pronoun:</label>
+                        <select id="pronouns_dropdown" name="pronouns" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="she">she/her/hers</option>
                             <option value="he">he/him/his</option>
@@ -47,24 +112,24 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="city_field">Hometown City:</label>
-                        <input type="text" id="city_field" name="city" placeholder="Seattle" required />
+                        <label htmlFor="city_field">Hometown City:</label>
+                        <input type="text" id="city_field" name="city" onChange={handleChange} placeholder="Seattle" required />
                     </div>
                     <div>
-                        <label for="state_field">Hometown State:</label>
-                        <input type="text" id="state_field" name="state" placeholder="WA" required />
+                        <label htmlFor="state_field">Hometown State:</label>
+                        <input type="text" id="state_field" name="state" onChange={handleChange} placeholder="WA" required />
                     </div>
                     <div>
-                        <label for="country_field">Hometown Country:</label>
-                        <input type="text" id="country_field" name="country" placeholder="USA" required />
+                        <label htmlFor="country_field">Hometown Country:</label>
+                        <input type="text" id="country_field" name="country" onChange={handleChange} placeholder="USA" required />
                     </div>
                     <div>
-                        <label for="primary_lang_field">Primary Language:</label>
-                        <input type="text" id="primary_lang_field" name="primary_lang" placeholder="English" required />
+                        <label htmlFor="primary_lang_field">Primary Language:</label>
+                        <input type="text" id="primary_lang_field" name="primary_lang" onChange={handleChange} placeholder="English" required />
                     </div>
                     <div>
-                        <label for="second_lang_field">Secondary Language:</label>
-                        <input type="text" id="second_lang_field" name="second_lang" placeholder="Chinese" required />
+                        <label htmlFor="second_lang_field">Secondary Language:</label>
+                        <input type="text" id="second_lang_field" name="second_lang" onChange={handleChange} placeholder="Chinese" required />
                     </div>
                 </form>
             </section>
@@ -74,32 +139,32 @@ export default function AccountPage(props) {
                     <h2>Contact Information</h2>
                     <em>Provide your contact information to be reached by other students.</em>
                     <div>
-                        <label for="phone">Phone Number:</label>
-                        <input type="tel" id="phone" name="phone" placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+                        <label htmlFor="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" onChange={handleChange} placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
                     </div>
                     <div>
-                        <label for="email">Email Address:</label>
-                        <input type="email" id="email" name="email" placeholder="example@domain.com" />
+                        <label htmlFor="email">Email Address:</label>
+                        <input type="email" id="email" name="email" onChange={handleChange} placeholder="example@domain.com" />
                     </div>
                     <div>
-                        <label for="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
-                        <input type="text" id="facebook" name="facebook" />
+                        <label htmlFor="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
+                        <input type="text" id="facebook" name="facebook" onChange={handleChange} />
                     </div>
                     <div>
-                        <label for="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
-                        <input type="text" id="instagram" name="instagram" placeholder="@handle" />
+                        <label htmlFor="instagram"><i className="fab fa-instagram" aria-label="Instagram"></i> Instagram: </label>
+                        <input type="text" id="instagram" name="instagram" onChange={handleChange} placeholder="@handle" />
                     </div>
                     <div>
-                        <label for="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
-                        <input type="text" id="snapchat" name="snapchat" placeholder="@handle" />
+                        <label htmlFor="snapchat"><i className="fab fa-snapchat" aria-label="Snapchat"></i> Snapchat: </label>
+                        <input type="text" id="snapchat" name="snapchat" onChange={handleChange} placeholder="@handle" />
                     </div>
                     <div>
-                        <label for="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
-                        <input type="text" id="wechat" name="wechat" />
+                        <label htmlFor="wechat"><i className="fab fa-weixin" aria-label="WeChat"></i> WeChat: </label>
+                        <input type="text" id="wechat" name="wechat" onChange={handleChange} />
                     </div>
                     <div>
-                        <label for="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
-                        <input type="text" id="discord" name="discord" placeholder="@discord#0000" />
+                        <label htmlFor="discord"><i className="fab fa-discord" aria-label="Discord"></i> Discord: </label>
+                        <input type="text" id="discord" name="discord" onChange={handleChange} placeholder="@discord#0000" />
                     </div>
                 </form>
             </section>
@@ -109,12 +174,12 @@ export default function AccountPage(props) {
                 <em>Provide your academic history or future ambitions</em>
                 <form>
                     <div>
-                        <label for="major">(Intended) Major:</label>
-                        <input type="text" id="major" name="major" placeholder="Informatics" />
+                        <label htmlFor="major">(Intended) Major:</label>
+                        <input type="text" id="major" name="major" onChange={handleChange} placeholder="Informatics" />
                     </div>
                     <div>
-                        <label for="class-standing">Class Standing</label>
-                        <select id="class-standing" name="class-standing">
+                        <label htmlFor="class-standing">Class Standing</label>
+                        <select id="class-standing" name="class-standing" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="freshman">Freshman</option>
                             <option value="sophomore">Sophomore</option>
@@ -124,8 +189,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="graduation">Expected Graduation Month and Year:</label>
-                        <input type="month" id="graduation" name="graduation" />
+                        <label htmlFor="graduation">Expected Graduation Month and Year:</label>
+                        <input type="month" id="graduation" name="graduation" onChange={handleChange} />
                     </div>
                 </form>
             </section>
@@ -138,9 +203,9 @@ export default function AccountPage(props) {
 
                 <form>
                     <div>
-                        <label for="housing_type">Resident Housing</label>
+                        <label htmlFor="housing_type">Resident Housing</label>
                         <em>What type of housing are you looking for?</em>
-                        <select id="housing_type" name="housing_type" size="6" multiple>
+                        <select id="housing_type" name="housing_type" onChange={handleChange} size="6" multiple>
                             <option value="9_month">9-month</option>
                             <option value="12_month">12-month</option>
                             <option value="residence">Residence Hall</option>
@@ -150,9 +215,9 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="room_type">Room Type</label>
+                        <label htmlFor="room_type">Room Type</label>
                         <em>What type of room are you looking for?</em>
-                        <select id="room_type" name="room_type" size="4" multiple>
+                        <select id="room_type" name="room_type" onChange={handleChange} size="4" multiple>
                             <option value="double">Double</option>
                             <option value="triple">Triple</option>
                             <option value="3_4_person_suite">3 or 4 Person Room/Suite</option>
@@ -160,9 +225,9 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="bathroom_type">Bathroom Type</label>
+                        <label htmlFor="bathroom_type">Bathroom Type</label>
                         <em>What type of bathroom are you looking for?</em>
-                        <select id="bathroom_type" name="bathroom_type" size="4" multiple>
+                        <select id="bathroom_type" name="bathroom_type" onChange={handleChange} size="4" multiple>
                             <option value="private">Private</option>
                             <option value="semi_private">Semi-private</option>
                             <option value="community_single">Community - single gender</option>
@@ -170,8 +235,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="bldg_1">1st Building Preference</label>
-                        <select id="bldg_1" name="building_preference_one">
+                        <label htmlFor="bldg_1">1st Building Preference</label>
+                        <select id="bldg_1" name="bldg_one"onChange={handleChange} >
                             <option hidden="">Select one</option>
                             <option value="alder">Alder Hall</option>
                             <option value="cedar">Cedar Apartments</option>
@@ -193,8 +258,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="bldg_2">2nd Building Preference</label>
-                        <select id="bldg_2" name="building_preference_two">
+                        <label htmlFor="bldg_2">2nd Building Preference</label>
+                        <select id="bldg_2" name="bldg_two" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="alder">Alder Hall</option>
                             <option value="cedar">Cedar Apartments</option>
@@ -216,8 +281,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="bldg_3">3rd Building Preference</label>
-                        <select id="bldg_3" name="building_preference_three">
+                        <label htmlFor="bldg_3">3rd Building Preference</label>
+                        <select id="bldg_3" name="bldg_three" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="alder">Alder Hall</option>
                             <option value="cedar">Cedar Apartments</option>
@@ -247,8 +312,8 @@ export default function AccountPage(props) {
                 <form>
                     <h3>Sleep/Wake Up</h3>
                     <div>
-                        <label for="morning_dropdown">What time do you usually wake up in the morning?</label>
-                        <select id="morning_dropdown" name="morning">
+                        <label htmlFor="morning_dropdown">What time do you usually wake up in the morning?</label>
+                        <select id="morning_dropdown" name="morning" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="5am-or-earlier">5 AM or earlier</option>
                             <option value="5am-to-8am">Between 5 AM and 8 AM</option>
@@ -257,8 +322,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="weeknights_dropdown">What time do you go to bed on weeknights?</label>
-                        <select id="weeknights_dropdown" name="weeknights">
+                        <label htmlFor="weeknights_dropdown">What time do you go to bed on weeknights?</label>
+                        <select id="weeknights_dropdown" name="weeknights" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="5pm-or-earlier">10 PM or earlier</option>
                             <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
@@ -267,8 +332,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="weekends_dropdown">What time do you go to bed on weekends?</label>
-                        <select id="weekends_dropdown" name="weekends">
+                        <label htmlFor="weekends_dropdown">What time do you go to bed on weekends?</label>
+                        <select id="weekends_dropdown" name="weekends" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="5pm-or-earlier">10 PM or earlier</option>
                             <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
@@ -279,8 +344,8 @@ export default function AccountPage(props) {
 
                     <h3>Alcohol/Smoking</h3>
                     <div>
-                        <label for="drinking_dropdown">Do you drink alcohol?</label>
-                        <select id="drinking_dropdown" name="drinking">
+                        <label htmlFor="drinking_dropdown">Do you drink alcohol?</label>
+                        <select id="drinking_dropdown" name="drinking" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -288,8 +353,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="smoking_dropdown">Do you smoke/vape?</label>
-                        <select id="smoking_dropdown" name="smoking">
+                        <label htmlFor="smoking_dropdown">Do you smoke/vape?</label>
+                        <select id="smoking_dropdown" name="smoking" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -299,8 +364,8 @@ export default function AccountPage(props) {
 
                     <h3>Room Environment</h3>
                     <div>
-                        <label for="organizing_dropdown">How would you describe your own bedroom?</label>
-                        <select id="organizing_dropdown" name="organizing">
+                        <label htmlFor="organizing_dropdown">How would you describe your own bedroom?</label>
+                        <select id="organizing_dropdown" name="organizing" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="very-organized">Very organized</option>
                             <option value="organized">Organized</option>
@@ -310,8 +375,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="cleaning_dropdown">How often do you clean your room/bathroom?</label>
-                        <select id="cleaning_dropdown" name="organizing">
+                        <label htmlFor="cleaning_dropdown">How often do you clean your room/bathroom?</label>
+                        <select id="cleaning_dropdown" name="cleaning" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="never">Never</option>
                             <option value="rarely">Rarely</option>
@@ -323,8 +388,8 @@ export default function AccountPage(props) {
 
                     <h3>Study Time</h3>
                     <div>
-                        <label for="study_dropdown">Where do you usually study?</label>
-                        <select id="study_dropdown" name="study">
+                        <label htmlFor="study_dropdown">Where do you usually study?</label>
+                        <select id="study_dropdown" name="study" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="desk">At my desk</option>
                             <option value="library">At the library</option>
@@ -333,8 +398,8 @@ export default function AccountPage(props) {
                         </select>
                     </div>
                     <div>
-                        <label for="music_dropdown">When studying in your bedroom, do you like listening to music?</label>
-                        <select id="music_dropdown" name="music">
+                        <label htmlFor="music_dropdown">When studying in your bedroom, do you like listening to music?</label>
+                        <select id="music_dropdown" name="music_listening" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="yes-speakers">Yes, I play music on my speakers.</option>
                             <option value="yes-headphones">Yes, I listen using headphones.</option>
@@ -350,16 +415,16 @@ export default function AccountPage(props) {
                     <h2>Personality & Interests</h2>
                     <em>Describe yourself and what your interests are.</em>
                     <div>
-                        <label for="hobbies">Hobbies:</label>
-                        <textarea className="form-control" id="hobbies" name="hobbies" placeholder="List down some of your hobbies."></textarea>
+                        <label htmlFor="hobbies">Hobbies:</label>
+                        <textarea className="form-control" id="hobbies" name="hobbies" onChange={handleChange} placeholder="List down some of your hobbies."></textarea>
                     </div>
                     <div>
-                        <label for="adjective_field">What are three adjectives that describe you?</label>
-                        <input type="text" id="adjective_field" name="adjective" placeholder="adj1, adj2, adj3" />
+                        <label htmlFor="adjective_field">What are three adjectives that describe you?</label>
+                        <input type="text" id="adjective_field" name="adjectives" onChange={handleChange} placeholder="adj1, adj2, adj3" />
                     </div>
                     <div>
-                        <label for="social_rank_dropdown">How social are you?</label>
-                        <select id="social_rank_dropdown" name="social_rank">
+                        <label htmlFor="social_rank_dropdown">How social are you?</label>
+                        <select id="social_rank_dropdown" name="social_rank" onChange={handleChange}>
                             <option hidden="">Select one</option>
                             <option value="vsocial">Very social</option>
                             <option value="social">Social</option>
@@ -371,59 +436,40 @@ export default function AccountPage(props) {
 
                     <h3>Music</h3>
                     <div>
-                        <label for="music_field">What music genres do you listen to?</label>
-                        <input type="text" id="music_field" name="music" />
+                        <label htmlFor="music_field">What music genres do you listen to?</label>
+                        <input type="text" id="music_field" name="music" onChange={handleChange} />
                     </div>
                     <div>
-                        <label for="artist_field">Who is your favorite artist?</label>
-                        <input type="text" id="artist_field" name="artist" />
+                        <label htmlFor="artist_field">Who is your favorite artist?</label>
+                        <input type="text" id="artist_field" name="artist" onChange={handleChange} />
                     </div>
 
                     <h3>Movies</h3>
                     <div>
-                        <label for="movie_field">What movie genres do you like to watch?</label>
-                        <input type="text" id="movie_field" name="movie" />
+                        <label htmlFor="movie_field">What movie genres do you like to watch?</label>
+                        <input type="text" id="movie_field" name="movie" onChange={handleChange} />
                     </div>
                     <div>
-                        <label for="fav_movie_field">What is your favorite movie of all time?</label>
-                        <input type="text" id="fav_movie_field" name="favorite_movie" />
+                        <label htmlFor="fav_movie_field">What is your favorite movie of all time?</label>
+                        <input type="text" id="fav_movie_field" name="favorite_movie" onChange={handleChange} />
                     </div>
 
                     <h3>TV Show/Series</h3>
                     <div>
-                        <label for="series_field">What TV show/series is your favorite?</label>
-                        <input type="text" id="series_field" name="movie" />
+                        <label htmlFor="series_field">What TV show/series is your favorite?</label>
+                        <input type="text" id="series_field" name="television" onChange={handleChange} />
                     </div>
-                    <div className="streaming">
-                        <label for="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label>
-                        <div>
-                            <input type="radio" id="netflix_radio" name="streaming" value="Netflix" />
-                            <label for="netflix_radio">Netflix</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="hulu_radio" name="streaming" value="Hulu" />
-                            <label for="hulu_radio">Hulu</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="disneyplus_radio" name="streaming" value="Disney+" />
-                            <label for="disneyplus_radio">Disney+</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="hbomax_radio" name="streaming" value="HBO Max" />
-                            <label for="hbomax_radio">HBO Max</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="primevideo_radio" name="streaming" value="Amazon Prime Video" />
-                            <label for="primevideo_radio">Amazon Prime Video</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="peacock_radio" name="streaming" value="Peacock" />
-                            <label for="peacock_radio">Peacock</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="none_radio" name="streaming" value="None of the above" />
-                            <label for="none_radio">I am not subscribed to any streaming service</label>
-                        </div>
+                    <div>
+                        <label htmlFor="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label>
+                        <select id="streaming" name="streaming" onChange={handleChange}>
+                            <option hidden="">Select one</option>
+                            <option value="netflix">Netflix</option>
+                            <option value="hulu">Hulu</option>
+                            <option value="disneyplus">Disney+</option>
+                            <option value="hbomax">HBO Max</option>
+                            <option value="primevideo">Amazon Prime Video</option>
+                            <option value="none">I am not subscribed to any streaming service</option>
+                        </select>
                     </div>
                 </form>
             </section>
@@ -433,8 +479,8 @@ export default function AccountPage(props) {
                 <em>Is there anything else you would like someone to know about you?</em>
                 <form>
                     <div>
-                        <label for="description">Description:</label>
-                        <textarea className="form-control" id="description" name="description" placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
+                        <label htmlFor="description">Description:</label>
+                        <textarea className="form-control" id="description" name="description" onChange={handleChange} placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
                     </div>
                 </form>
             </section>
