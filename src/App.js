@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch, Link, Redirect, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import AboutPage from './components/About';
 import AccountPage from './components/Account';
@@ -75,16 +75,16 @@ function App() {
                 <Route path="/login">
                     <LoginPage uiConfig={uiConfig} />
                 </Route>
-                <Route path="/home"> {/* "/home/:username" */}
+                <Route path="/home">
                     <Accordionize />
                 </Route>
-                <Route path="/profile"> {/* "/home/:username/:student/profile" */}
+                <Route path="/profile">
                     <ProfilePage />
                 </Route>
-                <Route path="/connect"> {/* "/home/:username/:student/connect" */}
+                <Route path="/connect">
                     <ConnectPage />
                 </Route>
-                <Route path="/account"> {/* "/home/:username/account" */}
+                <Route path="/account">
                     <AccountPage user={user} />
                 </Route>
 

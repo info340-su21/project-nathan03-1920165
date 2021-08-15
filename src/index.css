@@ -1,429 +1,432 @@
 /* general styling */
 * {
-    box-sizing: border-box;
-  }
-  
-  html {
-      height: 100%;
-      margin: 0;
-  }
-  
-  body {
-      background-color: #165CA9;
-      font-family:'Roboto', sans-serif;
-      font-weight: 500;
-      height: inherit;
-      margin: 0;
-  }
+box-sizing: border-box;
+}
 
-  #root {
-      height: inherit;
-  }
-  
-  main {
-      color: white;
-  }
-  
-  h1, nav {
-      font-size: 1.5em;
-      font-family: 'Luckiest Guy', cursive;
-  }
-  
-  h2, legend {
-      font-family: 'Luckiest Guy', cursive;
-      font-size: 1.5em;
-      background-color: #cd9703;
-      color: white;
-      margin: 0;
-      padding: 0.5rem;
-  }
-  
-  .accordion-button {
-      font-family: 'Luckiest Guy', cursive;
-      background-color: #cd9703;
-      color: white;
-      font-size: 1em;
-  }
-  
-  h3, label {
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #165CA9;
     font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    height: inherit;
+    margin: 0;
+}
+
+#root {
+    height: inherit;
+}
+
+main {
+    color: white;
+}
+
+h1, nav {
+    font-size: 1.5em;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+h2, legend {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 1.5em;
+    background-color: #cd9703;
+    color: white;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.accordion-button {
+    font-family: 'Luckiest Guy', cursive;
+    background-color: #cd9703;
+    color: white;
+    font-size: 1em;
+}
+
+h3, label {
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
     font-size: 1.3em;
     padding: 0;
     margin: 0;
-  }
-  
-  h3 {
-      text-decoration: underline;
-      padding-top: 10px;
-  }
-  
-  .page-container {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-  }
-  
-  .main-container {
-      flex: 1;
-      height: 100%;
-  }
+}
 
-  .onboard, .login {
-      flex: 1;
-      height: 100%;
-  }
-  
-  .footer-container {
-      flex: content;
-  }
-  
-  .pfp {
-      max-width: 150px;
-      max-height: 150px;
-  }
+h3 {
+    text-decoration: underline;
+    padding-top: 10px;
+}
 
-  .loading {
-      color: white;
-      padding: 50px;
-  }
-  
-  .back {
-      margin: 10px;
-      padding: 10px;
-  }
-  
-  em {
-      font-weight: bold;
-  }
-  
-  hr {
-      margin: 5px 0;
-      color:whitesmoke
-  }
+.page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
-  div > label {
-      padding-right: 10px;
-  }
+.main-container {
+    flex: 1;
+    height: 100%;
+}
 
-  form > em {
-      margin-left: 8px;
-  }
-  
-  /* banner styling */
-  .banner {
-      display: flex;
-      background-color: #010079;
-      width: 100%;
-      padding: 1em;
-      margin: 0;
-  }
-  
-  .banner a {
-      color: white;
-      text-decoration: none;
-  }
-  
-  .banner a:hover {
-      color: #cd9703;
-  }
-  
-  .banner header {
-      flex: 1;
-  }
-  
-  .banner h1 {
-      text-align: left;
-      padding: 0;
-      margin: 0;
-  }
-  
-  .banner nav {
-      display: block;
-      flex: 1;
-  }
-  
-  .banner ul {
-      text-align: right;
-      padding: 0;
-      margin: 0;
-  }
-  
-  .banner li {
-      display: inline;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-  }
-  
-  .desktop {
-      display: none;
-  }
-  
-  /* onboard.html styling */
- .main-login > .sign-up ,.main-onboard > .welcome {
-      padding: 5%;
-  }
-  
-  .join-login > div {
-      font-family: 'Luckiest Guy', cursive;
-      text-align: center;
-      font-size: 30px;
-      padding: 10px;
-  }
+.onboard, .login, .about {
+    flex: 1;
+    height: 100%;
+}
 
-  .video {
-      text-align: center;
-  }
-  
-  /* about.html styling */
-  .main-about {
-      height: fit-content;
-      padding: 10px;
-  }
+.footer-container {
+    flex: content;
+}
 
-  .about-text {
-      margin: 5px 0px;
-  }
+.pfp {
+    max-width: 150px;
+    max-height: 150px;
+}
 
-  .about-text p {
-      padding: 10px;
-      margin: 10px;
-  }
-  
-  .about-images {
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .about-images > figure {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 15px;
-  }
-  
-  .main-about img {
-      max-width: 500px;
-      padding: 10px;
-  }
-  
-  .main-about a {
-      color: white;
-  }
-  
-  /* login.html styling */
-  .main-login {
-      font-family: 'Luckiest Guy', cursive;
-      text-align: center;
-      padding: 10px;
-  }
-  
-  .main-login a {
-      color: white;
-  }
+.loading {
+    color: white;
+    padding: 50px;
+}
 
-  .authenticate {
-      margin: 2rem;
-  }
+.back {
+    margin: 10px;
+    padding: 10px;
+}
 
-  /* index.html styling */
-  .accordion-body {
-      background-color: #165CA9;
-  }
-  .main-container-index{
-      display: flex;
-      flex: 1;
-      flex-basis: auto;
-      flex-direction: column;
-      height: 100%;
-  }
-  
-  .form-container, .results-container {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-  }
-  
-  .accordion {
-      flex: 1;
-  }
-  
-  .results-heading, .form-heading {
-      display: none;
-  }
-  
-  /* filter.html styling */
-  form {
-      color: white;
-  }
-  
-  form p {
-      background-color: black;
-      margin: 5px 0px;
-      padding: 10px;
-  }
-  
-  /* form label, select {
-      margin-left: 15px;
-  }
-  
-  form label {
-      margin-top: 10px;
-  } */
-  
-  form select {
-      margin-bottom: 10px;
-  }
-  
-  /* results.html styling */
-  .results {
-      color: white;
-  }
-  
-  .results-page-container {
-      padding: 1em 1em 1em 0em;
-      display: flex;
-      flex-direction: row;
-  }
-  
-  .results-important a {
-      color: white;
-  }
-  
-  .results-content {
-      display: flex;
-  }
-  
-  .pfp-results, .results-important, .results-sub, .results-connect {
-      flex : 1;
-      text-align: center;
-  }
-  
-  /* profile.html styling */
-  .main-profile {
-      padding: 10px;
-  }
-  
-  .main-createUser div {
-      padding: 5px;
-  }
-  
-  /* connect.html styling */
-  .main-connect {
-      padding: 10px;
-  }
-  
-  /* account.html styling */
-  .main-account {
-      padding: 10px;
-      background-color: white;
-      color: black;
-  }
+em {
+    font-weight: bold;
+}
 
-  .main-account > p {
-      
-  }
+hr {
+    margin: 5px 0;
+    color:whitesmoke
+}
 
-  /* footer styling */
-  footer {
-      background-color: lightgrey;
-      width: 100%;
-      text-align: center;
-      padding: 0;
-      margin: 0;
-  }
-  
-  footer > address, p {
-      padding: 0;
-      margin: 0;
-  }
+div > label {
+    padding-right: 10px;
+}
 
-  
-  /* media query for small screens */
-  @media (min-width: 598px) {
-      /* general styling */
-      h1, h2, nav, legend {
-          font-size: 2em;
-      }
-  
-      .onboard {
-          /* cite: "https://www.flickr.com/photos/90311612@N05/9304762194/in/album-72157634667491603/" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/cedar-apartments-portrait.jpg');
-          background-position: center;
-          background-size: cover;
-      }
-  
-      .about {
-          /* cite: "https://www.flickr.com/photos/90311612@N05/9301842899/" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/alder-courtyard.jpg');
-          background-position: center;
-          background-size: cover;
-      }
-  
-      .login {
-          /* cite: "https://www.flickr.com/photos/90311612@N05/9308651365" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/elm-hall.jpg');
-          background-position: center;
-          background-size: cover;
-      }
+form > em {
+    margin-left: 8px;
+}
 
-      .video > iframe {
-          width: 560px;
-          height: 315px;
-      }
-  
-      /* banner styling */
-      .banner li {
-          display: inline;
-          padding-left: 1rem;
-          padding-right: 1rem;
-      }
-  }
-  
-  /* media query for large screens */
-  @media (min-width: 992px) {
-      /* general styling */
-      .onboard {
-          /* cite: "https://hfs.uw.edu/getmedia/072fc76c-bfb1-459d-9729-afdb223ae0ba/Maple-exterior.jpg.aspx?width=1280&height=854&ext=.jpg" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/maple-hall.jpg');
-          background-position: center;
-          background-size: cover;
-      }
-  
-      .about {
-          /* cite: "https://www.washington.edu/news/2011/09/28/two-new-student-residence-halls-and-an-increased-commitment-to-sustainability/" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/cedar-apartments.jpg');
-          background-position: center;
-          background-size:cover;
-      }
-  
-      .login {
-          /* cite: "https://www.flickr.com/photos/90311612@N05/10176551956/" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/mercer-court.jpg');
-          background-position: center;
-          background-size: cover;
-      }
-      
-      /* banner styling */
-      .mobile {
-          display: none;
-      }
-  
-      .desktop {
-          display: block;
-      }
-  
-      /* about.html styling */
-      .about-images {
-          flex-direction: row;
-      }
-  
-      /* index.html styling */
-      .main-container-index {
-          flex-direction: row;
-      }
-  
-      .index-heading {
-          display: contents;
-      }
-  }
+/* banner styling */
+.banner {
+    display: flex;
+    background-color: #010079;
+    width: 100%;
+    padding: 1em;
+    margin: 0;
+}
+
+.banner a {
+    color: white;
+    text-decoration: none;
+}
+
+.banner a:hover {
+    color: #cd9703;
+}
+
+.banner header {
+    flex: 1;
+}
+
+.banner h1 {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.banner nav {
+    display: block;
+    flex: 1;
+}
+
+.banner ul {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+}
+
+.banner li {
+    display: inline;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.desktop {
+    display: none;
+}
+
+/* onboard.html styling */
+.main-login > .sign-up ,.main-onboard > .welcome {
+    padding: 5%;
+}
+
+.join-login > div {
+    font-family: 'Luckiest Guy', cursive;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.video {
+    text-align: center;
+}
+
+.video a {
+    color: white;
+}
+
+/* about.html styling */
+.main-about {
+    height: fit-content;
+    padding: 10px;
+}
+
+.about-text {
+    margin: 5px 0px;
+}
+
+.about-text p {
+    padding: 10px;
+    margin: 10px;
+}
+
+.about-images {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-images > figure {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.main-about img {
+    max-width: 500px;
+    padding: 10px;
+}
+
+.main-about a {
+    color: white;
+}
+
+/* login.html styling */
+.main-login {
+    font-family: 'Luckiest Guy', cursive;
+    text-align: center;
+    padding: 10px;
+}
+
+.authenticate {
+    margin: 2rem;
+}
+
+/* index.html styling */
+.accordion-body {
+    background-color: #165CA9;
+}
+.main-container-index{
+    display: flex;
+    flex: 1;
+    flex-basis: auto;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-container, .results-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.accordion {
+    flex: 1;
+}
+
+.results-heading, .form-heading {
+    display: none;
+}
+
+/* filter.html styling */
+/* form {
+    color: white;
+}
+
+form p {
+    background-color: black;
+    margin: 5px 0px;
+    padding: 10px;
+} */
+
+/* form label, select {
+    margin-left: 15px;
+}
+
+form label {
+    margin-top: 10px;
+} */
+
+/* form select {
+    margin-bottom: 10px;
+} */
+
+/* results.html styling */
+.results {
+    color: white;
+}
+
+.results-page-container {
+    padding: 1em 1em 1em 0em;
+    display: flex;
+    flex-direction: row;
+}
+
+.results-important a {
+    color: white;
+}
+
+.results-content {
+    display: flex;
+}
+
+.pfp-results, .results-important, .results-sub, .results-connect {
+    flex : 1;
+    text-align: center;
+}
+
+/* profile.html styling */
+.main-profile {
+    padding: 10px;
+}
+
+.main-createUser div {
+    padding: 5px;
+}
+
+/* connect.html styling */
+.main-connect {
+    padding: 10px;
+}
+
+/* account.html styling */
+.main-account {
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+.main-account form {
+    padding: 10px;
+}
+
+.instructions {
+    padding: 10px;
+}
+
+/* footer styling */
+footer {
+    background-color: lightgrey;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+footer > address, p {
+    padding: 0;
+    margin: 0;
+}
+
+/* media query for small screens */
+@media (min-width: 598px) {
+    /* general styling */
+    h1, h2, nav, legend {
+        font-size: 2em;
+    }
+
+    .onboard {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/9304762194/in/album-72157634667491603/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/cedar-apartments-portrait.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .about {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/9301842899/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/alder-courtyard.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .login {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/9308651365" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/elm-hall.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .video > iframe {
+        width: 560px;
+        height: 315px;
+    }
+
+    /* banner styling */
+    .banner li {
+        display: inline;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* media query for large screens */
+@media (min-width: 992px) {
+    /* general styling */
+    .onboard {
+        /* cite: "https://hfs.uw.edu/getmedia/072fc76c-bfb1-459d-9729-afdb223ae0ba/Maple-exterior.jpg.aspx?width=1280&height=854&ext=.jpg" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/maple-hall.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+
+    .about {
+        /* cite: "https://www.washington.edu/news/2011/09/28/two-new-student-residence-halls-and-an-increased-commitment-to-sustainability/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/cedar-apartments.jpg');
+        background-position: center;
+        background-size:cover;
+    }
+
+    .login {
+        /* cite: "https://www.flickr.com/photos/90311612@N05/10176551956/" */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/mercer-court.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+    
+    /* banner styling */
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: block;
+    }
+
+    /* about.html styling */
+    .about-images {
+        flex-direction: row;
+    }
+
+    /* index.html styling */
+    .main-container-index {
+        flex-direction: row;
+    }
+
+    .index-heading {
+        display: contents;
+    }
+}

@@ -73,30 +73,16 @@ export default function AccountPage(props) {
         <main className="main-account">
             <section className="profile">
                 <h2>{message}</h2>
-                <p><em>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</em></p>
-                <form>
-                    {/* <div>
-                        <label htmlFor="fname_field">First Name:</label>
-                        <input type="text" id="fname_field" name="fname" required />
-                    </div>
-                    <div>
-                        <label htmlFor="lname_field">Last Name:</label>
-                        <input type="text" id="lname_field" name="lname" required />
-                    </div>
-                    <div>
-                        <label htmlFor="uname_field">Username:</label>
-                        <input type="text" id="uname_field" name="uname" pattern=".{8,}" placeholder="8 character requirement" required />
-                    </div>
-                    <div>
-                        <label htmlFor="pwd_field">Password:</label>
-                        <input type="password" id="pwd_field" name="pwd" pattern=".{8,}" placeholder="8 character requirement" required />
-                    </div> */}
-                </form>
+                <div className="instructions">
+                    <em>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</em>
+                </div>
             </section>
 
             <section className="aboutMe">
                 <h2>About Me</h2>
-                <p><em>Tell us all about you.</em></p>
+                <div className="instructions">
+                    <em>Tell us all about you.</em>
+                </div>
                 <form>
                     {/* <div>
                         <label htmlFor="picture_upload">Choose a profile picture:</label>
@@ -136,7 +122,9 @@ export default function AccountPage(props) {
 
             <section className="contacts">
                 <h2>Contact Information</h2>
-                <p><em>Provide your contact information to be reached by other students.</em></p>
+                <div className="instructions">
+                    <em>Provide your contact information to be reached by other students.</em>
+                </div>
                 <form>
                     <div>
                         <label htmlFor="phone">Phone Number:</label>
@@ -171,7 +159,9 @@ export default function AccountPage(props) {
 
             <section className="academics">
                 <h2>Academic Life</h2>
-                <p><em>Provide your academic history or future ambitions</em></p>
+                <div className="instructions">
+                    <em>Provide your academic history or future ambitions</em>
+                </div>
                 <form>
                     <div>
                         <label htmlFor="major">(Intended) Major:</label>
@@ -197,15 +187,16 @@ export default function AccountPage(props) {
 
             <section className="housing">
                 <h2>Housing Preferences</h2>
-                <p><em>Describe your housing preferences. (Select all that apply)</em></p>
-                <p><em>For window users – hold down + CTRL key to select multiple options</em></p>
-                <p><em>For mac users – hold down command key to select multiple option</em></p>
+                <div className="instructions">
+                    <em>Describe your housing preferences. (Select all that apply)</em><br /><br />
+                    <em>For Windows users – hold down Ctrl key to select multiple options</em><br />
+                    <em>For Mac users – hold down Command key to select multiple options</em>
+                </div>
                 <form>
                     <div>
                         <div>
                             <label htmlFor="housing_type">Resident Housing</label>
-                            <p><em>What type of housing are you looking for?</em>
-                            </p>
+                            <p><em>What type of housing are you looking for?</em></p>
                         </div>
                         <div>
                             <select id="housing_type" name="housing_type" onChange={handleChange} size="6" multiple>
@@ -320,7 +311,9 @@ export default function AccountPage(props) {
 
             <section className="habits">
                 <h2>Habits</h2>
-                <p><em>Specify your personal and study habits.</em></p>
+                <div className="instructions">
+                    <em>Specify your personal and study habits.</em>
+                </div>
                 <form>
                     <h3>Sleep/Wake Up</h3>
                     <div>
@@ -424,7 +417,9 @@ export default function AccountPage(props) {
 
             <section className="interest">
                 <h2>Personality & Interests</h2>
-                <p><em>Describe yourself and what your interests are.</em></p>
+                <div className="instructions">
+                    <em>Describe yourself and what your interests are.</em>
+                </div>
                 <form>
                     <div>
                         <label htmlFor="hobbies">Hobbies:</label>
@@ -488,7 +483,9 @@ export default function AccountPage(props) {
 
             <section className="moreInfo">
                 <h2>Anything else?</h2>
-                <p><em>Is there anything else you would like someone to know about you?</em></p>
+                <div className="instructions">
+                    <em>Is there anything else you would like someone to know about you?</em>
+                </div>
                 <form>
                     <div>
                         <label htmlFor="description">Description:</label>
