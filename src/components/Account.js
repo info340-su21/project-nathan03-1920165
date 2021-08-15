@@ -72,9 +72,9 @@ export default function AccountPage(props) {
     return (
         <main className="main-account">
             <section className="profile">
+                <h2>{message}</h2>
+                <p><em>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</em></p>
                 <form>
-                    <h2>{message}</h2>
-                    <p>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</p>
                     {/* <div>
                         <label htmlFor="fname_field">First Name:</label>
                         <input type="text" id="fname_field" name="fname" required />
@@ -95,9 +95,9 @@ export default function AccountPage(props) {
             </section>
 
             <section className="aboutMe">
+                <h2>About Me</h2>
+                <p><em>Tell us all about you.</em></p>
                 <form>
-                    <h2>About Me</h2>
-                    <em>Tell us all about you.</em>
                     {/* <div>
                         <label htmlFor="picture_upload">Choose a profile picture:</label>
                         <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg" />
@@ -135,9 +135,9 @@ export default function AccountPage(props) {
             </section>
 
             <section className="contacts">
+                <h2>Contact Information</h2>
+                <p><em>Provide your contact information to be reached by other students.</em></p>
                 <form>
-                    <h2>Contact Information</h2>
-                    <em>Provide your contact information to be reached by other students.</em>
                     <div>
                         <label htmlFor="phone">Phone Number:</label>
                         <input type="tel" id="phone" name="phone" onChange={handleChange} placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
@@ -171,7 +171,7 @@ export default function AccountPage(props) {
 
             <section className="academics">
                 <h2>Academic Life</h2>
-                <em>Provide your academic history or future ambitions</em>
+                <p><em>Provide your academic history or future ambitions</em></p>
                 <form>
                     <div>
                         <label htmlFor="major">(Intended) Major:</label>
@@ -197,42 +197,54 @@ export default function AccountPage(props) {
 
             <section className="housing">
                 <h2>Housing Preferences</h2>
-                <em>Describe your housing preferences. (Select all that apply)</em>
-                <em>For window users – hold down + CTRL key to select multiple options</em>
-                <em>For mac users – hold down command key to select multiple option</em>
-
+                <p><em>Describe your housing preferences. (Select all that apply)</em></p>
+                <p><em>For window users – hold down + CTRL key to select multiple options</em></p>
+                <p><em>For mac users – hold down command key to select multiple option</em></p>
                 <form>
                     <div>
-                        <label htmlFor="housing_type">Resident Housing</label>
-                        <em>What type of housing are you looking for?</em>
-                        <select id="housing_type" name="housing_type" onChange={handleChange} size="6" multiple>
-                            <option value="9_month">9-month</option>
-                            <option value="12_month">12-month</option>
-                            <option value="residence">Residence Hall</option>
-                            <option value="apartment">Apartment Communities</option>
-                            <option value="north">North Campus</option>
-                            <option value="west">West Campus</option>
-                        </select>
+                        <div>
+                            <label htmlFor="housing_type">Resident Housing</label>
+                            <p><em>What type of housing are you looking for?</em>
+                            </p>
+                        </div>
+                        <div>
+                            <select id="housing_type" name="housing_type" onChange={handleChange} size="6" multiple>
+                                <option value="9_month">9-month</option>
+                                <option value="12_month">12-month</option>
+                                <option value="residence">Residence Hall</option>
+                                <option value="apartment">Apartment Communities</option>
+                                <option value="north">North Campus</option>
+                                <option value="west">West Campus</option>
+                            </select>
+                        </div>
                     </div>
                     <div>
-                        <label htmlFor="room_type">Room Type</label>
-                        <em>What type of room are you looking for?</em>
-                        <select id="room_type" name="room_type" onChange={handleChange} size="4" multiple>
-                            <option value="double">Double</option>
-                            <option value="triple">Triple</option>
-                            <option value="3_4_person_suite">3 or 4 Person Room/Suite</option>
-                            <option value="apartment_style">Single in a Shared Apartment</option>
-                        </select>
+                        <div>
+                            <label htmlFor="room_type">Room Type</label>
+                            <p><em>What type of room are you looking for?</em></p>
+                        </div>
+                        <div>
+                            <select id="room_type" name="room_type" onChange={handleChange} size="4" multiple>
+                                <option value="double">Double</option>
+                                <option value="triple">Triple</option>
+                                <option value="3_4_person_suite">3 or 4 Person Room/Suite</option>
+                                <option value="apartment_style">Single in a Shared Apartment</option>
+                            </select>
+                        </div>
                     </div>
                     <div>
-                        <label htmlFor="bathroom_type">Bathroom Type</label>
-                        <em>What type of bathroom are you looking for?</em>
-                        <select id="bathroom_type" name="bathroom_type" onChange={handleChange} size="4" multiple>
-                            <option value="private">Private</option>
-                            <option value="semi_private">Semi-private</option>
-                            <option value="community_single">Community - single gender</option>
-                            <option value="community_all">Community - all gender</option>
-                        </select>
+                        <div>
+                            <label htmlFor="bathroom_type">Bathroom Type</label>
+                            <p><em>What type of bathroom are you looking for?</em></p>
+                        </div>
+                        <div>
+                            <select id="bathroom_type" name="bathroom_type" onChange={handleChange} size="4" multiple>
+                                <option value="private">Private</option>
+                                <option value="semi_private">Semi-private</option>
+                                <option value="community_single">Community - single gender</option>
+                                <option value="community_all">Community - all gender</option>
+                            </select>
+                        </div>
                     </div>
                     <div>
                         <label htmlFor="bldg_1">1st Building Preference</label>
@@ -308,7 +320,7 @@ export default function AccountPage(props) {
 
             <section className="habits">
                 <h2>Habits</h2>
-                <em>Specify your personal and study habits.</em>
+                <p><em>Specify your personal and study habits.</em></p>
                 <form>
                     <h3>Sleep/Wake Up</h3>
                     <div>
@@ -411,9 +423,9 @@ export default function AccountPage(props) {
             </section>
 
             <section className="interest">
+                <h2>Personality & Interests</h2>
+                <p><em>Describe yourself and what your interests are.</em></p>
                 <form>
-                    <h2>Personality & Interests</h2>
-                    <em>Describe yourself and what your interests are.</em>
                     <div>
                         <label htmlFor="hobbies">Hobbies:</label>
                         <textarea className="form-control" id="hobbies" name="hobbies" onChange={handleChange} placeholder="List down some of your hobbies."></textarea>
@@ -476,7 +488,7 @@ export default function AccountPage(props) {
 
             <section className="moreInfo">
                 <h2>Anything else?</h2>
-                <em>Is there anything else you would like someone to know about you?</em>
+                <p><em>Is there anything else you would like someone to know about you?</em></p>
                 <form>
                     <div>
                         <label htmlFor="description">Description:</label>
@@ -486,10 +498,9 @@ export default function AccountPage(props) {
             </section>
 
             <section className="submit">
-                <h2>Complete Questionnaire</h2>
                 <form>
-                    <input type="submit" value="Submit Form" name="submit" />
-                    <input type="reset" value="Reset Form" name="reset" />
+                    <input className="btn btn-success" type="submit" value="Submit Form" name="submit" />
+                    <input className="btn btn-danger" type="reset" value="Reset Form" name="reset" />
                 </form>
             </section>
         </main>

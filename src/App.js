@@ -5,8 +5,8 @@ import AboutPage from './components/About';
 import AccountPage from './components/Account';
 import Accordionize from './components/Home';
 import ConnectPage from './components/Connect';
-import CreateUserPage from './components/CreateUser';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import LoginPage from './components/Login';
 import OnboardPage from './components/Onboard';
 import ProfilePage from './components/Profile';
@@ -62,6 +62,7 @@ function App() {
 
     return (
         <BrowserRouter>
+        <div className="page-container">
             <Header user={user} signout={handleSignOut} />
 
             <Switch>
@@ -74,10 +75,6 @@ function App() {
                 <Route path="/login">
                     <LoginPage uiConfig={uiConfig} />
                 </Route>
-                <Route path="/register">
-                    <CreateUserPage />
-                </Route>
-
                 <Route path="/home"> {/* "/home/:username" */}
                     <Accordionize />
                 </Route>
@@ -96,14 +93,8 @@ function App() {
                 </Route>
             </Switch>
 
-            <div className="footer-container">
-                <footer>
-                    <address>
-                        Contact us at <a href="mailto:findahusky@uw.edu">findahusky@uw.edu</a>, or at <a href="tel:206-543-2100">(206) 543-2100</a>
-                    </address>
-                    <p>&copy; 2021 Juliane De Los Santos & Nathaniel Sy Su</p>
-                </footer>
-            </div>
+            <Footer />
+        </div>
         </BrowserRouter>
     )
 }

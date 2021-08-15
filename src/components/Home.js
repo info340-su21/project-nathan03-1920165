@@ -30,7 +30,7 @@ function FilterForm() {
                 <fieldset>
                     <legend>Housing Preferences</legend>
 
-                    <label for="housing-type">Resident Housing</label>
+                    <label htmlFor="housing-type">Resident Housing</label>
                     <p>Select all that apply</p>
                     <select id="housing-type" name="housing" size="6" multiple>
                         <option value="9-month">9-month</option>
@@ -41,7 +41,7 @@ function FilterForm() {
                         <option value="west">West Campus</option>
                     </select>
 
-                    <label for="room-type">Room Type</label>
+                    <label htmlFor="room-type">Room Type</label>
                     <p>Select all that apply</p>
                     <select id="room-type" name="room-type" size="4" multiple>
                         <option value="double">Double</option>
@@ -50,7 +50,7 @@ function FilterForm() {
                         <option value="apartment-style">Single in a Shared Apartment</option>
                     </select>
 
-                    <label for="bathroom-type">Bathroom Type</label>
+                    <label htmlFor="bathroom-type">Bathroom Type</label>
                     <p>Select all that apply</p>
                     <select id="bathroom-type" name="Bathroom-type" size="4" multiple>
                         <option value="private">Private</option>
@@ -63,7 +63,7 @@ function FilterForm() {
                 <fieldset>
                     <legend>School Information</legend>
 
-                    <label for="className-standing">className Standing</label>
+                    <label htmlFor="className-standing">className Standing</label>
                     <p>Select all that apply</p>
                     <select id="className-standing" name="className-standing" size="5" multiple>
                         <option value="freshman">Freshman</option>
@@ -77,7 +77,7 @@ function FilterForm() {
                 <fieldset>
                     <legend>Personal Habits</legend>
 
-                    <label for="morning">Morning Wake Up</label>
+                    <label htmlFor="morning">Morning Wake Up</label>
                     <p>Select one</p>
                     <select id="morning" name="morning" size="4">
                         <option value="5am-or-earlier">5 AM or earlier</option>
@@ -86,7 +86,7 @@ function FilterForm() {
                         <option value="noon-or-later">Noon or later</option>
                     </select>
 
-                    <label for="weeknights">Sleep Schedule on Weeknights</label>
+                    <label htmlFor="weeknights">Sleep Schedule on Weeknights</label>
                     <p>Select one</p>
                     <select id="weeknights" name="weeknights" size="4">
                         <option value="5pm-or-earlier">10 PM or earlier</option>
@@ -95,7 +95,7 @@ function FilterForm() {
                         <option value="2am-or-later">2 AM or later</option>
                     </select>
 
-                    <label for="weekends">Sleep Schedule on Weekends</label>
+                    <label htmlFor="weekends">Sleep Schedule on Weekends</label>
                     <p>Select one</p>
                     <select id="weekends" name="weekends" size="4">
                         <option value="5pm-or-earlier">10 PM or earlier</option>
@@ -104,7 +104,7 @@ function FilterForm() {
                         <option value="2am-or-later">2 AM or later</option>
                     </select>
 
-                    <label for="drinking">Alcohol?</label>
+                    <label htmlFor="drinking">Alcohol?</label>
                     <p>Select one</p>
                     <select id="drinking" name="drinking" size="3">
                         <option value="yes">Yes</option>
@@ -112,7 +112,7 @@ function FilterForm() {
                         <option value="sometimes">Sometimes</option>
                     </select>
 
-                    <label for="smoking">Smoke/vape?</label>
+                    <label htmlFor="smoking">Smoke/vape?</label>
                     <p>Select one</p>
                     <select id="smoking" name="smoking" size="3">
                         <option value="yes">Yes</option>
@@ -120,7 +120,7 @@ function FilterForm() {
                         <option value="sometimes">Sometimes</option>
                     </select>
 
-                    <label for="organizing">Bedroom Organization</label>
+                    <label htmlFor="organizing">Bedroom Organization</label>
                     <p>Select one</p>
                     <select id="organizing" name="organizing" size="5">
                         <option value="very-organized">Very organized</option>
@@ -130,7 +130,7 @@ function FilterForm() {
                         <option value="very-disorganized">Very disorganized</option>
                     </select>
 
-                    <label for="cleaning">Bedroom/Bathroom Cleaning</label>
+                    <label htmlFor="cleaning">Bedroom/Bathroom Cleaning</label>
                     <p>Select one</p>
                     <select id="cleaning" name="organizing" size="5">
                         <option value="never">Never</option>
@@ -142,10 +142,12 @@ function FilterForm() {
                 </fieldset>
             </form>
 
-            <form>
-                <input type="submit" value="Submit Form" name="submit" />
-                <input type="reset" value="Reset Form" name="reset" />
-            </form>
+            <section className="submit">
+                <form>
+                    <input className="btn btn-success" type="submit" value="Submit Form" name="submit" />
+                    <input className="btn btn-danger" type="reset" value="Reset Form" name="reset" />
+                </form>
+            </section>
         </div>
     )
 }
@@ -155,11 +157,11 @@ function Results() {
         <div className="results-page-container">
             <h2>Results</h2>
             <div className="pfp-results">
-                <Link exact to='/profile'><img className="pfp" src="img/avatar.jpg" alt="the user's avatar"></img></Link>
+                <Link to='/profile'><img className="pfp" src="img/avatar.jpg" alt="the user's avatar"></img></Link>
             </div>
 
             <div className="results-important">
-                <Link exact to='/profile'>Name</Link>
+                <Link to='/profile'>Name</Link>
                 <p>Pronouns</p>
             </div>
 
@@ -170,7 +172,7 @@ function Results() {
             </div>
 
             <div className="results-connect">
-                <button><Link exact to='/connect'>Connect</Link></button>
+                <button><Link to='/connect'>Connect</Link></button>
             </div>
         </div>
     )

@@ -15,6 +15,10 @@
       height: inherit;
       margin: 0;
   }
+
+  #root {
+      height: inherit;
+  }
   
   main {
       color: white;
@@ -42,10 +46,11 @@
   }
   
   h3, label {
-      font-family: 'Lilita One', cursive;
-      font-size: 1.3em;
-      padding: 0;
-      margin: 0;
+    font-family:'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 1.3em;
+    padding: 0;
+    margin: 0;
   }
   
   h3 {
@@ -63,6 +68,11 @@
       flex: 1;
       height: 100%;
   }
+
+  .onboard, .login {
+      flex: 1;
+      height: 100%;
+  }
   
   .footer-container {
       flex: content;
@@ -71,19 +81,6 @@
   .pfp {
       max-width: 150px;
       max-height: 150px;
-  }
-  
-  button {
-      font-family: 'Lilita One', cursive;
-      font-weight: 100;
-      font-size: 30px;
-      text-decoration: none;
-      border-radius: 10px;
-  }
-  
-  button:hover {
-      color: white;
-      background-color: #cd9703;
   }
 
   .loading {
@@ -163,7 +160,7 @@
   }
   
   /* onboard.html styling */
-  .main-onboard > .welcome {
+ .main-login > .sign-up ,.main-onboard > .welcome {
       padding: 5%;
   }
   
@@ -173,6 +170,10 @@
       font-size: 30px;
       padding: 10px;
   }
+
+  .video {
+      text-align: center;
+  }
   
   /* about.html styling */
   .main-about {
@@ -181,7 +182,6 @@
   }
 
   .about-text {
-      background-color: black;
       margin: 5px 0px;
   }
 
@@ -223,32 +223,9 @@
   }
 
   .authenticate {
-      padding: 50px 0px;
+      margin: 2rem;
   }
-  
-  /* createUser.html styling */
-  .createUser {
-      background-color: white;
-  }
-  
-  .createUser-text {
-      background-color: white;
-      color: black;
-  }
-  
-  .createUser-text > h2 {
-      text-decoration: underline;
-  }
-  
-  .main-createUser {
-      padding: 10px;
-  }
-  
-  .main-createUser form {
-      padding: 5px;
-      color: black;
-  }
-  
+
   /* index.html styling */
   .accordion-body {
       background-color: #165CA9;
@@ -286,13 +263,13 @@
       padding: 10px;
   }
   
-  form label, select {
+  /* form label, select {
       margin-left: 15px;
   }
   
   form label {
       margin-top: 10px;
-  }
+  } */
   
   form select {
       margin-bottom: 10px;
@@ -339,12 +316,14 @@
   /* account.html styling */
   .main-account {
       padding: 10px;
+      background-color: white;
+      color: black;
   }
-  
-  .main-account form {
-      padding: 5px;
+
+  .main-account > p {
+      
   }
-  
+
   /* footer styling */
   footer {
       background-color: lightgrey;
@@ -358,6 +337,7 @@
       padding: 0;
       margin: 0;
   }
+
   
   /* media query for small screens */
   @media (min-width: 598px) {
@@ -368,14 +348,14 @@
   
       .onboard {
           /* cite: "https://www.flickr.com/photos/90311612@N05/9304762194/in/album-72157634667491603/" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/cedar-apartments-portrait.jpg');
+          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/cedar-apartments-portrait.jpg');
           background-position: center;
           background-size: cover;
       }
   
       .about {
           /* cite: "https://www.flickr.com/photos/90311612@N05/9301842899/" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/alder-courtyard.jpg');
+          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/alder-courtyard.jpg');
           background-position: center;
           background-size: cover;
       }
@@ -385,6 +365,11 @@
           background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/elm-hall.jpg');
           background-position: center;
           background-size: cover;
+      }
+
+      .video > iframe {
+          width: 560px;
+          height: 315px;
       }
   
       /* banner styling */
@@ -400,14 +385,14 @@
       /* general styling */
       .onboard {
           /* cite: "https://hfs.uw.edu/getmedia/072fc76c-bfb1-459d-9729-afdb223ae0ba/Maple-exterior.jpg.aspx?width=1280&height=854&ext=.jpg" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/maple-hall.jpg');
+          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/maple-hall.jpg');
           background-position: center;
           background-size: cover;
       }
   
       .about {
           /* cite: "https://www.washington.edu/news/2011/09/28/two-new-student-residence-halls-and-an-increased-commitment-to-sustainability/" */
-          background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/cedar-apartments.jpg');
+          background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/cedar-apartments.jpg');
           background-position: center;
           background-size:cover;
       }
