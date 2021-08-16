@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import firebase from 'firebase/app';
 
 export default function AccountPage(props) {
     let fullname = props.user.displayName;
@@ -6,52 +8,52 @@ export default function AccountPage(props) {
 
     //stores all form values in a single object
     const [formValues, setFormValues] = useState({
-        'pronouns': undefined,
-        'city': undefined,
-        'state': undefined,
-        'country': undefined,
-        'primary_lang': undefined,
-        'second_lang': undefined,
+        'pronouns': null,
+        'city': null,
+        'state': null,
+        'country': null,
+        'primary_lang': null,
+        'second_lang': null,
 
-        'phone': undefined,
-        'email': undefined,
-        'facebook': undefined,
-        'instagram': undefined,
-        'snapchat': undefined,
-        'wechat': undefined,
-        'discord': undefined,
+        'phone': null,
+        'email': null,
+        'facebook': null,
+        'instagram': null,
+        'snapchat': null,
+        'wechat': null,
+        'discord': null,
 
-        'major': undefined,
-        'class_standing': undefined,
-        'graduation': undefined,
-        'housing_type': undefined,
-        'room_type': undefined,
-        'bathroom_type': undefined,
-        'bldg_one': undefined,
-        'bldg_two': undefined,
-        'bldg_three': undefined,
+        'major': null,
+        'class_standing': null,
+        'graduation': null,
+        'housing_type': null,
+        'room_type': null,
+        'bathroom_type': null,
+        'bldg_one': null,
+        'bldg_two': null,
+        'bldg_three': null,
 
-        'morning': undefined,
-        'weeknights': undefined,
-        'weekends': undefined,
-        'drinking': undefined,
-        'smoking': undefined,
-        'organizing': undefined,
-        'cleaning': undefined,
-        'study': undefined,
-        'music_listening': undefined,
+        'morning': null,
+        'weeknights': null,
+        'weekends': null,
+        'drinking': null,
+        'smoking': null,
+        'organizing': null,
+        'cleaning': null,
+        'study': null,
+        'music_listening': null,
 
-        'hobbies': undefined,
-        'adjectives': undefined,
-        'social_rank': undefined,
-        'music': undefined,
-        'artist': undefined,
-        'movie': undefined,
-        'favorite_movie': undefined,
-        'television': undefined,
-        'streaming': undefined,
+        'hobbies': null,
+        'adjectives': null,
+        'social_rank': null,
+        'music': null,
+        'artist': null,
+        'movie': null,
+        'favorite_movie': null,
+        'television': null,
+        'streaming': null,
 
-        'description': undefined
+        'description': null
     })
 
     //update state for a specific field
@@ -64,9 +66,19 @@ export default function AccountPage(props) {
         setFormValues(copy);
     }
 
-    //handle createAccount button
+    // useEffect(() => {
+    //     const formRef = firebase.database().ref('user');
+    //     formRef.on('value', (snapshot) => {
+    //         const theValue = snapshot.val();
+    //         console.log("value of message: " + theValue)
+    //     })
+    // }, [])
+
+    //handle submitting form button
     const handleSubmit = (event) => {
         event.preventDefault();
+        const formRef = firebase.database().ref(props.user.uid);
+        formRef.set(formValues);
     }
 
     return (
@@ -92,9 +104,9 @@ export default function AccountPage(props) {
                         <label htmlFor="pronouns_dropdown">Personal Pronoun:</label>
                         <select id="pronouns_dropdown" name="pronouns" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="she">she/her/hers</option>
-                            <option value="he">he/him/his</option>
-                            <option value="they">they/them/their</option>
+                            <option value="she/her/hers">she/her/hers</option>
+                            <option value="he/him/his">he/him/his</option>
+                            <option value="they/them/their">they/them/their</option>
                         </select>
                     </div>
                     <div>
@@ -496,8 +508,8 @@ export default function AccountPage(props) {
 
             <section className="submit">
                 <form>
-                    <input className="btn btn-success" type="submit" value="Submit Form" name="submit" />
-                    <input className="btn btn-danger" type="reset" value="Reset Form" name="reset" />
+                    <button className="btn btn-success" onClick={handleSubmit}>Submit Form</button>
+                    <button className="btn btn-danger">Reset Form</button>
                 </form>
             </section>
         </main>
