@@ -146,7 +146,7 @@ button {
 
 /* footer styling */
 .footer-container {
-    flex: content;
+    flex: auto;
 }
 
 footer {
@@ -184,7 +184,7 @@ footer > address, p {
 
 /* about styling */
 .main-about {
-    height: fit-content;
+    flex: 1;
 }
 
 .about-text {

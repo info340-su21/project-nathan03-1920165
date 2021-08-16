@@ -26,7 +26,7 @@ export default function AboutPage() {
                     <figcaption>This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/" target="_blank"  rel="noopener noreferrer">UW Housing and Food Services via Tumblr</a></cite></figcaption>
                 </figure>
             </div>
-            </div>
-        </main>
+        </div>
+    </main>
         )
     }
