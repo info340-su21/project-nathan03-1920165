@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Collapsible from 'react-collapsible';
 
+import avatar from '../img/avatar.jpg';
+
 import firebase from 'firebase/app';
 import 'firebase/database';
 
@@ -223,7 +225,7 @@ function Results() {
         <div className="results-page-container">
             <div className="results-entry-container">
                 <div className="pfp-results">
-                    <Link to='/profile'><img className="pfp" src="../img/avatar.jpg" alt="the user's avatar"/></Link>
+                    <Link to='/profile'><img className="pfp" src={avatar} alt="the user's avatar"/></Link>
                 </div>
 
                 <div className="results-important">
@@ -243,7 +245,7 @@ function Results() {
             </div>
             <div className="results-entry-container">
                 <div className="pfp-results">
-                    <Link to='/profile'><img className="pfp" src="../img/avatar.jpg" alt="the user's avatar"/></Link>
+                    <Link to='/profile'><img className="pfp" src={avatar} alt="the user's avatar"/></Link>
                 </div>
 
                 <div className="results-important">
