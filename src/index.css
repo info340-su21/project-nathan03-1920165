@@ -25,10 +25,10 @@ main {
 }
 
 h1, nav {
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-family: 'Luckiest Guy', cursive;
 }
-
+/* what is legend*/
 h2, legend {
     font-family: 'Luckiest Guy', cursive;
     font-size: 1.5em;
@@ -38,24 +38,20 @@ h2, legend {
     padding: 0.5rem;
 }
 
-.accordion-button {
-    font-family: 'Luckiest Guy', cursive;
-    background-color: #cd9703;
-    color: white;
-    font-size: 1em;
-}
-
-h3, label {
+h3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
-    font-size: 1.3em;
-    padding: 0;
-    margin: 0;
+    font-size: 1.2rem;
+    text-decoration: underline;
 }
 
-h3 {
-    text-decoration: underline;
-    padding-top: 10px;
+.sub-section-end {
+    padding-bottom: 1.5%;
+}
+
+label {
+    font-weight: 600;
+    padding-right: 1%;
 }
 
 .page-container {
@@ -64,18 +60,9 @@ h3 {
     height: 100%;
 }
 
-.main-container {
+.main-container, .onboard, .login, .about {
     flex: 1;
     height: 100%;
-}
-
-.onboard, .login, .about {
-    flex: 1;
-    height: 100%;
-}
-
-.footer-container {
-    flex: content;
 }
 
 .pfp {
@@ -88,22 +75,8 @@ h3 {
     padding: 50px;
 }
 
-.back {
-    margin: 10px;
-    padding: 10px;
-}
-
 em {
     font-weight: bold;
-}
-
-hr {
-    margin: 5px 0;
-    color:whitesmoke
-}
-
-div > label {
-    padding-right: 10px;
 }
 
 form > em {
@@ -140,7 +113,7 @@ form > em {
 
 .banner nav {
     display: block;
-    flex: 1;
+    flex: 3;
 }
 
 .banner ul {
@@ -159,8 +132,26 @@ form > em {
     display: none;
 }
 
+/* footer styling */
+.footer-container {
+    flex: content;
+}
+
+footer {
+    background-color: lightgrey;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+footer > address, p {
+    padding: 0;
+    margin: 0;
+}
+
 /* onboard.html styling */
-.main-login > .sign-up ,.main-onboard > .welcome {
+.main-onboard > .welcome {
     padding: 5%;
 }
 
@@ -182,7 +173,6 @@ form > em {
 /* about.html styling */
 .main-about {
     height: fit-content;
-    padding: 10px;
 }
 
 .about-text {
@@ -207,7 +197,7 @@ form > em {
 }
 
 .main-about img {
-    max-width: 500px;
+    max-width: 450px;
     padding: 10px;
 }
 
@@ -216,19 +206,57 @@ form > em {
 }
 
 /* login.html styling */
+
 .main-login {
+    height: 100%;
     font-family: 'Luckiest Guy', cursive;
-    text-align: center;
-    padding: 10px;
 }
 
 .authenticate {
-    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: inherit;
+    width: 100%;
+}
+
+/* account.html styling */
+
+.main-account {
+    padding: 3%;
+    background-color: white;
+    color: black;
+}
+
+.instructions {
+    font-family: 'Lilita One', cursive;
+    font-size: 1.2rem;
+    margin: 0.2em 0 1em 0;
+}
+
+.form-section-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.3em;
+}
+
+.form-section-container > div, .form-section-container > div > div {
+    flex: auto;
+    margin-bottom: 0.6rem;
+}
+
+input, select {
+    width: 20rem;
+}
+
+.btn-success {
+    margin-right: 10px;
 }
 
 /* index.html styling */
-.accordion-body {
-    background-color: #165CA9;
+.home-page {
+    background-color: white;
 }
 .main-container-index{
     display: flex;
@@ -253,27 +281,7 @@ form > em {
 }
 
 /* filter.html styling */
-/* form {
-    color: white;
-}
 
-form p {
-    background-color: black;
-    margin: 5px 0px;
-    padding: 10px;
-} */
-
-/* form label, select {
-    margin-left: 15px;
-}
-
-form label {
-    margin-top: 10px;
-} */
-
-/* form select {
-    margin-bottom: 10px;
-} */
 
 /* results.html styling */
 .results {
@@ -313,35 +321,6 @@ form label {
     padding: 10px;
 }
 
-/* account.html styling */
-.main-account {
-    padding: 10px;
-    background-color: white;
-    color: black;
-}
-
-.main-account form {
-    padding: 10px;
-}
-
-.instructions {
-    padding: 10px;
-}
-
-/* footer styling */
-footer {
-    background-color: lightgrey;
-    width: 100%;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-
-footer > address, p {
-    padding: 0;
-    margin: 0;
-}
-
 /* media query for small screens */
 @media (min-width: 598px) {
     /* general styling */
@@ -365,7 +344,7 @@ footer > address, p {
 
     .login {
         /* cite: "https://www.flickr.com/photos/90311612@N05/9308651365" */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/elm-hall.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('./img/elm-hall.jpg');
         background-position: center;
         background-size: cover;
     }
@@ -402,7 +381,7 @@ footer > address, p {
 
     .login {
         /* cite: "https://www.flickr.com/photos/90311612@N05/10176551956/" */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/mercer-court.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('./img/mercer-court.jpg');
         background-position: center;
         background-size: cover;
     }

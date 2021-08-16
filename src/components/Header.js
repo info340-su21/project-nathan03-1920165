@@ -20,7 +20,7 @@ export default function Header(props) {
                         <ul>
                             <li><Link to='/'>Home <i className="fas fa-home" aria-label="Home"></i></Link></li>
                             <li><Link to='/about'>About <i className="fas fa-info-circle" aria-label="About"></i></Link></li>
-                            <li><Link to='/login'>Account <i className="fas fa-user-circle" aria-label="Login"></i></Link></li>
+                            <li><Link to='/login'>Sign In <i className="fas fa-user-circle" aria-label="Login"></i></Link></li>
                         </ul>
                     </div>
                 </nav>
@@ -30,7 +30,7 @@ export default function Header(props) {
         return (
             <div className="banner">
                 <header>
-                    <h1><Link exact to='/home'>UniteDawgs</Link></h1>
+                    <h1><Link exact to='/'>UniteDawgs</Link></h1>
                 </header>
                 <nav>
                     <div className="mobile">
