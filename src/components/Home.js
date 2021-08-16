@@ -46,8 +46,6 @@ export default function Accordionize(props) {
 }
 
 function FilterForm(props) {
-    let userFilter = props.user.uid + "_filter";
-
     //stores all filter values in a single object
     const [filterValues, setFilterValues] = useState({
         'month_type_filter': null,
@@ -78,7 +76,7 @@ function FilterForm(props) {
     //handle submitting filter button
     const handleSubmitFilter = (event) => {
         event.preventDefault();
-        const filterRef = firebase.database().ref(userFilter);
+        const filterRef = firebase.database().ref("filter/" + props.user.uid);
         filterRef.set(filterValues);
     }
 

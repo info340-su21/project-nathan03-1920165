@@ -80,8 +80,8 @@ export default function AccountPage(props) {
     //handle submitting form button
     const handleSubmit = (event) => {
         event.preventDefault();
-        const formRef = firebase.database().ref(props.user.uid);
-        formRef.set(formValues);
+        const formRef = firebase.database().ref("users/" + props.user.uid);
+        formRef.update(formValues);
     }
 
     return (
@@ -99,10 +99,6 @@ export default function AccountPage(props) {
                     Tell us all about you.
                 </div>
                 <form>
-                    {/* <div>
-                        <label htmlFor="picture_upload">Choose a profile picture:</label>
-                        <input type="file" id="picture_upload" name="picture" accept=".png, .jpg, .jpeg" />
-                    </div> */}
                     <section className="form-section-container">
                         <div>
                             <label htmlFor="pronouns_dropdown">Personal Pronoun:</label>
