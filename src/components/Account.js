@@ -26,7 +26,9 @@ export default function AccountPage(props) {
         'major': null,
         'class_standing': null,
         'graduation': null,
-        'housing_type': null,
+        'month_type': null,
+        'building_type': null,
+        'location_type': null,
         'room_type': null,
         'bathroom_type': null,
         'bldg_one': null,
@@ -183,11 +185,11 @@ export default function AccountPage(props) {
                         <label htmlFor="class-standing">Class Standing</label>
                         <select id="class-standing" name="class-standing" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="freshman">Freshman</option>
-                            <option value="sophomore">Sophomore</option>
-                            <option value="junior">Junior</option>
-                            <option value="senior">Senior</option>
-                            <option value="graduate">Graduate</option>
+                            <option value="Freshman">Freshman</option>
+                            <option value="Sophomore">Sophomore</option>
+                            <option value="Junior">Junior</option>
+                            <option value="Senior">Senior</option>
+                            <option value="Graduate">Graduate</option>
                         </select>
                     </div>
                     <div>
@@ -200,24 +202,36 @@ export default function AccountPage(props) {
             <section className="housing">
                 <h2>Housing Preferences</h2>
                 <div className="instructions">
-                    <em>Describe your housing preferences. (Select all that apply)</em><br /><br />
-                    <em>For Windows users – hold down Ctrl key to select multiple options</em><br />
-                    <em>For Mac users – hold down Command key to select multiple options</em>
+                    <em>Describe your housing preferences. (Select all that apply)</em>
                 </div>
                 <form>
                     <div>
                         <div>
-                            <label htmlFor="housing_type">Resident Housing</label>
+                            <label>Resident Housing</label>
                             <p><em>What type of housing are you looking for?</em></p>
                         </div>
                         <div>
-                            <select id="housing_type" name="housing_type" onChange={handleChange} size="6" multiple>
-                                <option value="9_month">9-month</option>
-                                <option value="12_month">12-month</option>
-                                <option value="residence">Residence Hall</option>
-                                <option value="apartment">Apartment Communities</option>
-                                <option value="north">North Campus</option>
-                                <option value="west">West Campus</option>
+                            <label htmlFor="month_type">Resident Housing</label>
+                            <select id="month_type" name="month_type" onChange={handleChange}>
+                                <option hidden="">Select one</option>
+                                <option value="9-month">9-month</option>
+                                <option value="12-month">12-month</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="building_type">Residence Hall or Apartment Communities</label>
+                            <select id="building_type" name="building_type" onChange={handleChange}>
+                                <option hidden="">Select one</option>
+                                <option value="Residence Hall">Residence Hall</option>
+                                <option value="Apartment Communities">Apartment Communities</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="location_type">North Campus or West Campus</label>
+                            <select id="location_type" name="location_type" onChange={handleChange}>
+                                <option hidden="">Select one</option>
+                                <option value="North Campus">North Campus</option>
+                                <option value="West Campus">West Campus</option>
                             </select>
                         </div>
                     </div>
@@ -227,11 +241,12 @@ export default function AccountPage(props) {
                             <p><em>What type of room are you looking for?</em></p>
                         </div>
                         <div>
-                            <select id="room_type" name="room_type" onChange={handleChange} size="4" multiple>
-                                <option value="double">Double</option>
-                                <option value="triple">Triple</option>
-                                <option value="3_4_person_suite">3 or 4 Person Room/Suite</option>
-                                <option value="apartment_style">Single in a Shared Apartment</option>
+                            <select id="room_type" name="room_type" onChange={handleChange}>
+                                <option hidden="">Select one</option>
+                                <option value="Double">Double</option>
+                                <option value="Triple">Triple</option>
+                                <option value="3 or 4 Person Room/Suite">3 or 4 Person Room/Suite</option>
+                                <option value="Single in a Shared Apartment">Single in a Shared Apartment</option>
                             </select>
                         </div>
                     </div>
@@ -241,11 +256,12 @@ export default function AccountPage(props) {
                             <p><em>What type of bathroom are you looking for?</em></p>
                         </div>
                         <div>
-                            <select id="bathroom_type" name="bathroom_type" onChange={handleChange} size="4" multiple>
-                                <option value="private">Private</option>
-                                <option value="semi_private">Semi-private</option>
-                                <option value="community_single">Community - single gender</option>
-                                <option value="community_all">Community - all gender</option>
+                            <select id="bathroom_type" name="bathroom_type" onChange={handleChange}>
+                                <option hidden="">Select one</option>
+                                <option value="Private">Private</option>
+                                <option value="Semi-private">Semi-private</option>
+                                <option value="Community - single gender">Community - single gender</option>
+                                <option value="Community - all gender">Community - all gender</option>
                             </select>
                         </div>
                     </div>
@@ -253,69 +269,69 @@ export default function AccountPage(props) {
                         <label htmlFor="bldg_1">1st Building Preference</label>
                         <select id="bldg_1" name="bldg_one"onChange={handleChange} >
                             <option hidden="">Select one</option>
-                            <option value="alder">Alder Hall</option>
-                            <option value="cedar">Cedar Apartments</option>
-                            <option value="elm">Elm Hall</option>
-                            <option value="haggett">Haggett Hall</option>
-                            <option value="hansee">Hansee Hall</option>
-                            <option value="lander">Lander Hall</option>
-                            <option value="madrona">Madrona Hall</option>
-                            <option value="maple">Maple Hall</option>
-                            <option value="mccarty">McCarty Hall</option>
-                            <option value="mcmahon">McMahon Hall</option>
-                            <option value="mercer">Mercer Court</option>
-                            <option value="nordheim">Nordheim Court</option>
-                            <option value="oak">Oak Hall</option>
-                            <option value="poplar">Poplar Hall</option>
-                            <option value="stevens">Stevens Court</option>
-                            <option value="terry">Terry Hall</option>
-                            <option value="willow">Willow Hall</option>
+                            <option value="Alder Hall">Alder Hall</option>
+                            <option value="Cedar Apartments">Cedar Apartments</option>
+                            <option value="Elm Hall">Elm Hall</option>
+                            <option value="Haggett Hall">Haggett Hall</option>
+                            <option value="Hansee Hall">Hansee Hall</option>
+                            <option value="Lander Hall">Lander Hall</option>
+                            <option value="Madrona Hall">Madrona Hall</option>
+                            <option value="Maple Hall">Maple Hall</option>
+                            <option value="McCarty Hall">McCarty Hall</option>
+                            <option value="McMahon Hall">McMahon Hall</option>
+                            <option value="Mercer Court">Mercer Court</option>
+                            <option value="Nordheim Court">Nordheim Court</option>
+                            <option value="Oak Hall">Oak Hall</option>
+                            <option value="Poplar Hall">Poplar Hall</option>
+                            <option value="Stevens Court">Stevens Court</option>
+                            <option value="Terry Hall">Terry Hall</option>
+                            <option value="Willow Hall">Willow Hall</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="bldg_2">2nd Building Preference</label>
                         <select id="bldg_2" name="bldg_two" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="alder">Alder Hall</option>
-                            <option value="cedar">Cedar Apartments</option>
-                            <option value="elm">Elm Hall</option>
-                            <option value="haggett">Haggett Hall</option>
-                            <option value="hansee">Hansee Hall</option>
-                            <option value="lander">Lander Hall</option>
-                            <option value="madrona">Madrona Hall</option>
-                            <option value="maple">Maple Hall</option>
-                            <option value="mccarty">McCarty Hall</option>
-                            <option value="mcmahon">McMahon Hall</option>
-                            <option value="mercer">Mercer Court</option>
-                            <option value="nordheim">Nordheim Court</option>
-                            <option value="oak">Oak Hall</option>
-                            <option value="poplar">Poplar Hall</option>
-                            <option value="stevens">Stevens Court</option>
-                            <option value="terry">Terry Hall</option>
-                            <option value="willow">Willow Hall</option>
+                            <option value="Alder Hall">Alder Hall</option>
+                            <option value="Cedar Apartments">Cedar Apartments</option>
+                            <option value="Elm Hall">Elm Hall</option>
+                            <option value="Haggett Hall">Haggett Hall</option>
+                            <option value="Hansee Hall">Hansee Hall</option>
+                            <option value="Lander Hall">Lander Hall</option>
+                            <option value="Madrona Hall">Madrona Hall</option>
+                            <option value="Maple Hall">Maple Hall</option>
+                            <option value="McCarty Hall">McCarty Hall</option>
+                            <option value="McMahon Hall">McMahon Hall</option>
+                            <option value="Mercer Court">Mercer Court</option>
+                            <option value="Nordheim Court">Nordheim Court</option>
+                            <option value="Oak Hall">Oak Hall</option>
+                            <option value="Poplar Hall">Poplar Hall</option>
+                            <option value="Stevens Court">Stevens Court</option>
+                            <option value="Terry Hall">Terry Hall</option>
+                            <option value="Willow Hall">Willow Hall</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="bldg_3">3rd Building Preference</label>
                         <select id="bldg_3" name="bldg_three" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="alder">Alder Hall</option>
-                            <option value="cedar">Cedar Apartments</option>
-                            <option value="elm">Elm Hall</option>
-                            <option value="haggett">Haggett Hall</option>
-                            <option value="hansee">Hansee Hall</option>
-                            <option value="lander">Lander Hall</option>
-                            <option value="madrona">Madrona Hall</option>
-                            <option value="maple">Maple Hall</option>
-                            <option value="mccarty">McCarty Hall</option>
-                            <option value="mcmahon">McMahon Hall</option>
-                            <option value="mercer">Mercer Court</option>
-                            <option value="nordheim">Nordheim Court</option>
-                            <option value="oak">Oak Hall</option>
-                            <option value="poplar">Poplar Hall</option>
-                            <option value="stevens">Stevens Court</option>
-                            <option value="terry">Terry Hall</option>
-                            <option value="willow">Willow Hall</option>
+                            <option value="Alder Hall">Alder Hall</option>
+                            <option value="Cedar Apartments">Cedar Apartments</option>
+                            <option value="Elm Hall">Elm Hall</option>
+                            <option value="Haggett Hall">Haggett Hall</option>
+                            <option value="Hansee Hall">Hansee Hall</option>
+                            <option value="Lander Hall">Lander Hall</option>
+                            <option value="Madrona Hall">Madrona Hall</option>
+                            <option value="Maple Hall">Maple Hall</option>
+                            <option value="McCarty Hall">McCarty Hall</option>
+                            <option value="McMahon Hall">McMahon Hall</option>
+                            <option value="Mercer Court">Mercer Court</option>
+                            <option value="Nordheim Court">Nordheim Court</option>
+                            <option value="Oak Hall">Oak Hall</option>
+                            <option value="Poplar Hall">Poplar Hall</option>
+                            <option value="Stevens Court">Stevens Court</option>
+                            <option value="Terry Hall">Terry Hall</option>
+                            <option value="Willow Hall">Willow Hall</option>
                         </select>
                     </div>
                 </form>
@@ -332,30 +348,30 @@ export default function AccountPage(props) {
                         <label htmlFor="morning_dropdown">What time do you usually wake up in the morning?</label>
                         <select id="morning_dropdown" name="morning" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="5am-or-earlier">5 AM or earlier</option>
-                            <option value="5am-to-8am">Between 5 AM and 8 AM</option>
-                            <option value="8am-to-noon">Between 8 AM and Noon</option>
-                            <option value="noon-or-later">Noon or later</option>
+                            <option value="5 AM or earlier">5 AM or earlier</option>
+                            <option value="Between 5 AM and 8 AM">Between 5 AM and 8 AM</option>
+                            <option value="Between 8 AM and Noon">Between 8 AM and Noon</option>
+                            <option value="Noon or later">Noon or later</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="weeknights_dropdown">What time do you go to bed on weeknights?</label>
                         <select id="weeknights_dropdown" name="weeknights" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="5pm-or-earlier">10 PM or earlier</option>
-                            <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
-                            <option value="around-midnight">Around Midnight</option>
-                            <option value="2am-or-later">2 AM or later</option>
+                            <option value="10 PM or earlier">10 PM or earlier</option>
+                            <option value="Between 10 PM and Midnight">Between 10 PM and Midnight</option>
+                            <option value="Around Midnight">Around Midnight</option>
+                            <option value="2 AM or later">2 AM or later</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="weekends_dropdown">What time do you go to bed on weekends?</label>
                         <select id="weekends_dropdown" name="weekends" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="5pm-or-earlier">10 PM or earlier</option>
-                            <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
-                            <option value="around-midnight">Around Midnight</option>
-                            <option value="2am-or-later">2 AM or later</option>
+                            <option value="10 PM or earlier">10 PM or earlier</option>
+                            <option value="Between 10 PM and Midnight">Between 10 PM and Midnight</option>
+                            <option value="Around Midnight">Around Midnight</option>
+                            <option value="2 AM or later">2 AM or later</option>
                         </select>
                     </div>
 
@@ -364,18 +380,18 @@ export default function AccountPage(props) {
                         <label htmlFor="drinking_dropdown">Do you drink alcohol?</label>
                         <select id="drinking_dropdown" name="drinking" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                            <option value="sometimes">Sometimes</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Sometimes">Sometimes</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="smoking_dropdown">Do you smoke/vape?</label>
                         <select id="smoking_dropdown" name="smoking" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                            <option value="sometimes">Sometimes</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Sometimes">Sometimes</option>
                         </select>
                     </div>
 
@@ -384,22 +400,22 @@ export default function AccountPage(props) {
                         <label htmlFor="organizing_dropdown">How would you describe your own bedroom?</label>
                         <select id="organizing_dropdown" name="organizing" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="very-organized">Very organized</option>
-                            <option value="organized">Organized</option>
-                            <option value="neither">Neither organized or disorganized</option>
-                            <option value="disorganized">Disorganized</option>
-                            <option value="very-disorganized">Very disorganized</option>
+                            <option value="Very organized">Very organized</option>
+                            <option value="Organized">Organized</option>
+                            <option value="Neither organized or disorganized">Neither organized or disorganized</option>
+                            <option value="Disorganized">Disorganized</option>
+                            <option value="Very disorganized">Very disorganized</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="cleaning_dropdown">How often do you clean your room/bathroom?</label>
                         <select id="cleaning_dropdown" name="cleaning" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="never">Never</option>
-                            <option value="rarely">Rarely</option>
-                            <option value="sometimes">Sometimes</option>
-                            <option value="often">Often</option>
-                            <option value="always">Always</option>
+                            <option value="Always">Always</option>
+                            <option value="Often">Often</option>
+                            <option value="Sometimes">Sometimes</option>
+                            <option value="Rarely">Rarely</option>
+                            <option value="Never">Never</option>
                         </select>
                     </div>
 
@@ -408,20 +424,20 @@ export default function AccountPage(props) {
                         <label htmlFor="study_dropdown">Where do you usually study?</label>
                         <select id="study_dropdown" name="study" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="desk">At my desk</option>
-                            <option value="library">At the library</option>
-                            <option value="study-lounge">In a study lounge</option>
-                            <option value="other">Other</option>
+                            <option value="At my desk">At my desk</option>
+                            <option value="At the library">At the library</option>
+                            <option value="In a study lounge">In a study lounge</option>
+                            <option value="Anywhere">Anywhere</option>
                         </select>
                     </div>
                     <div>
                         <label htmlFor="music_dropdown">When studying in your bedroom, do you like listening to music?</label>
                         <select id="music_dropdown" name="music_listening" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="yes-speakers">Yes, I play music on my speakers.</option>
-                            <option value="yes-headphones">Yes, I listen using headphones.</option>
-                            <option value="sometimes">Sometimes, it depends.</option>
-                            <option value="no">No, I like it quiet.</option>
+                            <option value="Yes, I play music on my speakers.">Yes, I play music on my speakers.</option>
+                            <option value="Yes, I listen using headphones.">Yes, I listen using headphones.</option>
+                            <option value="Sometimes, it depends.">Sometimes, it depends.</option>
+                            <option value="No, I like it quiet.">No, I like it quiet.</option>
                         </select>
                     </div>
                 </form>
@@ -439,17 +455,17 @@ export default function AccountPage(props) {
                     </div>
                     <div>
                         <label htmlFor="adjective_field">What are three adjectives that describe you?</label>
-                        <input type="text" id="adjective_field" name="adjectives" onChange={handleChange} placeholder="adj1, adj2, adj3" />
+                        <input type="text" id="adjective_field" name="adjectives" onChange={handleChange} placeholder="Adj1, Adj2, Adj3" />
                     </div>
                     <div>
                         <label htmlFor="social_rank_dropdown">How social are you?</label>
                         <select id="social_rank_dropdown" name="social_rank" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="vsocial">Very social</option>
-                            <option value="social">Social</option>
-                            <option value="neither">Neither social or shy</option>
-                            <option value="shy">Shy</option>
-                            <option value="vshy">Very shy</option>
+                            <option value="Very social">Very social</option>
+                            <option value="Social">Social</option>
+                            <option value="Neither social or shy">Neither social or shy</option>
+                            <option value="Shy">Shy</option>
+                            <option value="Very shy">Very shy</option>
                         </select>
                     </div>
 
@@ -482,12 +498,12 @@ export default function AccountPage(props) {
                         <label htmlFor="streaming">If you had to pick one streaming service to binge watch, which would you choose?</label>
                         <select id="streaming" name="streaming" onChange={handleChange}>
                             <option hidden="">Select one</option>
-                            <option value="netflix">Netflix</option>
-                            <option value="hulu">Hulu</option>
-                            <option value="disneyplus">Disney+</option>
-                            <option value="hbomax">HBO Max</option>
-                            <option value="primevideo">Amazon Prime Video</option>
-                            <option value="none">I am not subscribed to any streaming service</option>
+                            <option value="Netflix">Netflix</option>
+                            <option value="Hulu">Hulu</option>
+                            <option value="Disney+">Disney+</option>
+                            <option value="HBO Max">HBO Max</option>
+                            <option value="Amazon Prime Video">Amazon Prime Video</option>
+                            <option value="N/A">I am not subscribed to any streaming service</option>
                         </select>
                     </div>
                 </form>
