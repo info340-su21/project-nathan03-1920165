@@ -28,7 +28,7 @@ h1, nav {
     font-size: 1.7em;
     font-family: 'Luckiest Guy', cursive;
 }
-/* what is legend*/
+
 h2, legend {
     font-family: 'Luckiest Guy', cursive;
     font-size: 1.5em;
@@ -145,10 +145,6 @@ button {
 }
 
 /* footer styling */
-.footer-container {
-    flex: auto;
-}
-
 footer {
     background-color: lightgrey;
     width: 100%;
@@ -187,6 +183,10 @@ footer > address, p {
     flex: 1;
 }
 
+.about-heading {
+    padding: 15px 15px 0px 15px;
+}
+
 .about-text {
     margin: 5px 0px;
 }
@@ -218,7 +218,6 @@ footer > address, p {
 }
 
 /* login styling */
-
 .main-login {
     height: 100%;
     font-family: 'Luckiest Guy', cursive;
@@ -234,7 +233,6 @@ footer > address, p {
 }
 
 /* account styling */
-
 .main-account, .main-connect, .main-profile {
     padding: 3%;
     background-color: white;
