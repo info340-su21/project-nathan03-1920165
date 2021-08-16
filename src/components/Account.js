@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import firebase from 'firebase/app';
+import 'firebase/database';
 
 export default function AccountPage(props) {
     let fullname = props.user.displayName;
@@ -187,8 +188,8 @@ export default function AccountPage(props) {
                             <input type="text" id="major" name="major" onChange={handleChange} placeholder="Informatics" />
                         </div>
                         <div>
-                            <label htmlFor="class-standing">Class Standing</label>
-                            <select id="class-standing" name="class-standing" onChange={handleChange}>
+                            <label htmlFor="class_standing">Class Standing</label>
+                            <select id="class_standing" name="class_standing" onChange={handleChange}>
                                 <option hidden="">Select one</option>
                                 <option value="Freshman">Freshman</option>
                                 <option value="Sophomore">Sophomore</option>
@@ -208,12 +209,12 @@ export default function AccountPage(props) {
             <section className="housing">
                 <h2>Housing Preferences</h2>
                 <div className="instructions">
-                    Describe your housing preferences. (Select all that apply)
+                    Describe your housing preferences.
                 </div>
                 <form>
                     <section className="form-section-container">
                         <div>
-                            <label htmlFor="month_type">Resident Housing</label>
+                            <label htmlFor="month_type">9-month or 12-month?</label>
                             <select id="month_type" name="month_type" onChange={handleChange}>
                                 <option hidden="">Select one</option>
                                 <option value="9-month">9-month</option>
@@ -221,7 +222,7 @@ export default function AccountPage(props) {
                             </select>
                         </div>
                         <div>
-                            <label htmlFor="building_type">Residence Hall or Apartment Communities</label>
+                            <label htmlFor="building_type">Residence Hall or Apartment Communities?</label>
                             <select id="building_type" name="building_type" onChange={handleChange}>
                                 <option hidden="">Select one</option>
                                 <option value="Residence Hall">Residence Hall</option>
@@ -229,7 +230,7 @@ export default function AccountPage(props) {
                             </select>
                         </div>
                         <div>
-                            <label htmlFor="location_type">North Campus or West Campus</label>
+                            <label htmlFor="location_type">North Campus or West Campus?</label>
                             <select id="location_type" name="location_type" onChange={handleChange}>
                                 <option hidden="">Select one</option>
                                 <option value="North Campus">North Campus</option>
@@ -357,7 +358,7 @@ export default function AccountPage(props) {
                                 <option value="2 AM or later">2 AM or later</option>
                             </select>
                         </div>
-                        <div className = "sub-section-end">
+                        <div className="sub-section-end">
                             <label htmlFor="weekends_dropdown">What time do you go to bed on weekends?</label>
                             <select id="weekends_dropdown" name="weekends" onChange={handleChange}>
                                 <option hidden="">Select one</option>
@@ -378,7 +379,7 @@ export default function AccountPage(props) {
                                 <option value="Sometimes">Sometimes</option>
                             </select>
                         </div>
-                        <div className = "sub-section-end">
+                        <div className="sub-section-end">
                             <label htmlFor="smoking_dropdown">Do you smoke/vape?</label>
                             <select id="smoking_dropdown" name="smoking" onChange={handleChange}>
                                 <option hidden="">Select one</option>
@@ -400,7 +401,7 @@ export default function AccountPage(props) {
                                 <option value="Very disorganized">Very disorganized</option>
                             </select>
                         </div>
-                        <div className = "sub-section-end">
+                        <div className="sub-section-end">
                             <label htmlFor="cleaning_dropdown">How often do you clean your room/bathroom?</label>
                             <select id="cleaning_dropdown" name="cleaning" onChange={handleChange}>
                                 <option hidden="">Select one</option>
@@ -452,7 +453,7 @@ export default function AccountPage(props) {
                             <label htmlFor="adjective_field">What are three adjectives that describe you?</label>
                             <input type="text" id="adjective_field" name="adjectives" onChange={handleChange} placeholder="1, 2, 3" />
                         </div>
-                        <div className = "sub-section-end">
+                        <div className="sub-section-end">
                             <label htmlFor="social_rank_dropdown">How social are you?</label>
                             <select id="social_rank_dropdown" name="social_rank" onChange={handleChange}>
                                 <option hidden="">Select one</option>
@@ -469,7 +470,7 @@ export default function AccountPage(props) {
                             <label htmlFor="music_field">What music genres do you listen to?</label>
                             <input type="text" id="music_field" name="music" onChange={handleChange} />
                         </div>
-                        <div className = "sub-section-end">
+                        <div className="sub-section-end">
                             <label htmlFor="artist_field">Who is your favorite artist?</label>
                             <input type="text" id="artist_field" name="artist" onChange={handleChange} />
                         </div>
@@ -479,7 +480,7 @@ export default function AccountPage(props) {
                             <label htmlFor="movie_field">What movie genres do you like to watch?</label>
                             <input type="text" id="movie_field" name="movie" onChange={handleChange} />
                         </div>
-                        <div className = "sub-section-end">
+                        <div className="sub-section-end">
                             <label htmlFor="fav_movie_field">What is your favorite movie of all time?</label>
                             <input type="text" id="fav_movie_field" name="favorite_movie" onChange={handleChange} />
                         </div>
@@ -511,7 +512,7 @@ export default function AccountPage(props) {
                     Is there anything else you would like someone to know about you?
                 </div>
                 <form>
-                    <div className = "sub-section-end">
+                    <div className="sub-section-end">
                         <label htmlFor="description">Description:</label>
                         <textarea className="form-control" id="description" name="description" onChange={handleChange} placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
                     </div>

@@ -76,7 +76,7 @@ function App() {
                     <LoginPage uiConfig={uiConfig} />
                 </Route>
                 <Route path="/home">
-                    <Accordionize />
+                    <Accordionize user={user} />
                 </Route>
                 <Route path="/profile">
                     <ProfilePage />

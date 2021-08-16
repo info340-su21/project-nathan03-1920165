@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Collapsible from 'react-collapsible';
 
-export default function Accordionize() {
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+export default function Accordionize(props) {
     return (
         <div className="home-page">
-        <Collapsible trigger="Filter Roommates" open={true}>
-            <FilterForm />
-        </Collapsible>
+            <Collapsible trigger="Filter Roommates" open={true}>
+                <FilterForm user={props.user} />
+            </Collapsible>
 
-        <Collapsible trigger="Results">
-            <Results />
-        </Collapsible>
+            <Collapsible trigger="Results">
+                <Results />
+            </Collapsible>
         </div>
-      
       
         // <div className="accordion" id="accordionExample">
         //     <div className="accordion-item">
@@ -45,129 +47,175 @@ export default function Accordionize() {
     )
 }
 
-function FilterForm() {
+function FilterForm(props) {
+    let userFilter = props.user.uid + "_filter";
+
+    //stores all filter values in a single object
+    const [filterValues, setFilterValues] = useState({
+        'month_type_filter': null,
+        'building_type_filter': null,
+        'location_type_filter': null,
+        'room_type_filter': null,
+        'bathroom_type_filter': null,
+        'class_standing_filter': null,
+        'morning_filter': null,
+        'weeknights_filter': null,
+        'weekends_filter': null,
+        'drinking_filter': null,
+        'smoking_filter': null,
+        'organizing_filter': null,
+        'cleaning_filter': null
+    })
+
+    //update state for a specific filter
+    const handleFilter = (event) => {
+        let field = event.target.name;
+        let value = event.target.value;
+
+        let copy = {...filterValues};
+        copy[field] = value;
+        setFilterValues(copy);
+    }
+
+    //handle submitting filter button
+    const handleSubmitFilter = (event) => {
+        event.preventDefault();
+        const filterRef = firebase.database().ref(userFilter);
+        filterRef.set(filterValues);
+    }
+
     return (
         <div>
             <form>
                 <fieldset>
                     <legend>Housing Preferences</legend>
 
-                    <label htmlFor="housing-type">Resident Housing</label>
-                    <p>Select all that apply</p>
-                    <select id="housing-type" name="housing">
+                    <label htmlFor="month_type_filter">9-month or 12-month?</label>
+                    <select id="month_type_filter" name="month_type_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
                         <option value="9-month">9-month</option>
                         <option value="12-month">12-month</option>
-                        <option value="residence">Residence Hall</option>
-                        <option value="apartment">Apartment Communities</option>
-                        <option value="north">North Campus</option>
-                        <option value="west">West Campus</option>
                     </select>
 
-                    <label htmlFor="room-type">Room Type</label>
-                    <p>Select all that apply</p>
-                    <select id="room-type" name="room-type">
-                        <option value="double">Double</option>
-                        <option value="triple">Triple</option>
-                        <option value="3-4-person-suite">3 or 4 Person Room/Suite</option>
-                        <option value="apartment-style">Single in a Shared Apartment</option>
+                    <label htmlFor="building_type_filter">Residence Hall or Apartment Communities?</label>
+                    <select id="building_type_filter" name="building_type_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Residence Hall">Residence Hall</option>
+                        <option value="Apartment Communities">Apartment Communities</option>
                     </select>
 
-                    <label htmlFor="bathroom-type">Bathroom Type</label>
-                    <p>Select all that apply</p>
-                    <select id="bathroom-type" name="Bathroom-type">
-                        <option value="private">Private</option>
-                        <option value="semi-private">Semi-private</option>
-                        <option value="community-single">Community - single gender</option>
-                        <option value="community-all">Community - all gender</option>
+                    <label htmlFor="location_type_filter">North Campus or West Campus?</label>
+                    <select id="location_type_filter" name="location_type_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="North Campus">North Campus</option>
+                        <option value="West Campus">West Campus</option>
+                    </select>
+
+                    <label htmlFor="room_type_filter">Room Type</label>
+                    <select id="room_type_filter" name="room_type_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Double">Double</option>
+                        <option value="Triple">Triple</option>
+                        <option value="3 or 4 Person Room/Suite">3 or 4 Person Room/Suite</option>
+                        <option value="Single in a Shared Apartment">Single in a Shared Apartment</option>
+                    </select>
+
+                    <label htmlFor="bathroom_type_filter">Bathroom Type</label>
+                    <select id="bathroom_type_filter" name="bathroom_type_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Private">Private</option>
+                        <option value="Semi-private">Semi-private</option>
+                        <option value="Community - single gender">Community - single gender</option>
+                        <option value="Community - all gender">Community - all gender</option>
                     </select>
                 </fieldset>
 
                 <fieldset>
                     <legend>School Information</legend>
 
-                    <label htmlFor="className-standing">className Standing</label>
-                    <p>Select all that apply</p>
-                    <select id="className-standing" name="className-standing">
-                        <option value="freshman">Freshman</option>
-                        <option value="sophomore">Sophomore</option>
-                        <option value="junior">Junior</option>
-                        <option value="senior">Senior</option>
-                        <option value="graduate">Graduate</option>
+                    <label htmlFor="class_standing_filter">Class Standing</label>
+                    <select id="class_standing_filter" name="class_standing_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Graduate">Graduate</option>
                     </select>
                 </fieldset>
 
                 <fieldset>
                     <legend>Personal Habits</legend>
 
-                    <label htmlFor="morning">Morning Wake Up</label>
-                    <p>Select one</p>
-                    <select id="morning" name="morning">
-                        <option value="5am-or-earlier">5 AM or earlier</option>
-                        <option value="5am-to-8am">Between 5 AM and 8 AM</option>
-                        <option value="8am-to-noon">Between 8 AM and Noon</option>
-                        <option value="noon-or-later">Noon or later</option>
+                    <label htmlFor="morning_filter">Morning Wake Up</label>
+                    <select id="morning_filter" name="morning_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="5 AM or earlier">5 AM or earlier</option>
+                        <option value="Between 5 AM and 8 AM">Between 5 AM and 8 AM</option>
+                        <option value="Between 8 AM and Noon">Between 8 AM and Noon</option>
+                        <option value="Noon or later">Noon or later</option>
                     </select>
 
-                    <label htmlFor="weeknights">Sleep Schedule on Weeknights</label>
-                    <p>Select one</p>
-                    <select id="weeknights" name="weeknights">
-                        <option value="5pm-or-earlier">10 PM or earlier</option>
-                        <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
-                        <option value="around-midnight">Around Midnight</option>
-                        <option value="2am-or-later">2 AM or later</option>
+                    <label htmlFor="weeknights_filter">Sleep Schedule on Weeknights</label>
+                    <select id="weeknights_filter" name="weeknights_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="10 PM or earlier">10 PM or earlier</option>
+                        <option value="Between 10 PM and Midnight">Between 10 PM and Midnight</option>
+                        <option value="Around Midnight">Around Midnight</option>
+                        <option value="2 AM or later">2 AM or later</option>
                     </select>
 
-                    <label htmlFor="weekends">Sleep Schedule on Weekends</label>
-                    <p>Select one</p>
-                    <select id="weekends" name="weekends">
-                        <option value="5pm-or-earlier">10 PM or earlier</option>
-                        <option value="10pm-to-midnight">Between 10 PM and Midnight</option>
-                        <option value="around-midnight">Around Midnight</option>
-                        <option value="2am-or-later">2 AM or later</option>
+                    <label htmlFor="weekends_filter">Sleep Schedule on Weekends</label>
+                    <select id="weekends_filter" name="weekends_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="10 PM or earlier">10 PM or earlier</option>
+                        <option value="Between 10 PM and Midnight">Between 10 PM and Midnight</option>
+                        <option value="Around Midnight">Around Midnight</option>
+                        <option value="2 AM or later">2 AM or later</option>
                     </select>
 
-                    <label htmlFor="drinking">Alcohol?</label>
-                    <p>Select one</p>
-                    <select id="drinking" name="drinking">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                        <option value="sometimes">Sometimes</option>
+                    <label htmlFor="drinking_filter">Alcohol?</label>
+                    <select id="drinking_filter" name="drinking_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Sometimes">Sometimes</option>
                     </select>
 
-                    <label htmlFor="smoking">Smoke/vape?</label>
-                    <p>Select one</p>
-                    <select id="smoking" name="smoking">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                        <option value="sometimes">Sometimes</option>
+                    <label htmlFor="smoking_filter">Smoke/vape?</label>
+                    <select id="smoking_filter" name="smoking_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Sometimes">Sometimes</option>
                     </select>
 
-                    <label htmlFor="organizing">Bedroom Organization</label>
-                    <p>Select one</p>
-                    <select id="organizing" name="organizing">
-                        <option value="very-organized">Very organized</option>
-                        <option value="organized">Organized</option>
-                        <option value="neither">Neither organized or disorganized</option>
-                        <option value="disorganized">Disorganized</option>
-                        <option value="very-disorganized">Very disorganized</option>
+                    <label htmlFor="organizing_filter">Bedroom Organization</label>
+                    <select id="organizing_filter" name="organizing_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Very organized">Very organized</option>
+                        <option value="Organized">Organized</option>
+                        <option value="Neither organized or disorganized">Neither organized or disorganized</option>
+                        <option value="Disorganized">Disorganized</option>
+                        <option value="Very disorganized">Very disorganized</option>
                     </select>
 
-                    <label htmlFor="cleaning">Bedroom/Bathroom Cleaning</label>
-                    <p>Select one</p>
-                    <select id="cleaning" name="organizing">
-                        <option value="never">Never</option>
-                        <option value="rarely">Rarely</option>
-                        <option value="sometimes">Sometimes</option>
-                        <option value="often">Often</option>
-                        <option value="always">Always</option>
+                    <label htmlFor="cleaning_filter">Bedroom/Bathroom Cleaning</label>
+                    <select id="cleaning_filter" name="cleaning_filter" onChange={handleFilter}>
+                        <option hidden="">Select one</option>
+                        <option value="Always">Always</option>
+                        <option value="Often">Often</option>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="Rarely">Rarely</option>
+                        <option value="Never">Never</option>
                     </select>
                 </fieldset>
             </form>
 
             <section className="submit">
                 <form>
-                    <input className="btn btn-success" type="submit" value="Submit Form" name="submit" />
-                    <input className="btn btn-danger" type="reset" value="Reset Form" name="reset" />
+                    <button className="btn btn-success" onClick={handleSubmitFilter}>Submit Filters</button>
+                    <button className="btn btn-danger">Reset Filters</button>
                 </form>
             </section>
         </div>
