@@ -7,43 +7,39 @@ import 'firebase/database';
 
 export default function Accordionize(props) {
     return (
-        <div className="home-page">
-            <Collapsible trigger="Filter Roommates" open={true}>
-                <FilterForm user={props.user} />
-            </Collapsible>
+        // <div className="home-page">
+        // <Collapsible trigger="Filter Roommates" open={true}>
+        //     <FilterForm user={props.user} />
+        // </Collapsible>
 
-            <Collapsible trigger="Results">
-                <Results />
-            </Collapsible>
-        </div>
-      
-        // <div className="accordion" id="accordionExample">
-        //     <div className="accordion-item">
-        //         <h2 className="accordion-header" id="headingOne">
-        //         <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        //             Filter Roommates
-        //         </button>
-        //         </h2>
-        //         <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        //             <div className="accordion-body">
-        //                 <FilterForm />
-        //             </div>
-        //         </div>
-        //     </div>
-        //     <div className="accordion-item">
-        //         <h2 className="accordion-header" id="headingTwo">
-        //         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        //             Results
-        //         </button>
-        //         </h2>
-        //         {/*add className "collapse to following div for content to disappear*/}
-        //         <div id="collapseTwo" className="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        //             <div className="accordion-body">
-        //                 <Results />
-        //             </div>
-        //         </div>
-        //     </div>
+        // <Collapsible trigger="Results">
+        //     <Results />
+        // </Collapsible>
         // </div>
+      
+        <div className="accordion">
+            <div className="accordion-item">
+                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Filter Roommates
+                </button>
+                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                        <FilterForm user={props.user} />
+                    </div>
+                </div>
+            </div>
+            <div className="accordion-item">
+                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Results
+                </button>
+                {/*add className "collapse to following div for content to disappear*/}
+                <div id="collapseTwo" className="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div className="accordion-body">
+                        <Results />
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 
@@ -225,24 +221,45 @@ function FilterForm(props) {
 function Results() {
     return (
         <div className="results-page-container">
-            <h2>Results</h2>
-            <div className="pfp-results">
-                <Link to='/profile'><img className="pfp" src="img/avatar.jpg" alt="the user's avatar"></img></Link>
-            </div>
+            <div className="results-entry-container">
+                <div className="pfp-results">
+                    <Link to='/profile'><img className="pfp" src="../img/avatar.jpg" alt="the user's avatar"/></Link>
+                </div>
 
-            <div className="results-important">
-                <Link to='/profile'>Name</Link>
-                <p>Pronouns</p>
-            </div>
+                <div className="results-important">
+                    <Link to='/profile'>Name</Link>
+                    <p>Pronouns</p>
+                </div>
 
-            <div className="results-sub">
-                <p>className Standing</p>
-                <p>Major</p>
-                <p>Hometown</p>
-            </div>
+                <div className="results-sub">
+                    <p>Class Standing</p>
+                    <p>Major</p>
+                    <p>Hometown</p>
+                </div>
 
-            <div className="results-connect">
-                <button><Link to='/connect'>Connect</Link></button>
+                <div className="results-connect">
+                    <Link to='/connect'><button class="btn btn-primary">Connect</button></Link>
+                </div>
+            </div>
+            <div className="results-entry-container">
+                <div className="pfp-results">
+                    <Link to='/profile'><img className="pfp" src="../img/avatar.jpg" alt="the user's avatar"/></Link>
+                </div>
+
+                <div className="results-important">
+                    <Link to='/profile'>Name</Link>
+                    <p>Pronouns</p>
+                </div>
+
+                <div className="results-sub">
+                    <p>Class Standing</p>
+                    <p>Major</p>
+                    <p>Hometown</p>
+                </div>
+
+                <div className="results-connect">
+                    <Link to='/connect'><button class="btn btn-primary">Connect</button></Link>
+                </div>
             </div>
         </div>
     )

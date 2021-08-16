@@ -52,6 +52,7 @@ h3 {
 label {
     font-weight: 600;
     padding-right: 1%;
+    padding-bottom: 0.5%;
 }
 
 .page-container {
@@ -60,7 +61,7 @@ label {
     height: 100%;
 }
 
-.main-container, .onboard, .login, .about {
+.main-container, .onboard, .login, .about, .connect {
     flex: 1;
     height: 100%;
 }
@@ -82,6 +83,17 @@ em {
 form > em {
     margin-left: 8px;
 }
+
+a {
+    text-decoration: none;
+}
+
+/* 
+button {
+    font-family: 'Lilita One', cursive;
+    border-width: 2px;
+    border-radius: 10px;
+} */
 
 /* banner styling */
 .banner {
@@ -150,7 +162,7 @@ footer > address, p {
     margin: 0;
 }
 
-/* onboard.html styling */
+/* onboard styling */
 .main-onboard > .welcome {
     padding: 5%;
 }
@@ -170,7 +182,7 @@ footer > address, p {
     color: white;
 }
 
-/* about.html styling */
+/* about styling */
 .main-about {
     height: fit-content;
 }
@@ -205,7 +217,7 @@ footer > address, p {
     color: white;
 }
 
-/* login.html styling */
+/* login styling */
 
 .main-login {
     height: 100%;
@@ -221,9 +233,9 @@ footer > address, p {
     width: 100%;
 }
 
-/* account.html styling */
+/* account styling */
 
-.main-account {
+.main-account, .main-connect, .main-profile {
     padding: 3%;
     background-color: white;
     color: black;
@@ -254,10 +266,20 @@ input, select {
     margin-right: 10px;
 }
 
-/* index.html styling */
+/* home styling */
 .home-page {
     background-color: white;
 }
+
+.accordion-button {
+    margin: 0;
+    background-color: #cd9703;
+    font-family: 'Luckiest Guy', cursive;
+    color: white;
+    padding: 1rem 1rem 1rem 2rem;
+    font-size: 1.6em;
+}
+
 .main-container-index{
     display: flex;
     flex: 1;
@@ -280,45 +302,37 @@ input, select {
     display: none;
 }
 
-/* filter.html styling */
+.main-connect {
+    height: 100%;
+}
+
+/* filter styling */
 
 
-/* results.html styling */
+/* results styling */
 .results {
     color: white;
 }
 
 .results-page-container {
-    padding: 1em 1em 1em 0em;
+    display: flex;
+    flex-direction: column;
+}
+
+.results-entry-container {
+    flex: 1;
     display: flex;
     flex-direction: row;
-}
-
-.results-important a {
-    color: white;
-}
-
-.results-content {
-    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1em 1em 1em 0em;
 }
 
 .pfp-results, .results-important, .results-sub, .results-connect {
     flex : 1;
     text-align: center;
-}
-
-/* profile.html styling */
-.main-profile {
-    padding: 10px;
-}
-
-.main-createUser div {
-    padding: 5px;
-}
-
-/* connect.html styling */
-.main-connect {
-    padding: 10px;
+    font-size: 1.3rem;
 }
 
 /* media query for small screens */
