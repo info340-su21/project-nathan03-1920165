@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ConnectPage() {
     return (
-        <div>
+        <div className="connect">
             <main className="main-connect">
                 <section className="contacts">
                     <form>
@@ -38,9 +39,8 @@ export default function ConnectPage() {
                     </form>
                 </section>
 
-                <div>
-                    <button onclick="window.location.href='index.html';">Go Back</button>
-                </div>
+                <Link to='/home'><button class="btn btn-secondary">Go Back</button></Link>
+
             </main>
         </div>
     )

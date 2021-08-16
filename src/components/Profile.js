@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
     return (
@@ -18,7 +19,7 @@ export default function ProfilePage() {
                             <label for="lname_field">Last Name:</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="pronouns_dropdown">Personal Pronoun:</label>
                             <output></output>
                         </div>
@@ -38,7 +39,7 @@ export default function ProfilePage() {
                             <label for="country_field">Hometown Country:</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="primary_lang_field">Primary Language:</label>
                             <output></output>
 
@@ -59,7 +60,7 @@ export default function ProfilePage() {
                             <label for="class-standing">Class Standing:</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="graduation">Expected Graduation Month and Year:</label>
                             <output></output>
                         </div>
@@ -89,7 +90,7 @@ export default function ProfilePage() {
                             <label for="bldg_2">2nd Building Preference:</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="bldg_3">3rd Building Preference:</label>
                             <output></output>
                         </div>
@@ -108,7 +109,7 @@ export default function ProfilePage() {
                             <label for="weeknights_dropdown">Sleep Schedule on Weeknights:</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="weekends_dropdown">Sleep Schedule on Weekends:</label>
                             <output></output>
                         </div>
@@ -118,7 +119,7 @@ export default function ProfilePage() {
                             <label for="drinking_dropdown">Alcohol?</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="smoking_dropdown">Smoke/vape?</label>
                             <output></output>
                         </div>
@@ -128,7 +129,7 @@ export default function ProfilePage() {
                             <label for="organizing_dropdown">Bedroom Organization:</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="cleaning_dropdown">Bedroom/Bathroom Cleaning:</label>
                             <output></output>
                         </div>
@@ -138,7 +139,7 @@ export default function ProfilePage() {
                             <label for="study_dropdown">I usually study at:</label>
                             <output></output>
                         </div>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="music_dropdown">When studying in my bedroom:</label>
                             <output></output>
                         </div>
@@ -162,7 +163,7 @@ export default function ProfilePage() {
                         </div>
 
                         <h3>Music</h3>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="music_field">The music genres I listen to:</label>
                             <output></output>
 
@@ -171,7 +172,7 @@ export default function ProfilePage() {
                         </div>
 
                         <h3>Movies</h3>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="movie_field">The movie genres I watch are:</label>
                             <output></output>
 
@@ -180,7 +181,7 @@ export default function ProfilePage() {
                         </div>
 
                         <h3>TV Show/Series</h3>
-                        <div>
+                        <div className = "sub-section-end">
                             <label for="series_field">My favorite TV show/series is:</label>
                             <output></output>
 
@@ -200,7 +201,7 @@ export default function ProfilePage() {
                     </form>
                 </section>
 
-                <button onclick="window.location.href='index.html';">Go Back</button>
+                <Link to='/home'><button class="btn btn-secondary">Go Back</button></Link>
 
             </main>
         </div>
