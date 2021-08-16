@@ -52,7 +52,7 @@ h3 {
 label {
     font-weight: 600;
     padding-right: 1%;
-    padding-bottom: 0.5%;
+    padding-bottom: 0.3%;
 }
 
 .page-container {
@@ -254,6 +254,7 @@ footer > address, p {
 
 input, select {
     width: 20rem;
+    margin-bottom: 1%;
 }
 
 .btn-success {
@@ -301,6 +302,7 @@ input, select {
 }
 
 /* filter styling */
+
 
 
 /* results styling */
