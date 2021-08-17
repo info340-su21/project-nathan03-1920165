@@ -219,7 +219,7 @@ function Results() {
                 </div>
 
                 <div className="results-connect">
-                    <Link to='/connect'><button class="btn btn-primary">Connect</button></Link>
+                    <Link to='/connect'><button className="btn btn-primary">Connect</button></Link>
                 </div>
             </div>
             <div className="results-entry-container">
@@ -236,7 +236,7 @@ function Results() {
                 </div>
 
                 <div className="results-connect">
-                    <Link to='/connect'><button class="btn btn-primary">Connect</button></Link>
+                    <Link to='/connect'><button className="btn btn-primary">Connect</button></Link>
                 </div>
             </div>
         </div>
