@@ -29,7 +29,7 @@ h1, nav {
     font-family: 'Luckiest Guy', cursive;
 }
 
-h2, legend {
+h2 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 1.5em;
     background-color: #cd9703;
@@ -67,8 +67,8 @@ label {
 }
 
 .pfp {
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 5rem;
+    max-height: 5rem;
 }
 
 .loading {
@@ -83,13 +83,6 @@ em {
 form > em {
     margin-left: 8px;
 }
-
-/* 
-button {
-    font-family: 'Lilita One', cursive;
-    border-width: 2px;
-    border-radius: 10px;
-} */
 
 /* banner styling */
 .banner {
@@ -229,16 +222,26 @@ footer > address, p {
 }
 
 /* account styling */
-.main-account, .main-connect, .main-profile {
+.main-account, .main-connect, .main-profile, .home-page {
     padding: 3%;
     background-color: white;
     color: black;
 }
 
-.instructions {
+.home-page {
+    flex-direction: column;
+    flex: 1;
+    height: fit-content;
+}
+
+.main-account > section {
+    margin-bottom: 1rem;
+}
+
+.instructions, legend {
     font-family: 'Lilita One', cursive;
     font-size: 1.2rem;
-    margin: 0.2em 0 1em 0;
+    margin-top: 0.2em;
 }
 
 .form-section-container {
@@ -260,19 +263,15 @@ input, select {
 .btn-success {
     margin-right: 10px;
 }
+.btn-success, .btn-danger, .btn-secondary {
+    margin-left: 1em;
+    margin-bottom: 15px;
+}
 
 /* home styling */
 .home-page {
+    flex: 1;
     background-color: white;
-}
-
-.accordion-button {
-    margin: 0;
-    background-color: #cd9703;
-    font-family: 'Luckiest Guy', cursive;
-    color: white;
-    padding: 1rem 1rem 1rem 2rem;
-    font-size: 1.6em;
 }
 
 .main-container-index{
@@ -289,10 +288,6 @@ input, select {
     flex-direction: column;
 }
 
-.accordion {
-    flex: 1;
-}
-
 .results-heading, .form-heading {
     display: none;
 }
@@ -302,7 +297,16 @@ input, select {
 }
 
 /* filter styling */
+.title {
+    background-color: #cd9703 !important;
+    font-family: 'Luckiest Guy', cursive;
+    color: white !important;
+    font-size: 1.2rem;
+}
 
+fieldset {
+    padding-left: 1em;
+}
 
 
 /* results styling */
@@ -325,12 +329,20 @@ input, select {
     padding: 1em 1em 1em 0em;
 }
 
-.pfp-results, .results-important, .results-sub, .results-connect {
+.results-sub, .results-connect {
     flex : 1;
     text-align: center;
-    font-size: 1.3rem;
 }
 
+.results-important {
+    flex: 2;
+    text-align: center;
+    font-weight: 600;
+}
+
+.pfp-results {
+    display: none;
+}
 /* media query for small screens */
 @media (min-width: 598px) {
     /* general styling */
@@ -370,6 +382,12 @@ input, select {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
+    .pfp-results {
+        flex: 1;
+        text-align: center;
+        display: inline;
+    }
 }
 
 /* media query for large screens */
@@ -405,17 +423,13 @@ input, select {
         display: block;
     }
 
-    /* about.html styling */
+    /* about styling */
     .about-images {
         flex-direction: row;
     }
 
-    /* index.html styling */
-    .main-container-index {
-        flex-direction: row;
-    }
-
-    .index-heading {
-        display: contents;
+    .pfp {
+        max-width: 150px;
+        max-height: 150px;
     }
 }

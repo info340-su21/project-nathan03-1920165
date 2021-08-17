@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import Collapsible from 'react-collapsible';
+import { Accordion, AccordionItem } from 'react-light-accordion';
+import 'react-light-accordion/demo/css/index.css';
 
 import avatar from '../img/avatar.jpg';
 
@@ -9,38 +10,18 @@ import 'firebase/database';
 
 export default function Accordionize(props) {
     return (
-        // <div className="home-page">
-        // <Collapsible trigger="Filter Roommates" open={true}>
-        //     <FilterForm user={props.user} />
-        // </Collapsible>
+        <div className="home-page">
+            <p className='instructions'>Please click on Filter Roommates tab to get started!</p>
+                <Accordion atomic={false}>
+                <AccordionItem title="Filter Roommates">
+                    <FilterForm user={props.user} />
+                </AccordionItem>
 
-        // <Collapsible trigger="Results">
-        //     <Results />
-        // </Collapsible>
-        // </div>
-      
-        <div className="accordion">
-            <div className="accordion-item">
-                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Filter Roommates
-                </button>
-                <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                        <FilterForm user={props.user} />
-                    </div>
-                </div>
-            </div>
-            <div className="accordion-item">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Results
-                </button>
-                {/*add className "collapse" to following div for content to disappear*/}
-                <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                        <Results />
-                    </div>
-                </div>
-            </div>
+                <AccordionItem title="Results">
+                    <Results />
+                </AccordionItem>
+
+                </Accordion>
         </div>
     )
 }
@@ -232,9 +213,6 @@ function Results() {
                 <div className="results-important">
                     <Link to='/profile'>Name</Link>
                     <p>Pronouns</p>
-                </div>
-
-                <div className="results-sub">
                     <p>Class Standing</p>
                     <p>Major</p>
                     <p>Hometown</p>
@@ -252,9 +230,6 @@ function Results() {
                 <div className="results-important">
                     <Link to='/profile'>Name</Link>
                     <p>Pronouns</p>
-                </div>
-
-                <div className="results-sub">
                     <p>Class Standing</p>
                     <p>Major</p>
                     <p>Hometown</p>
