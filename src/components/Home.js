@@ -11,8 +11,16 @@ import 'firebase/database';
 export default function Accordionize(props) {
     return (
         <div className="home-page">
-            <p className='instructions'>Please click on Filter Roommates tab to get started!</p>
-                <Accordion atomic={false}>
+            <h2>Welcome, {props.user.displayName}!</h2>
+            <div className="instructions">
+                <p>New to UniteDawgs?</p>
+                <p>Please fill out this questionnaire to get started.</p>
+                <Link to='/account'><button className="btn btn-primary">Get Started</button></Link>
+            </div>
+
+            <p>To begin your search for a roommate, please click on the 'Filter Roommates' tab.</p>
+
+            <Accordion atomic={false}>
                 <AccordionItem title="Filter Roommates">
                     <FilterForm user={props.user} />
                 </AccordionItem>
@@ -20,8 +28,7 @@ export default function Accordionize(props) {
                 <AccordionItem title="Results">
                     <Results />
                 </AccordionItem>
-
-                </Accordion>
+            </Accordion>
         </div>
     )
 }

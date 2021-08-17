@@ -242,6 +242,7 @@ footer > address, p {
     font-family: 'Lilita One', cursive;
     font-size: 1.2rem;
     margin-top: 0.2em;
+    padding: 10px 0px;
 }
 
 .form-section-container {
