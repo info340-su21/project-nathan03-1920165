@@ -41,7 +41,7 @@ export default function Accordionize(props) {
                         </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
-                        <Results />
+                        <Results user={props.user}/>
                     </AccordionItemPanel>
                 </AccordionItem>
             </Accordion>
@@ -268,7 +268,69 @@ function FilterForm(props) {
     )
 }
 
+//render all users info
+//filter
+//render filtered info
+
+export function ResultsEntries() {
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        const filterRef = firebase.database().ref("users");
+        filterRef.on('value', (snapshot) => {
+            const userObj = snapshot.val()
+            let objectKeyArray = Object.keys(userObj)
+            console.log(objectKeyArray);
+            let usersArray = objectKeyArray.map((key) => {
+                let singleUserObj = userObj[key]
+                singleUserObj.key = key
+                return singleUserObj
+            })
+            setUsers(usersArray);
+        })
+    }, [])
+
+    console.log(users);
+
+    let usersArray = users;
+    console.log(usersArray);
+
+    let elementsArray = [];
+    elementsArray = usersArray.map((userObj) => {
+        return (
+            <div>
+                <Link to='/profile'>{userObj['preferred_name']}</Link>
+                <p>{userObj['pronouns']}</p>
+                <p>{userObj['class_standing']}</p>
+                <p>{userObj['major']}</p>
+                <p>{userObj['city']}, {userObj['state']}, {userObj['country']}</p>
+            </div>
+        )
+    })
+
+    return (
+        {elementsArray}
+    )
+
+        // useEffect(() => {
+    //     const filterRef = firebase.database().ref("filter");
+    //     filterRef.on('value', (snapshot) => {
+    //         const userObj = snapshot.val()
+    //         let objectKeyArray = Object.keys(userObj)
+    //         console.log(objectKeyArray);
+    //         let usersArray = objectKeyArray.map((key) => {
+    //             let singleUserObj = userObj[key]
+    //             singleUserObj.key = key
+    //             return singleUserObj
+    //         })
+    //         setUsers(usersArray);
+    //     })
+    // }, [])
+}
+
+
 function Results() {
+
     return (
         <div className="results-page-container">
             <div className="results-entry-container">
@@ -277,11 +339,7 @@ function Results() {
                 </div>
 
                 <div className="results-important">
-                    <Link to='/profile'>Name</Link>
-                    <p>Pronouns</p>
-                    <p>Class Standing</p>
-                    <p>Major</p>
-                    <p>Hometown</p>
+                    <ResultsEntries />
                 </div>
 
                 <div className="results-connect">
