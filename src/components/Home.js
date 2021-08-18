@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Accordion, AccordionItem } from 'react-light-accordion';
-import 'react-light-accordion/demo/css/index.css';
+//import { Accordion, AccordionItem } from 'react-light-accordion';
+//import 'react-light-accordion/demo/css/index.css';
+
+import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
+import 'react-accessible-accordion/dist/fancy-example.css';
 
 import avatar from '../img/avatar.jpg';
 
@@ -14,19 +17,43 @@ export default function Accordionize(props) {
             <h2>Welcome, {props.user.displayName}!</h2>
             <div className="instructions">
                 <p>New to UniteDawgs?</p>
-                <p>Please fill out this questionnaire to get started.</p>
+                <p>Please 'click' to get started and complete your account.</p>
                 <Link to='/account'><button className="btn btn-primary">Get Started</button></Link>
             </div>
 
-            <p>To begin your search for a roommate, please click on the 'Filter Roommates' tab.</p>
+            <p>To begin your search for a roommate, start filtering or jump straight to the results.</p>
 
-            <Accordion atomic={false}>
+            {/* <Accordion atomic={false}>
                 <AccordionItem title="Filter Roommates">
                     <FilterForm user={props.user} />
                 </AccordionItem>
 
                 <AccordionItem title="Results">
                     <Results />
+                </AccordionItem>
+            </Accordion> */}
+
+            <Accordion allowZeroExpanded preExpanded={['filter']} onChange={(uuid) => console.log(uuid)}>
+                <AccordionItem uuid="filter">
+                    <AccordionItemHeading>
+                        <AccordionItemButton>
+                            Filter Roommates
+                        </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                        <FilterForm user={props.user} />
+                    </AccordionItemPanel>
+                </AccordionItem>
+
+                <AccordionItem uuid="results">
+                    <AccordionItemHeading>
+                        <AccordionItemButton>
+                            Results
+                        </AccordionItemButton>
+                    </AccordionItemHeading>
+                    <AccordionItemPanel>
+                        <Results />
+                    </AccordionItemPanel>
                 </AccordionItem>
             </Accordion>
         </div>

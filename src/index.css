@@ -275,7 +275,7 @@ input, select {
     background-color: white;
 }
 
-.main-container-index{
+.main-container-index {
     display: flex;
     flex: 1;
     flex-basis: auto;
@@ -298,17 +298,24 @@ input, select {
 }
 
 /* filter styling */
-.title {
+.accordion__button {
     background-color: #cd9703 !important;
     font-family: 'Luckiest Guy', cursive;
     color: white !important;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+}
+
+.accordion__panel {
+    padding: 0 !important;
 }
 
 fieldset {
     padding-left: 1em;
 }
 
+.form-section-container select {
+    margin-bottom: 0.6rem;
+}
 
 /* results styling */
 .results {
@@ -344,6 +351,7 @@ fieldset {
 .pfp-results {
     display: none;
 }
+
 /* media query for small screens */
 @media (min-width: 598px) {
     /* general styling */
