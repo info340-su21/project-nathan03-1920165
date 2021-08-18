@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel, AccordionItemState } from 'react-accessible-accordion';
@@ -52,6 +52,8 @@ export default function Accordionize(props) {
 function FilterForm(props) {
     const [showSuccessAlert, setSucessAlert] = useState(null);
     const [countSuccess, setCountSuccess] = useState(1);
+    const [showResetAlert, setResetAlert] = useState(null);
+    const [countReset, setCountReset] = useState(1);
 
     // const [submitted, setSubmitted] = useState(
     //     <AccordionItemState children={ { expanded: true, disabled: true } }></AccordionItemState>
@@ -84,16 +86,43 @@ function FilterForm(props) {
         setFilterValues(copy);
     }
 
+    useEffect(() => {
+        const formRef = firebase.database().ref("filter/" + props.user.uid);
+        formRef.on('value', (snapshot) => {
+            const theValueObj = snapshot.val();
+            setFilterValues(theValueObj);
+        })
+    }, [])
+
     //handle submitting filter button
-    const handleSubmitFilter = (event) => {
+    const handleFilterSubmit = (event) => {
         event.preventDefault();
         const filterRef = firebase.database().ref("filter/" + props.user.uid);
-        filterRef.set(filterValues);
-
-        // setSubmitted(<AccordionItemState children={ { expanded: false, disabled: false } }></AccordionItemState>);
+        filterRef.update(filterValues);
 
         setCountSuccess(countSuccess + 1);
         setSucessAlert(<p className="alert alert-success"><em>Success #{countSuccess}!</em> You can now begin to search for a roommate by tapping on the 'Results' tab below.</p>);
+    }
+
+    const handleFilterReset = (event) => {
+        event.preventDefault();
+        setFilterValues({
+            'month_type_filter': '',
+            'building_type_filter': '',
+            'location_type_filter': '',
+            'room_type_filter': '',
+            'bathroom_type_filter': '',
+            'class_standing_filter': '',
+            'morning_filter': '',
+            'weeknights_filter': '',
+            'weekends_filter': '',
+            'drinking_filter': '',
+            'smoking_filter': '',
+            'organizing_filter': '',
+            'cleaning_filter': ''
+            });    
+        setCountReset(countReset + 1);
+        setResetAlert(<p className="alert alert-danger"><em>Reset #{countReset}!</em> The form has been reset. To access previous information, refresh the page.</p>);
     }
 
     return (
@@ -103,28 +132,28 @@ function FilterForm(props) {
                     <legend>Housing Preferences</legend>
                     <section className="form-section-container">
                         <label htmlFor="month_type_filter">9-month or 12-month?</label>
-                        <select id="month_type_filter" name="month_type_filter" onChange={handleFilter}>
+                        <select id="month_type_filter" name="month_type_filter" value={filterValues.month_type_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="9-month">9-month</option>
                             <option value="12-month">12-month</option>
                         </select>
 
                         <label htmlFor="building_type_filter">Residence Hall or Apartment Communities?</label>
-                        <select id="building_type_filter" name="building_type_filter" onChange={handleFilter}>
+                        <select id="building_type_filter" name="building_type_filter" value={filterValues.building_type_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Residence Hall">Residence Hall</option>
                             <option value="Apartment Communities">Apartment Communities</option>
                         </select>
 
                         <label htmlFor="location_type_filter">North Campus or West Campus?</label>
-                        <select id="location_type_filter" name="location_type_filter" onChange={handleFilter}>
+                        <select id="location_type_filter" name="location_type_filter" value={filterValues.location_type_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="North Campus">North Campus</option>
                             <option value="West Campus">West Campus</option>
                         </select>
 
                         <label htmlFor="room_type_filter">Room Type</label>
-                        <select id="room_type_filter" name="room_type_filter" onChange={handleFilter}>
+                        <select id="room_type_filter" name="room_type_filter" value={filterValues.room_type_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Double">Double</option>
                             <option value="Triple">Triple</option>
@@ -133,7 +162,7 @@ function FilterForm(props) {
                         </select>
 
                         <label htmlFor="bathroom_type_filter">Bathroom Type</label>
-                        <select id="bathroom_type_filter" name="bathroom_type_filter" onChange={handleFilter}>
+                        <select id="bathroom_type_filter" name="bathroom_type_filter" value={filterValues.bathroom_type_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Private">Private</option>
                             <option value="Semi-private">Semi-private</option>
@@ -147,7 +176,7 @@ function FilterForm(props) {
                     <legend>School Information</legend>
                     <section className="form-section-container">
                         <label htmlFor="class_standing_filter">Class Standing</label>
-                        <select id="class_standing_filter" name="class_standing_filter" onChange={handleFilter}>
+                        <select id="class_standing_filter" name="class_standing_filter" value={filterValues.class_standing_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Freshman">Freshman</option>
                             <option value="Sophomore">Sophomore</option>
@@ -162,7 +191,7 @@ function FilterForm(props) {
                     <legend>Personal Habits</legend>
                     <section className="form-section-container">
                         <label htmlFor="morning_filter">Morning Wake Up</label>
-                        <select id="morning_filter" name="morning_filter" onChange={handleFilter}>
+                        <select id="morning_filter" name="morning_filter" value={filterValues.morning_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="5 AM or earlier">5 AM or earlier</option>
                             <option value="Between 5 AM and 8 AM">Between 5 AM and 8 AM</option>
@@ -171,7 +200,7 @@ function FilterForm(props) {
                         </select>
 
                         <label htmlFor="weeknights_filter">Sleep Schedule on Weeknights</label>
-                        <select id="weeknights_filter" name="weeknights_filter" onChange={handleFilter}>
+                        <select id="weeknights_filter" name="weeknights_filter" value={filterValues.weeknights_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="10 PM or earlier">10 PM or earlier</option>
                             <option value="Between 10 PM and Midnight">Between 10 PM and Midnight</option>
@@ -180,7 +209,7 @@ function FilterForm(props) {
                         </select>
 
                         <label htmlFor="weekends_filter">Sleep Schedule on Weekends</label>
-                        <select id="weekends_filter" name="weekends_filter" onChange={handleFilter}>
+                        <select id="weekends_filter" name="weekends_filter" value={filterValues.weekends_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="10 PM or earlier">10 PM or earlier</option>
                             <option value="Between 10 PM and Midnight">Between 10 PM and Midnight</option>
@@ -189,7 +218,7 @@ function FilterForm(props) {
                         </select>
 
                         <label htmlFor="drinking_filter">Alcohol?</label>
-                        <select id="drinking_filter" name="drinking_filter" onChange={handleFilter}>
+                        <select id="drinking_filter" name="drinking_filter" value={filterValues.drinking_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
@@ -197,7 +226,7 @@ function FilterForm(props) {
                         </select>
 
                         <label htmlFor="smoking_filter">Smoke/vape?</label>
-                        <select id="smoking_filter" name="smoking_filter" onChange={handleFilter}>
+                        <select id="smoking_filter" name="smoking_filter" value={filterValues.smoking_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
@@ -205,7 +234,7 @@ function FilterForm(props) {
                         </select>
 
                         <label htmlFor="organizing_filter">Bedroom Organization</label>
-                        <select id="organizing_filter" name="organizing_filter" onChange={handleFilter}>
+                        <select id="organizing_filter" name="organizing_filter" value={filterValues.organizing_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Very organized">Very organized</option>
                             <option value="Organized">Organized</option>
@@ -215,7 +244,7 @@ function FilterForm(props) {
                         </select>
 
                         <label htmlFor="cleaning_filter">Bedroom/Bathroom Cleaning</label>
-                        <select id="cleaning_filter" name="cleaning_filter" onChange={handleFilter}>
+                        <select id="cleaning_filter" name="cleaning_filter" value={filterValues.cleaning_filter} onChange={handleFilter}>
                             <option hidden="">Select one</option>
                             <option value="Always">Always</option>
                             <option value="Often">Often</option>
@@ -230,8 +259,9 @@ function FilterForm(props) {
             <section className="submit-home">
                 <form>
                     {showSuccessAlert}
-                    <button className="btn btn-success" onClick={handleSubmitFilter}>Submit Filters</button>
-                    <button className="btn btn-danger">Reset Filters</button>
+                    {showResetAlert}
+                    <button className="btn btn-success" onClick={handleFilterSubmit}>Submit Filters</button>
+                    <button className="btn btn-danger" onClick={handleFilterReset}>Reset Filters</button>
                 </form>
             </section>
         </div>
