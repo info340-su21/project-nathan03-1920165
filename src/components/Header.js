@@ -45,7 +45,7 @@ export default function Header(props) {
                         <ul>
                             <li><Link to='/home'>Home <i className="fas fa-home" aria-label="Home"></i></Link></li>
                             <li><Link to='/about'>About <i className="fas fa-info-circle" aria-label="About"></i></Link></li>
-                            <li><Link to='/account'>{props.user.displayName} <i className="fas fa-user-circle" aria-label="Account"></i></Link></li>
+                            <li><Link to='/account'>Account <i className="fas fa-user-circle" aria-label="Account"></i></Link></li>
                             <li onClick={props.signout}><Link to='/'>Log Out <i className="fas fa-sign-out-alt" aria-label="Log Out"></i></Link></li>
                         </ul>
                     </div>

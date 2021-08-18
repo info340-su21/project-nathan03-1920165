@@ -59,19 +59,19 @@ function FilterForm(props) {
 
     //stores all filter values in a single object
     const [filterValues, setFilterValues] = useState({
-        'month_type_filter': null,
-        'building_type_filter': null,
-        'location_type_filter': null,
-        'room_type_filter': null,
-        'bathroom_type_filter': null,
-        'class_standing_filter': null,
-        'morning_filter': null,
-        'weeknights_filter': null,
-        'weekends_filter': null,
-        'drinking_filter': null,
-        'smoking_filter': null,
-        'organizing_filter': null,
-        'cleaning_filter': null
+        'month_type_filter': '',
+        'building_type_filter': '',
+        'location_type_filter': '',
+        'room_type_filter': '',
+        'bathroom_type_filter': '',
+        'class_standing_filter': '',
+        'morning_filter': '',
+        'weeknights_filter': '',
+        'weekends_filter': '',
+        'drinking_filter': '',
+        'smoking_filter': '',
+        'organizing_filter': '',
+        'cleaning_filter': ''
     })
 
     //update state for a specific filter
