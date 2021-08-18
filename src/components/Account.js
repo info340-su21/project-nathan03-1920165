@@ -16,6 +16,7 @@ export default function AccountPage(props) {
 
     //stores all form values in a single object
     const [formValues, setFormValues] = useState({
+        'preferred_name': '',
         'pronouns': '',
         'city': '',
         'state': '',
@@ -98,6 +99,7 @@ export default function AccountPage(props) {
     const handleReset = (event) => {
         event.preventDefault();
         setFormValues({
+            'preferred_name': '',
             'pronouns': '',
             'city': '',
             'state': '',
@@ -168,6 +170,10 @@ export default function AccountPage(props) {
                 </div>
                 <form>
                     <section className="form-section-container">
+                        <div>
+                            <label htmlFor="preferred_name_field">Preferred Name:</label>
+                            <input type="text" id="preferred_name_field" name="preferred_name" value={formValues.preferred_name} onChange={handleChange} placeholder="First & Last Name" required />
+                        </div>
                         <div>
                             <label htmlFor="pronouns_dropdown">Personal Pronoun:</label>
                             <select id="pronouns_dropdown" name="pronouns" value={formValues.pronouns} onChange={handleChange}>
