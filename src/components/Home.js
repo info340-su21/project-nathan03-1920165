@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-//import { Accordion, AccordionItem } from 'react-light-accordion';
-//import 'react-light-accordion/demo/css/index.css';
 
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -15,23 +13,13 @@ export default function Accordionize(props) {
     return (
         <div className="home-page">
             <h2>Welcome, {props.user.displayName}!</h2>
-            <div className="instructions">
-                <p>New to UniteDawgs?</p>
-                <p>Please 'click' to get started and complete your account.</p>
-                <Link to='/account'><button className="btn btn-primary">Get Started</button></Link>
+            <div className="home-message">
+                <p>
+                    <em>New to UniteDawgs? Please 'click' to get started and complete your account:  </em>
+                    <Link to='/account'><button className="btn btn-primary mt-1">Get Started</button></Link>
+                </p>
             </div>
-
             <p>To begin your search for a roommate, start filtering or jump straight to the results.</p>
-
-            {/* <Accordion atomic={false}>
-                <AccordionItem title="Filter Roommates">
-                    <FilterForm user={props.user} />
-                </AccordionItem>
-
-                <AccordionItem title="Results">
-                    <Results />
-                </AccordionItem>
-            </Accordion> */}
 
             <Accordion allowZeroExpanded preExpanded={['filter']} onChange={(uuid) => console.log(uuid)}>
                 <AccordionItem uuid="filter">
@@ -226,7 +214,7 @@ function FilterForm(props) {
                 </fieldset>
             </form>
 
-            <section className="submit">
+            <section className="submit-home">
                 <form>
                     <button className="btn btn-success" onClick={handleSubmitFilter}>Submit Filters</button>
                     <button className="btn btn-danger">Reset Filters</button>

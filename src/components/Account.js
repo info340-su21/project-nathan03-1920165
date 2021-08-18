@@ -88,15 +88,15 @@ export default function AccountPage(props) {
         <main className="main-account">
             <section className="profile">
                 <h2>{message}</h2>
-                <div className="instructions">
-                    To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.
+                <div>
+                    <em>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</em>
                 </div>
             </section>
 
             <section className="aboutMe">
                 <h2>About Me</h2>
-                <div className="instructions">
-                    Tell us all about you.
+                <div>
+                    <em>Tell us all about you.</em>
                 </div>
                 <form>
                     <section className="form-section-container">
@@ -135,8 +135,8 @@ export default function AccountPage(props) {
 
             <section className="contacts">
                 <h2>Contact Information</h2>
-                <div className="instructions">
-                    Provide your contact information to be reached by other students.
+                <div>
+                    <em>Provide your contact information to be reached by other students.</em>
                 </div>
                 <form>
                     <section className="form-section-container">
@@ -174,8 +174,8 @@ export default function AccountPage(props) {
 
             <section className="academics">
                 <h2>Academic Life</h2>
-                <div className="instructions">
-                    Provide your academic history or future ambitions
+                <div>
+                    <em>Provide your academic history or future ambitions</em>
                 </div>
                 <form>
                     <section className="form-section-container">
@@ -204,8 +204,8 @@ export default function AccountPage(props) {
 
             <section className="housing">
                 <h2>Housing Preferences</h2>
-                <div className="instructions">
-                    Describe your housing preferences.
+                <div>
+                    <em>Describe your housing preferences.</em>
                 </div>
                 <form>
                     <section className="form-section-container">
@@ -328,8 +328,8 @@ export default function AccountPage(props) {
 
             <section className="habits">
                 <h2>Habits</h2>
-                <div className="instructions">
-                    Specify your personal and study habits.
+                <div>
+                    <em>Specify your personal and study habits.</em>
                 </div>
                 <form>
                     <section className="form-section-container">
@@ -436,8 +436,8 @@ export default function AccountPage(props) {
 
             <section className="interest">
                 <h2>Personality & Interests</h2>
-                <div className="instructions">
-                    Describe yourself and what your interests are.
+                <div>
+                    <em>Describe yourself and what your interests are.</em>
                 </div>
                 <form>
                     <section className="form-section-container">
@@ -504,8 +504,8 @@ export default function AccountPage(props) {
 
             <section className="moreInfo">
                 <h2>Anything else?</h2>
-                <div className="instructions">
-                    Is there anything else you would like someone to know about you?
+                <div>
+                    <em>Is there anything else you would like someone to know about you?</em>
                 </div>
                 <form>
                     <div className="sub-section-end">
@@ -515,7 +515,7 @@ export default function AccountPage(props) {
                 </form>
             </section>
 
-            <section className="submit">
+            <section className="submit-account">
                 <form>
                     <button className="btn btn-success" onClick={handleSubmit}>Submit Form</button>
                     <button className="btn btn-danger">Reset Form</button>
