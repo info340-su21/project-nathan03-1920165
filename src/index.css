@@ -253,7 +253,7 @@ legend {
 }
 
 input, select {
-    width: 20rem;
+    width: 19rem;
     margin-bottom: 1%;
 }
 
@@ -305,7 +305,7 @@ input, select {
 }
 
 fieldset {
-    padding-left: 1em;
+    padding-left: 0.5em;
 }
 
 .form-section-container select {

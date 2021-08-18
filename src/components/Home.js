@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
+import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel, AccordionItemState } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
 
 import avatar from '../img/avatar.jpg';
@@ -21,7 +21,7 @@ export default function Accordionize(props) {
             </div>
             <p>To begin your search for a roommate, start filtering or jump straight to the results.</p>
 
-            <Accordion allowZeroExpanded preExpanded={['filter']} onChange={(uuid) => console.log(uuid)}>
+            <Accordion preExpanded={['filter']} onChange={(uuid) => console.log(uuid)}>
                 <AccordionItem uuid="filter">
                     <AccordionItemHeading>
                         <AccordionItemButton>
@@ -37,6 +37,7 @@ export default function Accordionize(props) {
                     <AccordionItemHeading>
                         <AccordionItemButton>
                             Results
+                            {/* <AccordionItemState children={ { expanded: true, disabled: true } }></AccordionItemState> */}
                         </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
@@ -51,6 +52,10 @@ export default function Accordionize(props) {
 function FilterForm(props) {
     const [showSuccessAlert, setSucessAlert] = useState(null);
     const [countSuccess, setCountSuccess] = useState(1);
+
+    // const [submitted, setSubmitted] = useState(
+    //     <AccordionItemState children={ { expanded: true, disabled: true } }></AccordionItemState>
+    // );
 
     //stores all filter values in a single object
     const [filterValues, setFilterValues] = useState({
@@ -84,6 +89,8 @@ function FilterForm(props) {
         event.preventDefault();
         const filterRef = firebase.database().ref("filter/" + props.user.uid);
         filterRef.set(filterValues);
+
+        // setSubmitted(<AccordionItemState children={ { expanded: false, disabled: false } }></AccordionItemState>);
 
         setCountSuccess(countSuccess + 1);
         setSucessAlert(<p className="alert alert-success"><em>Success #{countSuccess}!</em> You can now begin to search for a roommate by tapping on the 'Results' tab below.</p>);

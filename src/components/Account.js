@@ -73,13 +73,13 @@ export default function AccountPage(props) {
         setFormValues(copy);
     }
 
-    // useEffect(() => {
-    //     const formRef = firebase.database().ref('user');
-    //     formRef.on('value', (snapshot) => {
-    //         const theValue = snapshot.val();
-    //         console.log("value of message: " + theValue)
-    //     })
-    // }, [])
+    useEffect(() => {
+        const formRef = firebase.database().ref("users/" + props.user.uid);
+        formRef.on('value', (snapshot) => {
+            const theValueObj = snapshot.val();
+            console.log(theValueObj)
+        })
+    }, [])
 
     //handle submitting form button
     const handleSubmit = (event) => {
@@ -532,3 +532,54 @@ export default function AccountPage(props) {
         </main>
     )
 }
+
+    //stores all form values in a single object
+    // const [formValues, setFormValues] = useState({
+    //         'pronouns': this.theValuesObj.pronouns,
+    //         'city': this.theValuesObj.city,
+    //         'state': this.theValuesObj.state,
+    //         'country': this.theValuesObj.country,
+    //         'primary_lang': this.theValuesObj.primary_lang,
+    //         'second_lang': this.theValuesObj.second_lang,
+    
+    //         'phone': this.theValuesObj.phone,
+    //         'email': this.theValuesObj.email,
+    //         'facebook': this.theValuesObj.facebook,
+    //         'instagram': this.theValuesObj.instagram,
+    //         'snapchat': this.theValuesObj.snapchat,
+    //         'wechat': this.theValuesObj.wechat,
+    //         'discord': this.theValuesObj.discord,
+    
+    //         'major': this.theValuesObj.major,
+    //         'class_standing': this.theValuesObj.class_standing,
+    //         'graduation': this.theValuesObj.graduation,
+    //         'month_type': this.theValuesObj.month_type,
+    //         'building_type': this.theValuesObj.building_type,
+    //         'location_type': this.theValuesObj.location_type,
+    //         'room_type': this.theValuesObj.room_type,
+    //         'bathroom_type': this.theValuesObj.bathroom_type,
+    //         'bldg_one': this.theValuesObj.bldg_one,
+    //         'bldg_two': this.theValuesObj.bldg_two,
+    //         'bldg_three': this.theValuesObj.bldg_three,
+    
+    //         'morning': this.theValuesObj.morning,
+    //         'weeknights': this.theValuesObj.weeknights,
+    //         'weekends': this.theValuesObj.weekends,
+    //         'drinking': this.theValuesObj.drinking,
+    //         'smoking': this.theValuesObj.smoking,
+    //         'organizing': this.theValuesObj.organizing,
+    //         'cleaning': this.theValuesObj.cleaning,
+    //         'study': this.theValuesObj.study,
+    //         'music_listening': this.theValuesObj.music_listening,
+    
+    //         'hobbies': this.theValuesObj.hobbies,
+    //         'adjectives': this.theValuesObj.adjectives,
+    //         'social_rank': this.theValuesObj.social_rank,
+    //         'music': this.theValuesObj.music,
+    //         'artist': this.theValuesObj.artist,
+    //         'movie': this.theValuesObj.movie,
+    //         'favorite_movie': this.theValuesObj.favorite_movie,
+    //         'television': this.theValuesObj.television,
+    //         'streaming': this.theValuesObj.streaming,
+    
+    //         'description': this.theValuesObj.description
