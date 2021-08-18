@@ -49,6 +49,9 @@ export default function Accordionize(props) {
 }
 
 function FilterForm(props) {
+    const [showSuccessAlert, setSucessAlert] = useState(null);
+    const [countSuccess, setCountSuccess] = useState(1);
+
     //stores all filter values in a single object
     const [filterValues, setFilterValues] = useState({
         'month_type_filter': null,
@@ -81,6 +84,9 @@ function FilterForm(props) {
         event.preventDefault();
         const filterRef = firebase.database().ref("filter/" + props.user.uid);
         filterRef.set(filterValues);
+
+        setCountSuccess(countSuccess + 1);
+        setSucessAlert(<p className="alert alert-success"><em>Success #{countSuccess}!</em> You can now begin to search for a roommate by tapping on the 'Results' tab below.</p>);
     }
 
     return (
@@ -216,6 +222,7 @@ function FilterForm(props) {
 
             <section className="submit-home">
                 <form>
+                    {showSuccessAlert}
                     <button className="btn btn-success" onClick={handleSubmitFilter}>Submit Filters</button>
                     <button className="btn btn-danger">Reset Filters</button>
                 </form>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -6,6 +7,9 @@ import 'firebase/database';
 export default function AccountPage(props) {
     let fullname = props.user.displayName;
     let message = "Hello, " + fullname + "!";
+
+    const [showSuccessAlert, setSucessAlert] = useState(null);
+    const [countSuccess, setCountSuccess] = useState(1);
 
     //stores all form values in a single object
     const [formValues, setFormValues] = useState({
@@ -82,6 +86,9 @@ export default function AccountPage(props) {
         event.preventDefault();
         const formRef = firebase.database().ref("users/" + props.user.uid);
         formRef.update(formValues);
+
+        setCountSuccess(countSuccess + 1);
+        setSucessAlert(<p className="alert alert-success"><em>Success #{countSuccess}!</em> You can now begin to search for a roommate on the <Link to="/home" className="alert-link">homepage</Link>.</p>);
     }
 
     return (
@@ -517,6 +524,7 @@ export default function AccountPage(props) {
 
             <section className="submit-account">
                 <form>
+                    {showSuccessAlert}
                     <button className="btn btn-success" onClick={handleSubmit}>Submit Form</button>
                     <button className="btn btn-danger">Reset Form</button>
                 </form>
