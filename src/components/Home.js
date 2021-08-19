@@ -90,7 +90,25 @@ function FilterForm(props) {
         const formRef = firebase.database().ref("filter/" + props.user.uid);
         formRef.on('value', (snapshot) => {
             const theValueObj = snapshot.val();
-            setFilterValues(theValueObj);
+            if (theValueObj !== null) {
+                setFilterValues(theValueObj);
+            } else {
+                setFilterValues({
+                    'month_type_filter': '',
+                    'building_type_filter': '',
+                    'location_type_filter': '',
+                    'room_type_filter': '',
+                    'bathroom_type_filter': '',
+                    'class_standing_filter': '',
+                    'morning_filter': '',
+                    'weeknights_filter': '',
+                    'weekends_filter': '',
+                    'drinking_filter': '',
+                    'smoking_filter': '',
+                    'organizing_filter': '',
+                    'cleaning_filter': ''
+                });
+            }
         })
     }, [])
 
@@ -120,7 +138,7 @@ function FilterForm(props) {
             'smoking_filter': '',
             'organizing_filter': '',
             'cleaning_filter': ''
-            });    
+        });    
         setCountReset(countReset + 1);
         setResetAlert(<p className="alert alert-danger"><em>Reset #{countReset}!</em> The form has been reset. To access previous information, refresh the page.</p>);
     }
@@ -272,45 +290,45 @@ function FilterForm(props) {
 //filter
 //render filtered info
 
-export function ResultsEntries() {
-    const [users, setUsers] = useState([])
+// export function ResultsEntries() {
+//     const [users, setUsers] = useState([])
 
-    useEffect(() => {
-        const filterRef = firebase.database().ref("users");
-        filterRef.on('value', (snapshot) => {
-            const userObj = snapshot.val()
-            let objectKeyArray = Object.keys(userObj)
-            console.log(objectKeyArray);
-            let usersArray = objectKeyArray.map((key) => {
-                let singleUserObj = userObj[key]
-                singleUserObj.key = key
-                return singleUserObj
-            })
-            setUsers(usersArray);
-        })
-    }, [])
+//     useEffect(() => {
+//         const filterRef = firebase.database().ref("users");
+//         filterRef.on('value', (snapshot) => {
+//             const userObj = snapshot.val()
+//             let objectKeyArray = Object.keys(userObj)
+//             console.log(objectKeyArray);
+//             let usersArray = objectKeyArray.map((key) => {
+//                 let singleUserObj = userObj[key]
+//                 singleUserObj.key = key
+//                 return singleUserObj
+//             })
+//             setUsers(usersArray);
+//         })
+//     }, [])
 
-    console.log(users);
+//     console.log(users);
 
-    let usersArray = users;
-    console.log(usersArray);
+//     let usersArray = users;
+//     console.log(usersArray);
 
-    let elementsArray = [];
-    elementsArray = usersArray.map((userObj) => {
-        return (
-            <div>
-                <Link to='/profile'>{userObj['preferred_name']}</Link>
-                <p>{userObj['pronouns']}</p>
-                <p>{userObj['class_standing']}</p>
-                <p>{userObj['major']}</p>
-                <p>{userObj['city']}, {userObj['state']}, {userObj['country']}</p>
-            </div>
-        )
-    })
+//     let elementsArray = [];
+//     elementsArray = usersArray.map((userObj) => {
+//         return (
+//             <div>
+//                 <Link to='/profile'>{userObj['preferred_name']}</Link>
+//                 <p>{userObj['pronouns']}</p>
+//                 <p>{userObj['class_standing']}</p>
+//                 <p>{userObj['major']}</p>
+//                 <p>{userObj['city']}, {userObj['state']}, {userObj['country']}</p>
+//             </div>
+//         )
+//     })
 
-    return (
-        {elementsArray}
-    )
+//     return (
+//         {elementsArray}
+//     )
 
         // useEffect(() => {
     //     const filterRef = firebase.database().ref("filter");
@@ -326,7 +344,7 @@ export function ResultsEntries() {
     //         setUsers(usersArray);
     //     })
     // }, [])
-}
+// }
 
 
 function Results() {
@@ -339,7 +357,7 @@ function Results() {
                 </div>
 
                 <div className="results-important">
-                    <ResultsEntries />
+                    {/* <ResultsEntries /> */}
                 </div>
 
                 <div className="results-connect">

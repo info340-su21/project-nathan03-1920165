@@ -81,7 +81,61 @@ export default function AccountPage(props) {
         const formRef = firebase.database().ref("users/" + props.user.uid);
         formRef.on('value', (snapshot) => {
             const theValueObj = snapshot.val();
-            setFormValues(theValueObj);
+            if (theValueObj !== null) {
+                setFormValues(theValueObj);
+            } else {
+                setFormValues({
+                    'preferred_name': '',
+                    'pronouns': '',
+                    'city': '',
+                    'state': '',
+                    'country': '',
+                    'primary_lang': '',
+                    'second_lang': '',
+        
+                    'phone': '',
+                    'email': '',
+                    'facebook': '',
+                    'instagram': '',
+                    'snapchat': '',
+                    'wechat': '',
+                    'discord': '',
+        
+                    'major': '',
+                    'class_standing': '',
+                    'graduation': '',
+                    'month_type': '',
+                    'building_type': '',
+                    'location_type': '',
+                    'room_type': '',
+                    'bathroom_type': '',
+                    'bldg_one': '',
+                    'bldg_two': '',
+                    'bldg_three': '',
+        
+                    'morning': '',
+                    'weeknights': '',
+                    'weekends': '',
+                    'drinking': '',
+                    'smoking': '',
+                    'organizing': '',
+                    'cleaning': '',
+                    'study': '',
+                    'music_listening': '',
+        
+                    'hobbies': '',
+                    'adjectives': '',
+                    'social_rank': '',
+                    'music': '',
+                    'artist': '',
+                    'movie': '',
+                    'favorite_movie': '',
+                    'television': '',
+                    'streaming': '',
+        
+                    'description': ''
+                });
+            }
         })
     }, [])
 
