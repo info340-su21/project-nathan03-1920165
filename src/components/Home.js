@@ -41,7 +41,7 @@ export default function Accordionize(props) {
                         </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
-                        <Results user={props.user}/>
+                        <Results user={props.user} />
                     </AccordionItemPanel>
                 </AccordionItem>
             </Accordion>
@@ -286,100 +286,57 @@ function FilterForm(props) {
     )
 }
 
-//render all users info
-//filter
-//render filtered info
+function Results(props) {
+    const [dawgs, setDawgs] = useState([]);
 
-// export function ResultsEntries() {
-//     const [users, setUsers] = useState([])
+    useEffect(() => {
+        const filterRef = firebase.database().ref('users');
+        filterRef.on('value', (snapshot) => {
+            const dawgsObj = snapshot.val();
+            let objectKeyArray = Object.keys(dawgsObj);
+            let dawgsArray = objectKeyArray.map((key) => {
+                let singleDawgObj = dawgsObj[key];
+                singleDawgObj.key = key;
+                return singleDawgObj;
+            })
+            setDawgs(dawgsArray);
+        })
+    }, [])
 
-//     useEffect(() => {
-//         const filterRef = firebase.database().ref("users");
-//         filterRef.on('value', (snapshot) => {
-//             const userObj = snapshot.val()
-//             let objectKeyArray = Object.keys(userObj)
-//             console.log(objectKeyArray);
-//             let usersArray = objectKeyArray.map((key) => {
-//                 let singleUserObj = userObj[key]
-//                 singleUserObj.key = key
-//                 return singleUserObj
-//             })
-//             setUsers(usersArray);
-//         })
-//     }, [])
-
-//     console.log(users);
-
-//     let usersArray = users;
-//     console.log(usersArray);
-
-//     let elementsArray = [];
-//     elementsArray = usersArray.map((userObj) => {
-//         return (
-//             <div>
-//                 <Link to='/profile'>{userObj['preferred_name']}</Link>
-//                 <p>{userObj['pronouns']}</p>
-//                 <p>{userObj['class_standing']}</p>
-//                 <p>{userObj['major']}</p>
-//                 <p>{userObj['city']}, {userObj['state']}, {userObj['country']}</p>
-//             </div>
-//         )
-//     })
-
-//     return (
-//         {elementsArray}
-//     )
-
-        // useEffect(() => {
-    //     const filterRef = firebase.database().ref("filter");
-    //     filterRef.on('value', (snapshot) => {
-    //         const userObj = snapshot.val()
-    //         let objectKeyArray = Object.keys(userObj)
-    //         console.log(objectKeyArray);
-    //         let usersArray = objectKeyArray.map((key) => {
-    //             let singleUserObj = userObj[key]
-    //             singleUserObj.key = key
-    //             return singleUserObj
-    //         })
-    //         setUsers(usersArray);
-    //     })
-    // }, [])
-// }
-
-
-function Results() {
+    let dawgsArray = [];
+    dawgsArray = dawgs.map((userObj) => {
+        return (
+            <ResultsEntry user={props.user} dawgs={userObj} />
+        )
+    })
 
     return (
         <div className="results-page-container">
-            <div className="results-entry-container">
-                <div className="pfp-results">
-                    <Link to='/profile'><img className="pfp" src={avatar} alt="the user's avatar"/></Link>
-                </div>
+            {dawgsArray}
+        </div>
+    )
+}
 
-                <div className="results-important">
-                    {/* <ResultsEntries /> */}
-                </div>
-
-                <div className="results-connect">
-                    <Link to='/connect'><button className="btn btn-primary">Connect</button></Link>
-                </div>
+export function ResultsEntry(props) {
+    return (
+        <div className="results-entry-container">
+            <div className="pfp-results">
+                <Link to='/profile'><img className="pfp" src={avatar} alt="the user's avatar"/></Link>
             </div>
-            <div className="results-entry-container">
-                <div className="pfp-results">
-                    <Link to='/profile'><img className="pfp" src={avatar} alt="the user's avatar"/></Link>
+
+            <div className="results-important">
+                <div>      
+                    <Link to='/profile'>{props.dawgs.preferred_name}</Link>
+                    <p>{props.dawgs.pronouns}</p>
+                    <p>{props.dawgs.class_standing}</p>
+                    <p>{props.dawgs.major}</p>
+                    <p>{props.dawgs.city}, {props.dawgs.state}, {props.dawgs.country}</p>
                 </div>
 
-                <div className="results-important">
-                    <Link to='/profile'>Name</Link>
-                    <p>Pronouns</p>
-                    <p>Class Standing</p>
-                    <p>Major</p>
-                    <p>Hometown</p>
-                </div>
+            </div>
 
-                <div className="results-connect">
-                    <Link to='/connect'><button className="btn btn-primary">Connect</button></Link>
-                </div>
+            <div className="results-connect">
+                <Link to='/connect'><button className="btn btn-primary">Connect</button></Link>
             </div>
         </div>
     )
