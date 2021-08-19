@@ -62,39 +62,39 @@ function App() {
 
     return (
         <BrowserRouter>
-        <div className="page-container">
-            <Header user={user} signout={handleSignOut} />
+            <div className="page-container">
+                <Header user={user} signout={handleSignOut} />
 
-            <Switch>
-                <Route exact path="/">
-                    <OnboardPage />
-                </Route>
-                <Route path="/about">
-                    <AboutPage />
-                </Route>
-                <Route path="/login">
-                    <LoginPage uiConfig={uiConfig} />
-                </Route>
-                <Route path="/home">
-                    <Accordionize user={user} />
-                </Route>
-                <Route path="/profile">
-                    <ProfilePage />
-                </Route>
-                <Route path="/connect">
-                    <ConnectPage />
-                </Route>
-                <Route path="/account">
-                    <AccountPage user={user} />
-                </Route>
+                <Switch>
+                    <Route exact path="/">
+                        <OnboardPage />
+                    </Route>
+                    <Route path="/about">
+                        <AboutPage />
+                    </Route>
+                    <Route path="/login">
+                        <LoginPage uiConfig={uiConfig} />
+                    </Route>
+                    <Route path="/home">
+                        <Accordionize user={user} />
+                    </Route>
+                    <Route path="/profile">
+                        <ProfilePage />
+                    </Route>
+                    <Route path="/connect">
+                        <ConnectPage />
+                    </Route>
+                    <Route path="/account">
+                        <AccountPage user={user} />
+                    </Route>
 
-                <Route path="/">
-                    <Redirect to="/"/>
-                </Route>
-            </Switch>
+                    <Route path="/">
+                        <Redirect to="/"/>
+                    </Route>
+                </Switch>
 
-            <Footer />
-        </div>
+                <Footer />
+            </div>
         </BrowserRouter>
     )
 }

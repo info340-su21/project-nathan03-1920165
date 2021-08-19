@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel, AccordionItemState } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
 
-import avatar from '../img/avatar.jpg';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 import firebase from 'firebase/app';
 import 'firebase/database';
+
+import avatar from '../img/avatar.jpg';
+import ConnectPage from './Connect';
+import ProfilePage from './Profile';
 
 export default function Accordionize(props) {
     return (
@@ -378,7 +383,7 @@ function Results(props) {
         let uniqueID = userObj.preferred_name + userObj.pronouns + userObj.class_standing + userObj.major + userObj.city + userObj.state + userObj.country;
 
         return (
-            <ResultsEntry user={props.user} dawgs={userObj} key={uniqueID} />
+            <ResultsEntry user={props.user} dawg={userObj} key={uniqueID} urlEnd={uniqueID} />
         )
         //skip entry
     }
@@ -395,21 +400,27 @@ export function ResultsEntry(props) {
     return (
         <div className="results-entry-container">
             <div className="pfp-results">
-                <Link to='/profile'><img className="pfp" src={avatar} alt="the user's avatar"/></Link>
+                <Popup trigger={<img className="pfp" src={avatar} alt="the user's avatar"/>} position="right center">
+                    <ProfilePage dawg={props.dawg} />
+                </Popup>
             </div>
 
             <div className="results-important">
-                <div>      
-                    <Link to='/profile'>{props.dawgs.preferred_name}</Link>
-                    <p>{props.dawgs.pronouns}</p>
-                    <p>{props.dawgs.class_standing}</p>
-                    <p>{props.dawgs.major}</p>
-                    <p>{props.dawgs.city}, {props.dawgs.state}, {props.dawgs.country}</p>
+                <div>
+                    <Popup trigger={<a>{props.dawg.preferred_name}</a>} position="right center">
+                        <ProfilePage dawg={props.dawg} />
+                    </Popup>
+                    <p>{props.dawg.pronouns}</p>
+                    <p>{props.dawg.class_standing}</p>
+                    <p>{props.dawg.major}</p>
+                    <p>{props.dawg.city}, {props.dawg.state}, {props.dawg.country}</p>
                 </div>
             </div>
 
             <div className="results-connect">
-                <Link to='/connect'><button className="btn btn-primary">Connect</button></Link>
+                <Popup trigger={<button className="btn btn-primary">Connect</button>} position="right center">
+                    <ConnectPage dawg={props.dawg} />
+                </Popup>
             </div>
         </div>
     )
