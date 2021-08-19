@@ -364,7 +364,7 @@ function Results(props) {
 
     let dawgsArray = [];
     dawgsArray = dawgs.map((userObj) => {
-        if(
+        if (
             userObj.preferred_name !== '' &&
             userObj.pronouns !== '' &&
             userObj.class_standing !== '' &&
@@ -373,10 +373,15 @@ function Results(props) {
             userObj.state !== '' &&
             userObj.country !== ''
         )
+
+    {
+        let uniqueID = userObj.preferred_name + userObj.pronouns + userObj.class_standing + userObj.major + userObj.city + userObj.state + userObj.country;
+
         return (
-            <ResultsEntry user={props.user} dawgs={userObj} />
+            <ResultsEntry user={props.user} dawgs={userObj} key={uniqueID} />
         )
         //skip entry
+    }
     })
 
     return (
@@ -401,7 +406,6 @@ export function ResultsEntry(props) {
                     <p>{props.dawgs.major}</p>
                     <p>{props.dawgs.city}, {props.dawgs.state}, {props.dawgs.country}</p>
                 </div>
-
             </div>
 
             <div className="results-connect">

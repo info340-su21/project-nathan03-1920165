@@ -9,14 +9,7 @@ export default function ProfilePage() {
                     <form>
                         <h2>Profile</h2>
                         <div>
-                            <label for="picture_upload">Picture:</label>
-                            <output></output>
-                        </div>
-                        <div>
-                            <label for="fname_field">First Name:</label>
-                            <output></output>
-
-                            <label for="lname_field">Last Name:</label>
+                            <label for="name_field">Name:</label>
                             <output></output>
                         </div>
                         <div className="sub-section-end">
