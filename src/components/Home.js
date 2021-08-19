@@ -298,8 +298,6 @@ function Results(props) {
             filterRef.on('value', (snapshot) => { 
                 const filterObj = snapshot.val(); //user selected filters
 
-                console.log(filterObj.month_type_filter);
-
                 let objectKeyArray = Object.keys(dawgsObj);
                 let dawgsArray = objectKeyArray.map((key) => {
                     let singleDawgObj = dawgsObj[key];
@@ -307,22 +305,40 @@ function Results(props) {
                     return singleDawgObj;
                 })
 
-                let newDawgsArray = dawgsArray.filter((dawgObj) => {
-                   return dawgObj.month_type === filterObj.month_type_filter // || dawgObj
-                //         dawgObj.building_type === filterObj.building_type_filter ||
-                //         dawgObj.location_type === filterObj.location_type_filter ||
-                //         dawgObj.room_type === filterObj.room_type_filter ||
-                //         dawgObj.bathroom_typ === filterObj.bathroom_type_filter ||
-                //         dawgObj.class_standing === filterObj.class_standing_filter ||
-                //         dawgObj.morning_filter === filterObj.morning_filter ||
-                //         dawgObj.weeknights === filterObj.weeknights_filter ||
-                //         dawgObj.weekends === filterObj.weekends_filter ||
-                //         dawgObj.drinking === filterObj.drinking_filter ||
-                //         dawgObj.smoking === filterObj.smoking_filter ||
-                //         dawgObj.organizing === filterObj.organizing_filter ||
-                //         dawgObj.cleaning === filterObj.cleaning_filter
-                })
-                console.log(newDawgsArray);
+                const newDawgsArray = [];
+
+                for (let dawgObj of dawgsArray) {
+                    if(
+                        (dawgObj.month_type === filterObj.month_type_filter || filterObj.month_type_filter === "" || filterObj.month_type_filter === "Select one") &&
+
+                        (dawgObj.building_type === filterObj.building_type_filter || filterObj.building_type_filter === "" || filterObj.building_type_filter === "Select one") && 
+
+                        (dawgObj.location_type === filterObj.location_type_filter || filterObj.location_type_filter === "" || filterObj.location_type_filter === "Select one") && 
+
+                        (dawgObj.room_type === filterObj.room_type_filter || filterObj.room_type_filter === "" || filterObj.room_type_filter === "Select one") &&
+
+                        (dawgObj.bathroom_type === filterObj.bathroom_type_filter || filterObj.bathroom_type_filter === "" || filterObj.bathroom_type_filter === "Select one") && 
+
+                        (dawgObj.class_standing === filterObj.class_standing_filter || filterObj.class_standing_filter === "" || filterObj.class_standing_filter === "Select one") &&
+
+                        (dawgObj.morning === filterObj.morning_filter || filterObj.morning_filter === "" || filterObj.morning_filter === "Select one") &&
+
+                        (dawgObj.weeknights === filterObj.weeknights_filter || filterObj.weeknights_filter === "" || filterObj.weeknights_filter === "Select one") && 
+
+                        (dawgObj.weekends === filterObj.weekends_filter || filterObj.weekends_filter === "" || filterObj.weekends_filter === "Select one") &&
+
+                        (dawgObj.drinking === filterObj.drinking_filter || filterObj.drinking_filter === "" || filterObj.drinking_filter === "Select one") &&
+
+                        (dawgObj.smoking === filterObj.smoking_filter || filterObj.smoking_filter === "" || filterObj.smoking_filter === "Select one") &&
+                        
+                        (dawgObj.organizing === filterObj.organizing_filter || filterObj.organizing_filter === "" || filterObj.organizing_filter === "Select one") &&
+
+                        (dawgObj.cleaning === filterObj.cleaning_filter || filterObj.cleaning_filter === "" || filterObj.cleaning_filter === "Select one") /*&&
+
+                        !newDawgsArray.includes(dawgObj)*/) {
+                        newDawgsArray.push(dawgObj);
+                    }
+                }
                 setDawgs(newDawgsArray);
             })
         })
