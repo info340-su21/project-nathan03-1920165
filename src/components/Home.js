@@ -380,7 +380,7 @@ function Results(props) {
         )
 
     {
-        let uniqueID = userObj.preferred_name + userObj.pronouns + userObj.class_standing + userObj.major + userObj.city + userObj.state + userObj.country;
+        let uniqueID = userObj.preferred_name + userObj.class_standing + userObj.major + userObj.city + userObj.state + userObj.country;
 
         return (
             <ResultsEntry user={props.user} dawg={userObj} key={uniqueID} urlEnd={uniqueID} />
@@ -389,11 +389,19 @@ function Results(props) {
     }
     })
 
-    return (
-        <div className="results-page-container">
-            {dawgsArray}
-        </div>
-    )
+    if (dawgsArray.length === 0) { 
+        return (
+            <div className="results-page-container">
+                <p className="alert alert-info">No results found</p>
+            </div>
+        )
+    } else {
+        return (
+            <div className="results-page-container">
+                {dawgsArray}
+            </div>
+        )
+    }
 }
 
 export function ResultsEntry(props) {

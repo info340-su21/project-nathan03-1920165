@@ -213,7 +213,8 @@ export default function AccountPage(props) {
             <section className="profile">
                 <h2>{message}</h2>
                 <div>
-                    <em>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</em>
+                    <p><em>To connect with other students, please complete this questionnaire about who you are, along with your contact information, and anything else you would like someone to know about you below.</em></p>
+                    <p><em>All fields marked with * are required</em></p>
                 </div>
             </section>
 
@@ -225,12 +226,12 @@ export default function AccountPage(props) {
                 <form>
                     <section className="form-section-container">
                         <div>
-                            <label htmlFor="preferred_name_field">Preferred Name:</label>
-                            <input type="text" id="preferred_name_field" name="preferred_name" value={formValues.preferred_name} onChange={handleChange} placeholder="First & Last Name" required />
+                            <label htmlFor="preferred_name_field">Preferred Name: *</label>
+                            <input type="text" id="preferred_name_field" name="preferred_name" value={formValues.preferred_name} onChange={handleChange} placeholder="First & Last Name" aria-required="true" required />
                         </div>
                         <div>
-                            <label htmlFor="pronouns_dropdown">Personal Pronoun:</label>
-                            <select id="pronouns_dropdown" name="pronouns" value={formValues.pronouns} onChange={handleChange}>
+                            <label htmlFor="pronouns_dropdown">Personal Pronoun: *</label>
+                            <select id="pronouns_dropdown" name="pronouns" value={formValues.pronouns} onChange={handleChange}aria-required="true">
                                 <option hidden="">Select one</option>
                                 <option value="she/her/hers">she/her/hers</option>
                                 <option value="he/him/his">he/him/his</option>
@@ -238,16 +239,16 @@ export default function AccountPage(props) {
                             </select>
                         </div>
                         <div>
-                            <label htmlFor="city_field">Hometown City:</label>
-                            <input type="text" id="city_field" name="city" value={formValues.city} onChange={handleChange} placeholder="Seattle" required />
+                            <label htmlFor="city_field">Hometown City: *</label>
+                            <input type="text" id="city_field" name="city" value={formValues.city} onChange={handleChange} placeholder="Seattle" aria-required="true" required />
                         </div>
                         <div>
-                            <label htmlFor="state_field">Hometown State:</label>
-                            <input type="text" id="state_field" name="state" value={formValues.state} onChange={handleChange} placeholder="WA" required />
+                            <label htmlFor="state_field">Hometown State: *</label>
+                            <input type="text" id="state_field" name="state" value={formValues.state} onChange={handleChange} placeholder="WA" aria-required="true" required />
                         </div>
                         <div>
-                            <label htmlFor="country_field">Hometown Country:</label>
-                            <input type="text" id="country_field" name="country" value={formValues.country} onChange={handleChange} placeholder="USA" required />
+                            <label htmlFor="country_field">Hometown Country: *</label>
+                            <input type="text" id="country_field" name="country" value={formValues.country} onChange={handleChange} placeholder="USA" aria-required="true" required />
                         </div>
                         <div>
                             <label htmlFor="primary_lang_field">Primary Language:</label>
@@ -269,12 +270,12 @@ export default function AccountPage(props) {
                 <form>
                     <section className="form-section-container">
                         <div>
-                            <label htmlFor="phone">Phone Number:</label>
-                            <input type="tel" id="phone" name="phone" value={formValues.phone} onChange={handleChange} placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+                            <label htmlFor="phone">Phone Number: *</label>
+                            <input type="tel" id="phone" name="phone" value={formValues.phone} onChange={handleChange} placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" aria-required="true" />
                         </div>
                         <div>
-                            <label htmlFor="email">Email Address:</label>
-                            <input type="email" id="email" name="email" value={formValues.email} onChange={handleChange} placeholder="example@domain.com" />
+                            <label htmlFor="email">Email Address: *</label>
+                            <input type="email" id="email" name="email" value={formValues.email} onChange={handleChange} placeholder="example@domain.com" aria-required="true" />
                         </div>
                         <div>
                             <label htmlFor="facebook"><i className="fab fa-facebook" aria-label="Facebook"></i> Facebook: </label>
@@ -308,12 +309,12 @@ export default function AccountPage(props) {
                 <form>
                     <section className="form-section-container">
                         <div>
-                            <label htmlFor="major">(Intended) Major:</label>
-                            <input type="text" id="major" name="major" value={formValues.major} onChange={handleChange} placeholder="Informatics" />
+                            <label htmlFor="major">(Intended) Major: *</label>
+                            <input type="text" id="major" name="major" value={formValues.major} onChange={handleChange} placeholder="Informatics" aria-required="true" required />
                         </div>
                         <div>
-                            <label htmlFor="class_standing">Class Standing</label>
-                            <select id="class_standing" name="class_standing" value={formValues.class_standing} onChange={handleChange}>
+                            <label htmlFor="class_standing">Class Standing *</label>
+                            <select id="class_standing" name="class_standing" value={formValues.class_standing} onChange={handleChange} aria-required="true" required>
                                 <option hidden="">Select one</option>
                                 <option value="Freshman">Freshman</option>
                                 <option value="Sophomore">Sophomore</option>
@@ -636,10 +637,12 @@ export default function AccountPage(props) {
                     <em>Is there anything else you would like someone to know about you?</em>
                 </div>
                 <form>
-                    <div className="sub-section-end">
-                        <label htmlFor="description">Description:</label>
-                        <textarea className="form-control" id="description" name="description" value={formValues.description} onChange={handleChange} placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
-                    </div>
+                    <section classsName="form-section-container">
+                        <div className="sub-section-end">
+                            <label htmlFor="description">Description:</label>
+                            <textarea className="form-control" id="description" name="description" value={formValues.description} onChange={handleChange} placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>
+                        </div>
+                    </section>
                 </form>
             </section>
 
