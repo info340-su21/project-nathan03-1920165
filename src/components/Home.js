@@ -290,16 +290,41 @@ function Results(props) {
     const [dawgs, setDawgs] = useState([]);
 
     useEffect(() => {
-        const filterRef = firebase.database().ref('users');
-        filterRef.on('value', (snapshot) => {
-            const dawgsObj = snapshot.val();
-            let objectKeyArray = Object.keys(dawgsObj);
-            let dawgsArray = objectKeyArray.map((key) => {
-                let singleDawgObj = dawgsObj[key];
-                singleDawgObj.key = key;
-                return singleDawgObj;
+        const usersRef = firebase.database().ref('users');
+        usersRef.on('value', (snapshot) => {
+            const dawgsObj = snapshot.val(); //all current users
+            
+            const filterRef = firebase.database().ref("filter/" + props.user.uid);
+            filterRef.on('value', (snapshot) => { 
+                const filterObj = snapshot.val(); //user selected filters
+
+                console.log(filterObj.month_type_filter);
+
+                let objectKeyArray = Object.keys(dawgsObj);
+                let dawgsArray = objectKeyArray.map((key) => {
+                    let singleDawgObj = dawgsObj[key];
+                    singleDawgObj.key = key;
+                    return singleDawgObj;
+                })
+
+                let newDawgsArray = dawgsArray.filter((dawgObj) => {
+                   return dawgObj.month_type === filterObj.month_type_filter // || dawgObj
+                //         dawgObj.building_type === filterObj.building_type_filter ||
+                //         dawgObj.location_type === filterObj.location_type_filter ||
+                //         dawgObj.room_type === filterObj.room_type_filter ||
+                //         dawgObj.bathroom_typ === filterObj.bathroom_type_filter ||
+                //         dawgObj.class_standing === filterObj.class_standing_filter ||
+                //         dawgObj.morning_filter === filterObj.morning_filter ||
+                //         dawgObj.weeknights === filterObj.weeknights_filter ||
+                //         dawgObj.weekends === filterObj.weekends_filter ||
+                //         dawgObj.drinking === filterObj.drinking_filter ||
+                //         dawgObj.smoking === filterObj.smoking_filter ||
+                //         dawgObj.organizing === filterObj.organizing_filter ||
+                //         dawgObj.cleaning === filterObj.cleaning_filter
+                })
+                console.log(newDawgsArray);
+                setDawgs(newDawgsArray);
             })
-            setDawgs(dawgsArray);
         })
     }, [])
 
