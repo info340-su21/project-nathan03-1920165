@@ -15,10 +15,11 @@ export default function Accordionize(props) {
             <h2>Welcome, {props.user.displayName}!</h2>
             <div className="home-message">
                 <p>
-                    <em>New to UniteDawgs? Please 'click' to get started and complete your account:  </em>
+                    <em>New to UniteDawgs? Please click "Get Started" and complete your account:  </em>
                     <Link to='/account'><button className="btn btn-primary mt-1">Get Started</button></Link>
                 </p>
             </div>
+            <p><em>Note: Other users will not be able to find you if your account is incomplete!</em></p>
             <p>To begin your search for a roommate, start filtering or jump straight to the results.</p>
 
             <Accordion preExpanded={['filter']} onChange={(uuid) => console.log(uuid)}>
@@ -107,7 +108,7 @@ function FilterForm(props) {
                     'smoking_filter': '',
                     'organizing_filter': '',
                     'cleaning_filter': ''
-                });
+                })
             }
         })
     }, [])
@@ -296,7 +297,24 @@ function Results(props) {
             
             const filterRef = firebase.database().ref("filter/" + props.user.uid);
             filterRef.on('value', (snapshot) => { 
-                const filterObj = snapshot.val(); //user selected filters
+                let filterObj = snapshot.val(); //user selected filters
+                if (filterObj == null) {
+                    filterObj = {
+                        'month_type_filter': '',
+                        'building_type_filter': '',
+                        'location_type_filter': '',
+                        'room_type_filter': '',
+                        'bathroom_type_filter': '',
+                        'class_standing_filter': '',
+                        'morning_filter': '',
+                        'weeknights_filter': '',
+                        'weekends_filter': '',
+                        'drinking_filter': '',
+                        'smoking_filter': '',
+                        'organizing_filter': '',
+                        'cleaning_filter': ''
+                    }
+                }
 
                 let objectKeyArray = Object.keys(dawgsObj);
                 let dawgsArray = objectKeyArray.map((key) => {
@@ -333,9 +351,9 @@ function Results(props) {
                         
                         (dawgObj.organizing === filterObj.organizing_filter || filterObj.organizing_filter === "" || filterObj.organizing_filter === "Select one") &&
 
-                        (dawgObj.cleaning === filterObj.cleaning_filter || filterObj.cleaning_filter === "" || filterObj.cleaning_filter === "Select one") /*&&
+                        (dawgObj.cleaning === filterObj.cleaning_filter || filterObj.cleaning_filter === "" || filterObj.cleaning_filter === "Select one") &&
 
-                        !newDawgsArray.includes(dawgObj)*/) {
+                        !newDawgsArray.includes(dawgObj)) {
                         newDawgsArray.push(dawgObj);
                     }
                 }
@@ -346,9 +364,19 @@ function Results(props) {
 
     let dawgsArray = [];
     dawgsArray = dawgs.map((userObj) => {
+        if(
+            userObj.preferred_name !== '' &&
+            userObj.pronouns !== '' &&
+            userObj.class_standing !== '' &&
+            userObj.major !== '' &&
+            userObj.city !== '' &&
+            userObj.state !== '' &&
+            userObj.country !== ''
+        )
         return (
             <ResultsEntry user={props.user} dawgs={userObj} />
         )
+        //skip entry
     })
 
     return (
