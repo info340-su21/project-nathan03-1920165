@@ -7,6 +7,8 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
+import { Button, Modal } from 'react-bootstrap';
+
 import firebase from 'firebase/app';
 import 'firebase/database';
 
@@ -405,19 +407,35 @@ function Results(props) {
 }
 
 export function ResultsEntry(props) {
+    const [profileImgShow, setImgProfileShow] = React.useState(false);
+    const [profileNameShow, setProfileNameShow] = React.useState(false);
+    const [connectShow, setConnectShow] = React.useState(false);
+
     return (
         <div className="results-entry-container">
             <div className="pfp-results">
-                <Popup trigger={<img className="pfp" src={avatar} alt="the user's avatar"/>} position="right center">
-                    <ProfilePage dawg={props.dawg} />
-                </Popup>
+                <Button variant="secondary" onClick={() => setImgProfileShow(true)}>
+                    <img className="pfp" src={avatar} alt="the user's avatar"/>
+                </Button>
+    
+                <ProfileModal
+                show={profileImgShow}
+                onHide={() => setImgProfileShow(false)}
+                dawg={props.dawg}
+                />
             </div>
 
             <div className="results-important">
                 <div>
-                    <Popup trigger={<a>{props.dawg.preferred_name}</a>} position="right center">
-                        <ProfilePage dawg={props.dawg} />
-                    </Popup>
+                    <Button variant="primary" onClick={() => setProfileNameShow(true)}>
+                    {props.dawg.preferred_name}
+                    </Button>
+            
+                    <ProfileModal
+                    show={profileNameShow}
+                    onHide={() => setProfileNameShow(false)}
+                    dawg={props.dawg}
+                    />
                     <p>{props.dawg.pronouns}</p>
                     <p>{props.dawg.class_standing}</p>
                     <p>{props.dawg.major}</p>
@@ -426,10 +444,52 @@ export function ResultsEntry(props) {
             </div>
 
             <div className="results-connect">
-                <Popup trigger={<button className="btn btn-primary">Connect</button>} position="right center">
-                    <ConnectPage dawg={props.dawg} />
-                </Popup>
+                <Button variant="primary" onClick={() => setConnectShow(true)}>
+                Connect
+                </Button>
+        
+                <ConnectModal
+                show={connectShow}
+                onHide={() => setConnectShow(false)}
+                dawg={props.dawg}
+                />
             </div>
         </div>
     )
 }
+
+function ProfileModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body>
+            <ProfilePage dawg={props.dawg} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  function ConnectModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body>
+            <ConnectPage dawg={props.dawg} />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }

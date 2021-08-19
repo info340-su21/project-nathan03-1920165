@@ -38,9 +38,6 @@ export default function ConnectPage(props) {
                         </div>
                     </form>
                 </section>
-
-                <Link to='/home'><button class="btn btn-secondary">Go Back</button></Link>
-
             </main>
         </div>
     )
