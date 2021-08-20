@@ -650,8 +650,8 @@ export default function AccountPage(props) {
                 <form>
                     {showSuccessAlert}
                     {showResetAlert}
-                    <button className="btn btn-success" onClick={handleSubmit}>Submit Form</button>
-                    <button className="btn btn-danger" onClick={handleReset}>Reset Form</button>
+                    <button className="btn btn-success" onClick={handleSubmit} aria-label="Submit Form">Submit Form</button>
+                    <button className="btn btn-danger" onClick={handleReset} aria-label="Reset Form">Reset Form</button>
                 </form>
             </section>
         </main>

@@ -21,11 +21,11 @@ export default function AboutPage() {
                 <div className="about-images">
                     <figure>
                         <img src={mcmahon} alt="McMahon room with two roommates" />
-                        <figcaption>This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall" target="_blank"  rel="noopener noreferrer">UW Housing and Food Services</a></cite></figcaption>
+                        <figcaption>This image is taken from a room in McMahon Hall and is provided by <cite><a href="https://hfs.uw.edu/Live/Undergraduate-Housing-Rates-and-Information/McMahon-Hall" target="_blank" rel="noopener noreferrer">UW Housing and Food Services</a></cite></figcaption>
                     </figure>
                     <figure>
                         <img src={students} alt="students walking in West Campus" />
-                        <figcaption>This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/" target="_blank"  rel="noopener noreferrer">UW Housing and Food Services via Tumblr</a></cite></figcaption>
+                        <figcaption>This image is taken from West Campus and is provided by <cite><a href="https://www.flickr.com/photos/90311612@N05/16044345764/" target="_blank" rel="noopener noreferrer">UW Housing and Food Services via Tumblr</a></cite></figcaption>
                     </figure>
                 </div>
             </div>

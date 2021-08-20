@@ -20,7 +20,7 @@ export default function Accordionize(props) {
             <div className="home-message">
                 <p className="alert alert-info">
                     <em>New to UniteDawgs? Please click "Get Started" and complete your account:  </em>
-                    <Link to='/account'><button className="btn btn-primary mt-1">Get Started</button></Link>
+                    <Link to='/account'><button className="btn btn-primary mt-1" aria-label="Get Started">Get Started</button></Link>
                 </p>
             </div>
             <p><em>Note: Other users will not be able to find you if your account is incomplete!</em></p>
@@ -283,8 +283,8 @@ function FilterForm(props) {
                 <form>
                     {showSuccessAlert}
                     {showResetAlert}
-                    <button className="btn btn-success" onClick={handleFilterSubmit}>Submit Filters</button>
-                    <button className="btn btn-danger" onClick={handleFilterReset}>Reset Filters</button>
+                    <button className="btn btn-success" onClick={handleFilterSubmit} aria-label="submit filters">Submit Filters</button>
+                    <button className="btn btn-danger" onClick={handleFilterReset} aria-label="reset filters">Reset Filters</button>
                 </form>
             </section>
         </div>
@@ -408,10 +408,13 @@ export function ResultsEntry(props) {
     const [profileNameShow, setProfileNameShow] = React.useState(false);
     const [connectShow, setConnectShow] = React.useState(false);
 
+    let ariaProfile = props.dawg.preferred_name + "'s profile";
+    let ariaConnect = props.dawg.preferred_name + "'s contacts";
+
     return (
         <div className="results-entry-container">
             <div className="pfp-results">
-                <Button variant="secondary" onClick={() => setImgProfileShow(true)}>
+                <Button variant="secondary" onClick={() => setImgProfileShow(true)} aria-label={ariaProfile}>
                     <img className="pfp" src={avatar} alt="the user's avatar"/>
                 </Button>
     
@@ -423,7 +426,7 @@ export function ResultsEntry(props) {
             </div>
 
             <div className="results-important">
-                <Button variant="primary" onClick={() => setProfileNameShow(true)}>
+                <Button variant="primary" onClick={() => setProfileNameShow(true)} aria-label={ariaProfile}>
                     {props.dawg.preferred_name}
                 </Button>
         
@@ -440,7 +443,7 @@ export function ResultsEntry(props) {
             </div>
 
             <div className="results-connect">
-                <Button variant="primary" onClick={() => setConnectShow(true)}>
+                <Button variant="primary" onClick={() => setConnectShow(true)} aria-label={ariaConnect}>
                     Connect
                 </Button>
         
@@ -469,7 +472,7 @@ function ProfileModal(props) {
                 <ProfilePage dawg={props.dawg} />
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.onHide}>Close</Button>
+                <Button variant="secondary" onClick={props.onHide} aria-label="close">Close</Button>
             </Modal.Footer>
         </Modal>
     );
@@ -490,7 +493,7 @@ function ConnectModal(props) {
                 <ConnectPage dawg={props.dawg} />
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={props.onHide}>Close</Button>
+                <Button variant="secondary" onClick={props.onHide} aria-label="close">Close</Button>
             </Modal.Footer>
         </Modal>
     );
