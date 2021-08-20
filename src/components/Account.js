@@ -137,7 +137,7 @@ export default function AccountPage(props) {
                 });
             }
         })
-    })
+    }, [props.user.uid])
 
     //handle submitting form button
     const handleSubmit = (event) => {
