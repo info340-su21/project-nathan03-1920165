@@ -31,7 +31,7 @@ export default function Accordionize(props) {
                 <li>To connect and message someone on a third-party app, click on "Connect."</li>
             </ol>
 
-            <Accordion preExpanded={['filter']} onChange={(uuid) => console.log(uuid)}>
+            <Accordion preExpanded={['filter']}>
                 <AccordionItem uuid="filter">
                     <AccordionItemHeading>
                         <AccordionItemButton>
@@ -115,7 +115,7 @@ function FilterForm(props) {
                 })
             }
         })
-    }, [])
+    })
 
     //handle submitting filter button
     const handleFilterSubmit = (event) => {
@@ -295,79 +295,84 @@ function Results(props) {
     const [dawgs, setDawgs] = useState([]);
 
     useEffect(() => {
-        const usersRef = firebase.database().ref('users');
+        const usersRef = firebase.database().ref();
         usersRef.on('value', (snapshot) => {
-            const dawgsObj = snapshot.val(); //all current users
-            
-            const filterRef = firebase.database().ref("filter/" + props.user.uid);
-            filterRef.on('value', (snapshot) => { 
-                let filterObj = snapshot.val(); //user selected filters
-                if (filterObj == null) {
-                    filterObj = {
-                        'month_type_filter': '',
-                        'building_type_filter': '',
-                        'location_type_filter': '',
-                        'room_type_filter': '',
-                        'bathroom_type_filter': '',
-                        'class_standing_filter': '',
-                        'morning_filter': '',
-                        'weeknights_filter': '',
-                        'weekends_filter': '',
-                        'drinking_filter': '',
-                        'smoking_filter': '',
-                        'organizing_filter': '',
-                        'cleaning_filter': ''
-                    }
-                }
-
-                let objectKeyArray = Object.keys(dawgsObj);
-                let dawgsArray = objectKeyArray.map((key) => {
-                    let singleDawgObj = dawgsObj[key];
-                    singleDawgObj.key = key;
-                    return singleDawgObj;
-                })
-
-                const newDawgsArray = [];
-
-                for (let dawgObj of dawgsArray) {
-                    if(
-                        (dawgObj.month_type === filterObj.month_type_filter || filterObj.month_type_filter === "" || filterObj.month_type_filter === "Select one") &&
-
-                        (dawgObj.building_type === filterObj.building_type_filter || filterObj.building_type_filter === "" || filterObj.building_type_filter === "Select one") && 
-
-                        (dawgObj.location_type === filterObj.location_type_filter || filterObj.location_type_filter === "" || filterObj.location_type_filter === "Select one") && 
-
-                        (dawgObj.room_type === filterObj.room_type_filter || filterObj.room_type_filter === "" || filterObj.room_type_filter === "Select one") &&
-
-                        (dawgObj.bathroom_type === filterObj.bathroom_type_filter || filterObj.bathroom_type_filter === "" || filterObj.bathroom_type_filter === "Select one") && 
-
-                        (dawgObj.class_standing === filterObj.class_standing_filter || filterObj.class_standing_filter === "" || filterObj.class_standing_filter === "Select one") &&
-
-                        (dawgObj.morning === filterObj.morning_filter || filterObj.morning_filter === "" || filterObj.morning_filter === "Select one") &&
-
-                        (dawgObj.weeknights === filterObj.weeknights_filter || filterObj.weeknights_filter === "" || filterObj.weeknights_filter === "Select one") && 
-
-                        (dawgObj.weekends === filterObj.weekends_filter || filterObj.weekends_filter === "" || filterObj.weekends_filter === "Select one") &&
-
-                        (dawgObj.drinking === filterObj.drinking_filter || filterObj.drinking_filter === "" || filterObj.drinking_filter === "Select one") &&
-
-                        (dawgObj.smoking === filterObj.smoking_filter || filterObj.smoking_filter === "" || filterObj.smoking_filter === "Select one") &&
-                        
-                        (dawgObj.organizing === filterObj.organizing_filter || filterObj.organizing_filter === "" || filterObj.organizing_filter === "Select one") &&
-
-                        (dawgObj.cleaning === filterObj.cleaning_filter || filterObj.cleaning_filter === "" || filterObj.cleaning_filter === "Select one") &&
-
-                        !newDawgsArray.includes(dawgObj)) {
-                        newDawgsArray.push(dawgObj);
-                    }
-                }
-                setDawgs(newDawgsArray);
-            })
+            const dawgsObj = snapshot.val();
+            console.log(dawgsObj);
         })
-    }, [])
+        
+        // usersRef.on('value', (snapshot) => {
+        //     const dawgsObj = snapshot.val(); //all current users
+            
+        //     const filterRef = firebase.database().ref("filter/" + props.user.uid);
+        //     filterRef.on('value', (snapshot) => { 
+        //         let filterObj = snapshot.val(); //user selected filters
+        //         if (filterObj == null) {
+        //             filterObj = {
+        //                 'month_type_filter': '',
+        //                 'building_type_filter': '',
+        //                 'location_type_filter': '',
+        //                 'room_type_filter': '',
+        //                 'bathroom_type_filter': '',
+        //                 'class_standing_filter': '',
+        //                 'morning_filter': '',
+        //                 'weeknights_filter': '',
+        //                 'weekends_filter': '',
+        //                 'drinking_filter': '',
+        //                 'smoking_filter': '',
+        //                 'organizing_filter': '',
+        //                 'cleaning_filter': ''
+        //             }
+        //         }
+
+        //         let objectKeyArray = Object.keys(dawgsObj);
+        //         let dawgsArray = objectKeyArray.map((key) => {
+        //             let singleDawgObj = dawgsObj[key];
+        //             singleDawgObj.key = key;
+        //             return singleDawgObj;
+        //         })
+
+        //         const newDawgsArray = [];
+
+        //         for (let dawgObj of dawgsArray) {
+        //             if(
+        //                 (dawgObj.month_type === filterObj.month_type_filter || filterObj.month_type_filter === "" || filterObj.month_type_filter === "Select one") &&
+
+        //                 (dawgObj.building_type === filterObj.building_type_filter || filterObj.building_type_filter === "" || filterObj.building_type_filter === "Select one") && 
+
+        //                 (dawgObj.location_type === filterObj.location_type_filter || filterObj.location_type_filter === "" || filterObj.location_type_filter === "Select one") && 
+
+        //                 (dawgObj.room_type === filterObj.room_type_filter || filterObj.room_type_filter === "" || filterObj.room_type_filter === "Select one") &&
+
+        //                 (dawgObj.bathroom_type === filterObj.bathroom_type_filter || filterObj.bathroom_type_filter === "" || filterObj.bathroom_type_filter === "Select one") && 
+
+        //                 (dawgObj.class_standing === filterObj.class_standing_filter || filterObj.class_standing_filter === "" || filterObj.class_standing_filter === "Select one") &&
+
+        //                 (dawgObj.morning === filterObj.morning_filter || filterObj.morning_filter === "" || filterObj.morning_filter === "Select one") &&
+
+        //                 (dawgObj.weeknights === filterObj.weeknights_filter || filterObj.weeknights_filter === "" || filterObj.weeknights_filter === "Select one") && 
+
+        //                 (dawgObj.weekends === filterObj.weekends_filter || filterObj.weekends_filter === "" || filterObj.weekends_filter === "Select one") &&
+
+        //                 (dawgObj.drinking === filterObj.drinking_filter || filterObj.drinking_filter === "" || filterObj.drinking_filter === "Select one") &&
+
+        //                 (dawgObj.smoking === filterObj.smoking_filter || filterObj.smoking_filter === "" || filterObj.smoking_filter === "Select one") &&
+                        
+        //                 (dawgObj.organizing === filterObj.organizing_filter || filterObj.organizing_filter === "" || filterObj.organizing_filter === "Select one") &&
+
+        //                 (dawgObj.cleaning === filterObj.cleaning_filter || filterObj.cleaning_filter === "" || filterObj.cleaning_filter === "Select one") &&
+
+        //                 !newDawgsArray.includes(dawgObj)) {
+        //                 newDawgsArray.push(dawgObj);
+        //             }
+        //         }
+        //         setDawgs(newDawgsArray);
+        //     })
+        // })
+    })
 
     let dawgsArray = [];
-    dawgsArray = dawgs.map((userObj) => {
+    dawgsArray = dawgs.filter((userObj) => {
         if (
             userObj.preferred_name !== '' &&
             userObj.pronouns !== '' &&
@@ -376,22 +381,23 @@ function Results(props) {
             userObj.city !== '' &&
             userObj.state !== '' &&
             userObj.country !== ''
-        )
-
-    {
+        ) {
+            return true;
+        }
+        //skip entry
+        return false;
+    }).map((userObj) => {
         let uniqueID = userObj.preferred_name + userObj.class_standing + userObj.major + userObj.city + userObj.state + userObj.country;
 
         return (
             <ResultsEntry user={props.user} dawg={userObj} key={uniqueID} />
         )
-        //skip entry
-    }
     })
 
     if (dawgsArray.length === 0) { 
         return (
             <div className="results-page-container">
-                <p className="alert alert-info">No results found</p>
+                <p className="alert alert-dark">No results found</p>
             </div>
         )
     } else {
