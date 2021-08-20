@@ -412,7 +412,7 @@ export function ResultsEntry(props) {
     let ariaConnect = props.dawg.preferred_name + "'s contacts";
 
     return (
-        <div className="results-entry-container">
+        <div className="border border-dark results-entry-container">
             <div className="pfp-results">
                 <Button variant="secondary" onClick={() => setImgProfileShow(true)} aria-label={ariaProfile}>
                     <img className="pfp" src={avatar} alt="the user's avatar"/>
