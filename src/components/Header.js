@@ -6,7 +6,7 @@ export default function Header(props) {
         return (
             <div className="banner">
                 <header>
-                    <h1><Link exact to='/'>UniteDawgs</Link></h1>
+                    <h1><Link to='/'>UniteDawgs</Link></h1>
                 </header>
                 <nav>
                     <div className="mobile">
@@ -30,7 +30,7 @@ export default function Header(props) {
         return (
             <div className="banner">
                 <header>
-                    <h1><Link exact to='/'>UniteDawgs</Link></h1>
+                    <h1><Link to='/'>UniteDawgs</Link></h1>
                 </header>
                 <nav>
                     <div className="mobile">

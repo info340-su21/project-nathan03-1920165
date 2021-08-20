@@ -19,7 +19,7 @@ export default function Accordionize(props) {
             <h2>Welcome, {props.user.displayName}!</h2>
             <div className="home-message">
                 <p className="alert alert-info">
-                    <em>New to UniteDawgs? Please click "Get Started" and complete your account:  </em>
+                    <em>New to UniteDawgs? Please click "Get Started" and complete your account: </em>
                     <Link to='/account'><button className="btn btn-primary mt-1" aria-label="Get Started">Get Started</button></Link>
                 </p>
             </div>
@@ -329,7 +329,7 @@ function Results(props) {
             const newDawgsArray = [];
 
             for (let dawgObj of dawgsArray) {
-                if(
+                if (
                     (dawgObj.month_type === filterObj.month_type_filter || filterObj.month_type_filter === "" || filterObj.month_type_filter === "Select one") &&
 
                     (dawgObj.building_type === filterObj.building_type_filter || filterObj.building_type_filter === "" || filterObj.building_type_filter === "Select one") && 
