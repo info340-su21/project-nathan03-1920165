@@ -270,11 +270,11 @@ export default function AccountPage(props) {
                 <form>
                     <section className="form-section-container">
                         <div>
-                            <label htmlFor="phone">Phone Number: *</label>
+                            <label htmlFor="phone"><i className="fas fa-phone" aria-label="Phone"></i> Phone Number: *</label>
                             <input type="tel" id="phone" name="phone" value={formValues.phone} onChange={handleChange} placeholder="206-543-2100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" aria-required="true" />
                         </div>
                         <div>
-                            <label htmlFor="email">Email Address: *</label>
+                            <label htmlFor="email"><i className="far fa-envelope" aria-label="Email"></i> Email Address: *</label>
                             <input type="email" id="email" name="email" value={formValues.email} onChange={handleChange} placeholder="example@domain.com" aria-required="true" />
                         </div>
                         <div>

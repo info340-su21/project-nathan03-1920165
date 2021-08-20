@@ -8,11 +8,11 @@ export default function ConnectPage(props) {
                     <h2>{props.dawg.preferred_name}</h2>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <label>Phone Number:</label>
+                            <label><i className="fas fa-phone" aria-label="Phone"></i> Phone Number: </label>
                             <p>{props.dawg.phone}</p>
                         </li>
                         <li class="list-group-item">
-                            <label>Email Address:</label>
+                            <label><i className="far fa-envelope" aria-label="Email"></i> Email Address: </label>
                             <p>{props.dawg.email}</p>
                         </li>
                         <li class="list-group-item">
