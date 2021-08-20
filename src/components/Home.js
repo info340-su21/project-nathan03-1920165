@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel, AccordionItemState } from 'react-accessible-accordion';
+import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
 
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-
-import { Button, Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -21,13 +18,18 @@ export default function Accordionize(props) {
         <div className="home-page">
             <h2>Welcome, {props.user.displayName}!</h2>
             <div className="home-message">
-                <p>
+                <p className="alert alert-info">
                     <em>New to UniteDawgs? Please click "Get Started" and complete your account:  </em>
                     <Link to='/account'><button className="btn btn-primary mt-1">Get Started</button></Link>
                 </p>
             </div>
             <p><em>Note: Other users will not be able to find you if your account is incomplete!</em></p>
-            <p>To begin your search for a roommate, start filtering or jump straight to the results.</p>
+            <p>To begin your search for a roommate,</p>
+            <ol>
+                <li>Start filtering or jump straight to the results.</li>
+                <li>To learn more about a person, click on their name or avatar.</li>
+                <li>To connect and message someone on a third-party app, click on "Connect."</li>
+            </ol>
 
             <Accordion preExpanded={['filter']} onChange={(uuid) => console.log(uuid)}>
                 <AccordionItem uuid="filter">
@@ -45,7 +47,6 @@ export default function Accordionize(props) {
                     <AccordionItemHeading>
                         <AccordionItemButton>
                             Results
-                            {/* <AccordionItemState children={ { expanded: true, disabled: true } }></AccordionItemState> */}
                         </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
@@ -62,10 +63,6 @@ function FilterForm(props) {
     const [countSuccess, setCountSuccess] = useState(1);
     const [showResetAlert, setResetAlert] = useState(null);
     const [countReset, setCountReset] = useState(1);
-
-    // const [submitted, setSubmitted] = useState(
-    //     <AccordionItemState children={ { expanded: true, disabled: true } }></AccordionItemState>
-    // );
 
     //stores all filter values in a single object
     const [filterValues, setFilterValues] = useState({
@@ -385,7 +382,7 @@ function Results(props) {
         let uniqueID = userObj.preferred_name + userObj.class_standing + userObj.major + userObj.city + userObj.state + userObj.country;
 
         return (
-            <ResultsEntry user={props.user} dawg={userObj} key={uniqueID} urlEnd={uniqueID} />
+            <ResultsEntry user={props.user} dawg={userObj} key={uniqueID} />
         )
         //skip entry
     }
@@ -419,39 +416,38 @@ export function ResultsEntry(props) {
                 </Button>
     
                 <ProfileModal
-                show={profileImgShow}
-                onHide={() => setImgProfileShow(false)}
-                dawg={props.dawg}
+                    show={profileImgShow}
+                    onHide={() => setImgProfileShow(false)}
+                    dawg={props.dawg}
                 />
             </div>
 
             <div className="results-important">
-                <div>
-                    <Button variant="primary" onClick={() => setProfileNameShow(true)}>
+                <Button variant="primary" onClick={() => setProfileNameShow(true)}>
                     {props.dawg.preferred_name}
-                    </Button>
-            
-                    <ProfileModal
+                </Button>
+        
+                <ProfileModal
                     show={profileNameShow}
                     onHide={() => setProfileNameShow(false)}
                     dawg={props.dawg}
-                    />
-                    <p>{props.dawg.pronouns}</p>
-                    <p>{props.dawg.class_standing}</p>
-                    <p>{props.dawg.major}</p>
-                    <p>{props.dawg.city}, {props.dawg.state}, {props.dawg.country}</p>
-                </div>
+                />
+
+                <p>{props.dawg.pronouns}</p>
+                <p>{props.dawg.class_standing}</p>
+                <p>{props.dawg.major}</p>
+                <p>{props.dawg.city}, {props.dawg.state}, {props.dawg.country}</p>
             </div>
 
             <div className="results-connect">
                 <Button variant="primary" onClick={() => setConnectShow(true)}>
-                Connect
+                    Connect
                 </Button>
         
                 <ConnectModal
-                show={connectShow}
-                onHide={() => setConnectShow(false)}
-                dawg={props.dawg}
+                    show={connectShow}
+                    onHide={() => setConnectShow(false)}
+                    dawg={props.dawg}
                 />
             </div>
         </div>
@@ -460,36 +456,42 @@ export function ResultsEntry(props) {
 
 function ProfileModal(props) {
     return (
-      <Modal
-        {...props}
-        size="md"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Body>
-            <ProfilePage dawg={props.dawg} />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
+        <Modal
+            {...props}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Profile</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <ProfilePage dawg={props.dawg} />
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
     );
-  }
+}
 
-  function ConnectModal(props) {
+function ConnectModal(props) {
     return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Body>
-            <ConnectPage dawg={props.dawg} />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Connect</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <ConnectPage dawg={props.dawg} />
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
     );
-  }
+}

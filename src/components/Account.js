@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import firebase from 'firebase/app';
@@ -637,7 +637,7 @@ export default function AccountPage(props) {
                     <em>Is there anything else you would like someone to know about you?</em>
                 </div>
                 <form>
-                    <section classsName="form-section-container">
+                    <section className="form-section-container">
                         <div className="sub-section-end">
                             <label htmlFor="description">Description:</label>
                             <textarea className="form-control" id="description" name="description" value={formValues.description} onChange={handleChange} placeholder="Please feel free to make any other comments that you think might be important to someone making a decision about being your roommate."></textarea>

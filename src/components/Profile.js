@@ -1,205 +1,188 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function ProfilePage(props) {
     return (
         <div>
             <main class="main-profile">
                 <section class="profile">
-                    <form>
-                        <h2>Profile</h2>
-                        <div>
-                            <label htmlFor="preferred_name_field">Name:</label>
-                            <p>{props.dawg.preferred_name}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="pronouns_dropdown">Personal Pronoun:</label>
-                            <p>{props.dawg.pronouns}</p>
-                        </div>
-                    </form>
+                    <h2>Bio</h2>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <p>Hello! My name is <em>{props.dawg.preferred_name}</em>.</p>
+                            <p>My pronouns are <em>{props.dawg.pronouns}</em>. I am a <em>{props.dawg.class_standing}</em> my (intended) major is <em>{props.dawg.major}</em>. My hometown is <em>{props.dawg.city}, {props.dawg.state}, {props.dawg.country}</em>.</p>
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="aboutMe">
-                    <form>
-                        <h2>About Me</h2>
-                        <div>
-                            <label htmlFor="city_field">Hometown City:</label>
-                            <p>{props.dawg.city}</p>
-
-                            <label htmlFor="state_field">Hometown State:</label>
-                            <p>{props.dawg.state}</p>
-
-                            <label htmlFor="country_field">Hometown Country:</label>
-                            <p>{props.dawg.country}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="primary_lang_field">Primary Language:</label>
+                    <h2>About Me</h2>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>Primary Language:</label>
                             <p>{props.dawg.primary_lang}</p>
-
-                            <label htmlFor="second_lang_field">Secondary Language:</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Secondary Language:</label>
                             <p>{props.dawg.second_lang}</p>
-                        </div>
-                    </form>
-                </section>
-
-                <section class="academics">
-                    <h2>Academic Life</h2>
-                    <form>
-                        <div>
-                            <label htmlFor="major">(Intended) Major:</label>
-                            <p>{props.dawg.major}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="class_standing">Class Standing:</label>
-                            <p>{props.dawg.class_standing}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="graduation">Expected Graduation Month and Year:</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Expected Graduation Month and Year:</label>
                             <p>{props.dawg.graduation}</p>
-                        </div>
-                    </form>
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="housing">
                     <h2>Housing Preferences</h2>
-                    <form>
-                        <div>
-                            <label htmlFor="month_type">9-month or 12-month?</label>
-                            <p>{props.dawg.month_type}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="building_type">Residence Hall or Apartment Communities?</label>
-                            <p>{props.dawg.building_type}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="location_type">North Campus or West Campus?</label>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>I am interested in:</label>
+                            <p>{props.dawg.month_type} {props.dawg.building_type}</p>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Location</label>
                             <p>{props.dawg.location_type}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="room_type">Room Type</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Room Type</label>
                             <p>{props.dawg.room_type}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="bathroom_type">Bathroom Type</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Bathroom Type</label>
                             <p>{props.dawg.bathroom_type}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="bldg_1">1st Building Preference:</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>1st Building Preference:</label>
                             <p>{props.dawg.bldg_one}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="bldg_2">2nd Building Preference:</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>2nd Building Preference:</label>
                             <p>{props.dawg.bldg_two}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="bldg_3">3rd Building Preference:</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>3rd Building Preference:</label>
                             <p>{props.dawg.bldg_three}</p>
-                        </div>
-                    </form>
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="habits">
                     <h2>Habits</h2>
-                    <form>
+                    <div className="sub-section-start">
                         <h3>Sleep/Wake Up</h3>
-                        <div>
-                            <label htmlFor="morning_dropdown">Morning Wake Up:</label>
+                    </div>
+
+                    <ul class="list-group sub-section-end">
+                        <li class="list-group-item">
+                            <label>Morning Wake Up:</label>
                             <p>{props.dawg.morning}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="weeknights_dropdown">Sleep Schedule on Weeknights:</label>
-                            <p>{props.dawg.weeknights}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="weekends_dropdown">Sleep Schedule on Weekends:</label>
-                            <p>{props.dawg.weekends}</p>
-                        </div>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Sleep Schedule on Weeknights:</label>
+                            <p>{props.dawg.weeknights}</p>                            
+                        </li>
+                        <li class="list-group-item">
+                            <label>Sleep Schedule on Weekends:</label>
+                            <p>{props.dawg.weekends}</p>                            
+                        </li>
+                    </ul>
 
-                        <h3>Alcohol/Smoking</h3>
-                        <div>
-                            <label htmlFor="drinking_dropdown">Alcohol?</label>
-                            <p>{props.dawg.drinking}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="smoking_dropdown">Smoke/vape?</label>
-                            <p>{props.dawg.smoking}</p>
-                        </div>
+                    <h3>Alcohol/Smoking</h3>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>Alcohol?</label>
+                            <p>{props.dawg.drinking}</p>                        
+                        </li>
+                        <li class="list-group-item">
+                             <label>Smoke/vape?</label>
+                            <p>{props.dawg.smoking}</p>                       
+                        </li>
+                    </ul>
 
-                        <h3>Room Environment</h3>
-                        <div>
-                            <label htmlFor="organizing_dropdown">Bedroom Organization:</label>
-                            <p>{props.dawg.organizing}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="cleaning_dropdown">Bedroom/Bathroom Cleaning:</label>
-                            <p>{props.dawg.cleaning}</p>
-                        </div>
+                    <h3>Room Environment</h3>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>Bedroom Organization:</label>
+                            <p>{props.dawg.organizing}</p>                        
+                        </li>
+                        <li class="list-group-item">
+                            <label>Bedroom/Bathroom Cleaning:</label>
+                            <p>{props.dawg.cleaning}</p>                        
+                        </li>
+                    </ul>
 
-                        <h3>Study Time</h3>
-                        <div>
-                            <label htmlFor="study_dropdown">I usually study at:</label>
-                            <p>{props.dawg.study}</p>
-                        </div>
-                        <div className="sub-section-end">
-                            <label htmlFor="music_dropdown">When studying in my bedroom:</label>
-                            <p>{props.dawg.music}</p>
-                        </div>
-                    </form>
+                    <h3>Study Time</h3>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>I usually study:</label>
+                            <p>{props.dawg.study}</p>                        
+                        </li>
+                        <li class="list-group-item">
+                            <label>Do you like listening to music while studying?</label>
+                            <p>{props.dawg.music_listening}</p>                        
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="interest">
-                    <form>
-                        <h2>Personality & Interests</h2>
-                        <div>
-                            <label htmlFor="hobbies">Hobbies:</label>
+                    <h2>Personality & Interests</h2>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>Hobbies:</label>
                             <p>{props.dawg.hobbies}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="adjective_field">Three Adjectives to Describe Me:</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Three Adjectives to Describe Me:</label>
                             <p>{props.dawg.adjectives}</p>
-                        </div>
-                        <div>
-                            <label htmlFor="social_rank_dropdown">Sociable?</label>
+                        </li>
+                        <li class="list-group-item">
+                            <label>Sociable?</label>
                             <p>{props.dawg.social_rank}</p>
-                        </div>
+                        </li>
+                    </ul>
 
-                        <h3>Music</h3>
-                        <div className="sub-section-end">
-                            <label htmlFor="music_field">The music genres I listen to:</label>
+                    <h3>Music</h3>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>The music genres I listen to:</label>
                             <p>{props.dawg.music}</p>
 
-                            <label htmlFor="artist_field">My favorite artist is:</label>
+                            <label>My favorite artist is:</label>
                             <p>{props.dawg.artist}</p>
-                        </div>
+                        </li>
+                    </ul>
 
-                        <h3>Movies</h3>
-                        <div className="sub-section-end">
-                            <label htmlFor="movie_field">The movie genres I watch are:</label>
+                    <h3>Movies</h3>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>The movie genres I watch are:</label>
                             <p>{props.dawg.movie}</p>
 
-                            <label htmlFor="fav_movie_field">My favorite movie of all time is:</label>
+                            <label>My favorite movie of all time is:</label>
                             <p>{props.dawg.favorite_movie}</p>
-                        </div>
+                        </li>
+                    </ul>
 
-                        <h3>TV Show/Series</h3>
-                        <div className="sub-section-end">
-                            <label htmlFor="series_field">My favorite TV show/series is:</label>
+                    <h3>TV Show/Series</h3>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>My favorite TV show/series is:</label>
                             <p>{props.dawg.television}</p>
 
-                            <label htmlFor="streaming">If I had to pick one streaming service to binge watch, I would choose:</label>
-                            <p>{props.dawg.streaming}</p>
-                        </div>
-                    </form>
+                            <label>If I had to pick one streaming service to binge watch, I would choose:</label>
+                            <p>{props.dawg.streaming}</p>                            
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="moreInfo">
                     <h2>More Information</h2>
-                    <form>
-                        <div>
-                            <label htmlFor="description">Description:</label>
+                    <ul class="list-group sub-section-start sub-section-end">
+                        <li class="list-group-item">
+                            <label>Description:</label>
                             <p>{props.dawg.description}</p>
-                        </div>
-                    </form>
+                        </li>
+                    </ul>
                 </section>
             </main>
         </div>

@@ -45,6 +45,10 @@ h3 {
     text-decoration: underline;
 }
 
+.sub-section-start {
+    padding-top: 1%;
+}
+
 .sub-section-end {
     padding-bottom: 1%;
 }
@@ -134,7 +138,6 @@ form > em {
 }
 
 /* footer styling */
-
 footer {
     background-color: lightgrey;
     width: 100%;
@@ -292,9 +295,6 @@ input, select {
     margin: 8px 0 16px 32px;
 }
 
-/*pop-up styling*/
-
-
 /* filter styling */
 .accordion__button {
     background-color: #cd9703 !important;
@@ -352,6 +352,10 @@ fieldset {
 
 .pfp-results {
     display: none;
+}
+
+.modal-body {
+    background-color: #1B73D3;
 }
 
 /* media query for small screens */

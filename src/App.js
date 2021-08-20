@@ -4,12 +4,10 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import AboutPage from './components/About';
 import AccountPage from './components/Account';
 import Accordionize from './components/Home';
-// import ConnectPage from './components/Connect';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoginPage from './components/Login';
 import OnboardPage from './components/Onboard';
-// import ProfilePage from './components/Profile';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -78,12 +76,6 @@ function App() {
                     <Route path="/home">
                         <Accordionize user={user} />
                     </Route>
-                    {/* <Route path="/profile">
-                        <ProfilePage />
-                    </Route>
-                    <Route path="/connect">
-                        <ConnectPage />
-                    </Route> */}
                     <Route path="/account">
                         <AccountPage user={user} />
                     </Route>
